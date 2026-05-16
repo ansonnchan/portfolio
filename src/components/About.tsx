@@ -3,7 +3,7 @@ import RichText from "@/components/RichText";
 
 export default function About() {
   return (
-    <section className="scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
+    <section className="scroll-fade scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-12 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
           About Me

@@ -1,5 +1,6 @@
 "use client";
 
+import type { KeyboardEvent, MouseEvent } from "react";
 import { useState } from "react";
 import type { Project } from "@/data/portfolio";
 
@@ -9,9 +10,27 @@ type ProjectCardProps = {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const toggleOpen = () => setIsOpen((current) => !current);
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleOpen();
+    }
+  };
+
+  const stopRowToggle = (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    event.stopPropagation();
+  };
 
   return (
-    <article className="surface-card rounded-lg p-5 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark">
+    <article
+      className="surface-card cursor-pointer rounded-lg p-5 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark"
+      onClick={toggleOpen}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+    >
       <div className="flex gap-4">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10">
           <img
@@ -37,6 +56,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 aria-label={`${project.title} GitHub repository`}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10"
                 href={project.github}
+                onClick={stopRowToggle}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -47,6 +67,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   aria-label={`${project.title} live app`}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10"
                   href={project.live}
+                  onClick={stopRowToggle}
                   rel="noreferrer"
                   target="_blank"
                 >
@@ -57,10 +78,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Minimize project" : "Expand project"}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300"
-                onClick={() => setIsOpen((current) => !current)}
+                onClick={(event) => {
+                  stopRowToggle(event);
+                  toggleOpen();
+                }}
                 type="button"
               >
-                {isOpen ? "-" : "+"}
+                {isOpen ? "∧" : "∨"}
               </button>
             </div>
           </div>

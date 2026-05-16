@@ -14,7 +14,7 @@ const rotations = [
 
 export default function PhotosSection() {
   return (
-    <section className="scroll-mt-28 px-4 py-20 sm:px-6 lg:px-8" id="photos">
+    <section className="scroll-fade scroll-mt-28 px-4 py-20 sm:px-6 lg:px-8" id="photos">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
           {photos.title}

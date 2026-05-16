@@ -9,37 +9,53 @@ type NavbarProps = {
 };
 
 function useVancouverClock() {
-  const [time, setTime] = useState("--:--");
+  const [clock, setClock] = useState({
+    time: "--:--:-- PDT",
+    date: "Saturday May 16"
+  });
 
   useEffect(() => {
-    const formatter = new Intl.DateTimeFormat("en-CA", {
-      hour: "numeric",
+    const timeFormatter = new Intl.DateTimeFormat("en-CA", {
+      hour: "2-digit",
       minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+      timeZone: "America/Vancouver",
+      timeZoneName: "short"
+    });
+    const dateFormatter = new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
       timeZone: "America/Vancouver"
     });
 
-    const updateTime = () => setTime(formatter.format(new Date()));
+    const updateTime = () => {
+      const now = new Date();
+      setClock({
+        time: timeFormatter.format(now),
+        date: dateFormatter.format(now)
+      });
+    };
+
     updateTime();
-    const interval = window.setInterval(updateTime, 30000);
+    const interval = window.setInterval(updateTime, 1000);
     return () => window.clearInterval(interval);
   }, []);
 
-  return time;
+  return clock;
 }
 
 export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
-  const currentTime = useVancouverClock();
+  const clock = useVancouverClock();
 
   return (
-    <header className="pointer-events-none fixed left-3 right-3 top-3 z-50 sm:left-5 sm:right-5">
-      <div className="mx-auto flex max-w-7xl items-start justify-between gap-3">
-        <div className="pointer-events-auto flex min-w-0 flex-col gap-1">
-          <p className="ml-3 text-[11px] font-black uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
-            Anson Chan
-          </p>
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-5">
+      <div className="relative mx-auto flex max-w-7xl items-start justify-center">
+        <div className="pointer-events-auto min-w-0">
           <nav
             aria-label="Main navigation"
-            className="flex max-w-[calc(100vw-7.5rem)] items-center gap-1 overflow-x-auto rounded-full border border-black/10 bg-white/72 p-1.5 text-sm font-semibold text-zinc-700 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72 dark:text-zinc-200 md:max-w-none"
+            className="flex max-w-[calc(100vw-1.5rem)] items-center gap-1 overflow-x-auto rounded-full border border-black/10 bg-white/72 p-1.5 text-sm font-semibold text-zinc-700 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72 dark:text-zinc-200 md:max-w-none"
           >
             {navLinks.map((link) => (
               <a
@@ -53,7 +69,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
           </nav>
         </div>
 
-        <div className="pointer-events-auto flex shrink-0 flex-col items-end gap-1">
+        <div className="pointer-events-auto absolute right-0 top-0 flex shrink-0 flex-col items-end gap-1">
           <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/72 p-1.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72">
             <a
               className="inline-flex h-10 items-center gap-2 rounded-full bg-zinc-950 px-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700 dark:bg-white dark:text-[#10140f] dark:hover:bg-emerald-200"
@@ -80,8 +96,9 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
               />
             </button>
           </div>
-          <div className="rounded-full border border-black/10 bg-white/72 px-3 py-1 text-xs font-bold text-zinc-600 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72 dark:text-zinc-300">
-            Vancouver · {currentTime}
+          <div className="rounded-lg border border-black/10 bg-white/72 px-3 py-2 text-right text-xs font-bold leading-4 text-zinc-600 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72 dark:text-zinc-300">
+            <p>{clock.time}</p>
+            <p className="font-semibold text-zinc-500 dark:text-zinc-400">{clock.date}</p>
           </div>
         </div>
       </div>

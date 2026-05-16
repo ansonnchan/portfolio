@@ -1,5 +1,6 @@
 "use client";
 
+import type { KeyboardEvent } from "react";
 import { useState } from "react";
 import type { Experience } from "@/data/portfolio";
 import RichText from "@/components/RichText";
@@ -10,9 +11,23 @@ type ExperienceCardProps = {
 
 export default function ExperienceCard({ experience }: ExperienceCardProps) {
   const [isOpen, setIsOpen] = useState(Boolean(experience.defaultOpen));
+  const toggleOpen = () => setIsOpen((current) => !current);
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleOpen();
+    }
+  };
 
   return (
-    <article className="surface-card rounded-lg p-5 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark">
+    <article
+      className="surface-card cursor-pointer rounded-lg p-5 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark"
+      onClick={toggleOpen}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+    >
       <div className="flex gap-4">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10 dark:bg-white">
           <img
@@ -41,10 +56,13 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
               aria-expanded={isOpen}
               aria-label={isOpen ? "Minimize experience" : "Expand experience"}
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300"
-              onClick={() => setIsOpen((current) => !current)}
+              onClick={(event) => {
+                event.stopPropagation();
+                toggleOpen();
+              }}
               type="button"
             >
-              {isOpen ? "−" : "+"}
+              {isOpen ? "∧" : "∨"}
             </button>
           </div>
 

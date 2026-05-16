@@ -318,11 +318,6 @@ export const sideQuests = {
       alt: "When I Fly Towards You poster",
       caption: "《当我飞奔向你》 — When I Fly Towards You"
     },
-    {
-      src: "/assets/sidequests/pursuit_of_jade.png",
-      alt: "Pursuit of Jade poster",
-      caption: "《逐玉》 — Pursuit of Jade"
-    }
   ]
 };
 

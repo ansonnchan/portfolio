@@ -1,4 +1,5 @@
 import { hero } from "@/data/portfolio";
+import TopLeftWidgets from "@/components/TopLeftWidgets";
 import TypewriterText from "@/components/TypewriterText";
 
 type HeroProps = {
@@ -8,6 +9,7 @@ type HeroProps = {
 export default function Hero({ isDark: _isDark }: HeroProps) {
   return (
     <section className="relative overflow-hidden" id="top">
+      <TopLeftWidgets />
       <div className="relative mx-auto grid min-h-screen max-w-6xl items-center gap-8 px-6 py-24 sm:px-10 lg:grid-cols-[1fr_1fr] lg:px-12">
         <div className="animate-reveal-up mx-auto w-full max-w-[620px] text-left lg:justify-self-end">
           <p className="text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">

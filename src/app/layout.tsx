@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Anson Chan | SWE Portfolio",
+  title: "Anson Chan",
   description:
     "A playful, recruiter-friendly software engineering internship portfolio for Anson Chan.",
   icons: {

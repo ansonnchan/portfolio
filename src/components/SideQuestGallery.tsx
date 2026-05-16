@@ -2,7 +2,7 @@ import { sideQuests } from "@/data/portfolio";
 
 export default function SideQuestGallery() {
   return (
-    <div className="mx-auto w-full max-w-[26rem] lg:max-w-[34rem]">
+    <div className="mx-auto w-full max-w-[20rem] sm:max-w-[22rem] lg:ml-auto lg:mr-0 lg:max-w-[22rem]">
       {sideQuests.shows.map((show) => (
         <figure
           className="surface-card overflow-hidden rounded-lg p-3 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark"

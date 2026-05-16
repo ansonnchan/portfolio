@@ -79,8 +79,8 @@ export default function Portfolio() {
               Side Quests
             </h2>
 
-            <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-              <div className="mx-auto max-w-xl lg:mx-0">
+            <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-center">
+              <div className="mx-auto max-w-3xl lg:mx-0">
                 <p className="text-lg leading-8 text-zinc-700 dark:text-zinc-300">
                   {sideQuests.intro}
                 </p>

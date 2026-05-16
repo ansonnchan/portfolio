@@ -56,7 +56,7 @@ export const resumePath = "/assets/resume.pdf";
 export const hero = {
   greeting: "Hey!",
   name: "Anson Chan",
-  phrases: ["A software engineer", "A caffeine addict", "C-drama enthusiast"],
+  phrases: ["A software engineer", "A caffeine addict", "A C-drama enthusiast"],
   video: "/assets/chibi-wave-transparent.webm"
 };
 
@@ -128,7 +128,7 @@ export const experiences: Experience[] = [
   {
     title: "Software Engineering Intern",
     organization: "Borrow’d",
-    dates: "Jan 2026 - Apr 2026",
+    dates: "Jan. 2026 - Apr. 2026",
     location: "Vancouver, BC",
     image: "/assets/experiences/borrowd_org_logo.jpeg",
     bullets: [
@@ -157,7 +157,7 @@ export const experiences: Experience[] = [
   {
     title: "Undergraduate Research Assistant",
     organization: "University of South Australia",
-    dates: "June 2025 - Aug. 2025",
+    dates: "Jun. 2025 - Aug. 2025",
     location: "Adelaide, Australia",
     image: "/assets/experiences/unisa-logo.svg",
     bullets: [
@@ -217,6 +217,7 @@ export const archivedExperiences: ArchivedExperience[] = [
   }
 ];
 
+
 export const projects: Project[] = [
   {
     title: "Personal Portfolio",
@@ -229,16 +230,16 @@ export const projects: Project[] = [
       "/assets/projects/portfolio_pic2.png"
     ],
     techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    github: "https://github.com/ansonnchan/personal-portfolio",
+    github: "https://github.com/ansonnchan/portfolio",
     live: "https://www.ansonnchan.dev/",
     details: [
-      "Built as a responsive portfolio with dark mode, playful interaction, and recruiter-friendly project storytelling."
+      "Everything you need to know about me."
     ]
   },
   {
     title: "Pear Programming",
     description:
-      "A browser-based collaborative coding IDE with real-time editing, shared workspaces, live code execution, and AI-assisted coding features.",
+      "A browser-based collaborative coding IDE with real-time editing, shared workspaces, and AI-assisted coding features.",
     image: "/assets/projects/pear-program-pic2.png",
     icon: "/assets/projects/pear-programming-favicon.png",
     screenshots: [
@@ -282,7 +283,7 @@ export const projects: Project[] = [
   {
     title: "The Wallfacer Project",
     description:
-      "An AI-assisted hidden-state social deduction game inspired by Liu Cixin’s The Three-Body Problem 三体. The player acts as humanity’s Wallfacer and must figure out which alien civilizations are hostile by reading clues, transmissions, contradictions, and asking strategic questions.",
+      "An AI-assisted hidden-state social deduction game inspired by Liu Cixin’s The Three-Body Problem. The player must figure out which alien civilizations are hostile by reading clues, transmissions, contradictions, and asking strategic questions.",
     image: "/assets/projects/wallfacer_pic1.png",
     icon: "/assets/projects/wallfacer_icon.png",
     screenshots: [
@@ -306,14 +307,14 @@ export const sideQuests = {
   bullets: [
     "I’ve played violin and trumpet for 12 years and 10 years respectively. Although I haven’t played as much as I used to in high school, I’m hoping to join UBC’s symphony orchestra before I graduate.",
     "I also play tennis and badminton regularly. In high school, our tennis team made it all the way to provincials. We don’t talk about our results there though.",
-    "I’m currently watching Pursuit of Jade and When I Fly Towards You.",
-    "I’m reading The Three-Body Problem 三体 by Liu Cixin 刘慈欣. If you like dystopian sci-fi mystery thrillers, I highly recommend the series or the Netflix adaptation."
+    "I’m currently watching Pursuit of Jade and When I Fly Towards You (WIFTY).",
+    "I’m reading The Three-Body Problem (三体) by Liu Cixin (刘慈欣). If you like dystopian sci-fi mystery thrillers, I highly recommend the series or the Netflix adaptation (so excited for season 2)."
   ],
   shows: [
     {
       src: "/assets/sidequests/when_i_fly_towards_you.jpg",
       alt: "When I Fly Towards You poster",
-      caption: "《当我飞奔向你》 — When I Fly Towards You"
+      caption: "When I Fly Towards You - what I'm binging rn"
     },
   ]
 };

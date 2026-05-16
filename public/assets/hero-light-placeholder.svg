@@ -1,0 +1,12 @@
+<svg width="1000" height="1250" viewBox="0 0 1000 1250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="1250" fill="#F7FBF3"/>
+  <rect x="86" y="90" width="828" height="1070" rx="48" fill="#FFFFFF" stroke="#D8E7D5" stroke-width="8"/>
+  <path d="M184 356C250 242 353 184 493 184C653 184 770 260 832 413C744 388 662 398 586 443C493 499 406 497 326 438C280 405 232 378 184 356Z" fill="#DFF6E5"/>
+  <circle cx="354" cy="468" r="92" fill="#1D8A48"/>
+  <circle cx="664" cy="468" r="92" fill="#1D8A48"/>
+  <path d="M332 716C423 784 575 784 668 716" stroke="#1B1F1A" stroke-width="34" stroke-linecap="round"/>
+  <rect x="188" y="850" width="624" height="84" rx="24" fill="#122015"/>
+  <text x="500" y="905" text-anchor="middle" fill="#89F0A8" font-family="Consolas, Monaco, monospace" font-size="36" font-weight="700">console.log("hi recruiter")</text>
+  <text x="500" y="1015" text-anchor="middle" fill="#1B1F1A" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="900">Anson Chan</text>
+  <text x="500" y="1075" text-anchor="middle" fill="#4D5B50" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">SWE Intern Portfolio</text>
+</svg>

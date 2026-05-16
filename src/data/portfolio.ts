@@ -34,6 +34,7 @@ export type Project = {
   description: string;
   image: string;
   icon: string;
+  screenshots: string[];
   techStack: string[];
   github: string;
   live?: string;
@@ -42,10 +43,12 @@ export type Project = {
 };
 
 export const navLinks = [
-  { label: "About Me", href: "#about" },
+  { label: "Home", href: "#top" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Side Quests", href: "#side-quests" }
+  { label: "Side Quests", href: "#side-quests" },
+  { label: "Photos", href: "#photos" }
 ];
 
 export const resumePath = "/assets/resume.pdf";
@@ -54,8 +57,7 @@ export const hero = {
   greeting: "Hey!",
   name: "Anson Chan",
   phrases: ["A software engineer", "A caffeine addict", "C-drama enthusiast"],
-  lightImage: "/assets/hero-light-placeholder.svg",
-  darkImage: "/assets/hero-dark-placeholder.svg"
+  video: "/assets/chibi-wave-transparent.webm"
 };
 
 export const socials: SocialLink[] = [
@@ -77,7 +79,7 @@ export const socials: SocialLink[] = [
 ];
 
 export const about = {
-  profileImage: "/assets/about/pfp.png",
+  profileImage: "/assets/pfp.jpeg",
   paragraphs: [
     [{ text: "Hi there!" }],
     [
@@ -132,7 +134,6 @@ export const experiences: Experience[] = [
     dates: "Jan 2026 - Apr 2026",
     location: "Vancouver, BC",
     image: "/assets/experiences/borrowd_org_logo.jpeg",
-    defaultOpen: true,
     bullets: [
       [
         {
@@ -226,6 +227,10 @@ export const projects: Project[] = [
       "This website :) Rendition 3 of my portfolio, built to showcase everything you need to know about me.",
     image: "/assets/projects/portfolio_pic1.png",
     icon: "/assets/projects/portfolio_pic1.png",
+    screenshots: [
+      "/assets/projects/portfolio_pic1.png",
+      "/assets/projects/portfolio_pic2.png"
+    ],
     techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/ansonnchan/personal-portfolio",
     live: "https://www.ansonnchan.dev/",
@@ -239,6 +244,10 @@ export const projects: Project[] = [
       "A browser-based collaborative coding IDE with real-time editing, shared workspaces, live code execution, and AI-assisted coding features.",
     image: "/assets/projects/pear-program-pic2.png",
     icon: "/assets/projects/pear-programming-favicon.png",
+    screenshots: [
+      "/assets/projects/pear-program-pic2.png",
+      "/assets/projects/pear-program-pic3.png"
+    ],
     techStack: [
       "Java",
       "TypeScript",
@@ -261,6 +270,10 @@ export const projects: Project[] = [
       "An AI-powered venting app where users can talk to five different AI personalities and crash out to their heart’s content.",
     image: "/assets/projects/vent.ai_pic1.png",
     icon: "/assets/projects/vent.ai_icon.png",
+    screenshots: [
+      "/assets/projects/vent.ai_pic1.png",
+      "/assets/projects/vent.ai_pic2.png"
+    ],
     techStack: ["TypeScript", "React", "Next.js", "Groq SDK", "Upstash Redis"],
     github: "https://github.com/ansonnchan/vent.ai",
     live: "https://ventai-web.vercel.app/",
@@ -275,6 +288,10 @@ export const projects: Project[] = [
       "An AI-assisted hidden-state social deduction game inspired by Liu Cixin’s The Three-Body Problem 三体. The player acts as humanity’s Wallfacer and must figure out which alien civilizations are hostile by reading clues, transmissions, contradictions, and asking strategic questions.",
     image: "/assets/projects/wallfacer_pic1.png",
     icon: "/assets/projects/wallfacer_icon.png",
+    screenshots: [
+      "/assets/projects/wallfacer_pic1.png",
+      "/assets/projects/wallfacer_pic2.png"
+    ],
     techStack: ["Python", "React", "TypeScript", "PostgreSQL", "FastAPI", "Groq"],
     github: "https://github.com/ansonnchan/dark-forest",
     live: "https://wallfacer-project.vercel.app/",
@@ -295,14 +312,35 @@ export const sideQuests = {
     "I’m currently watching Pursuit of Jade and When I Fly Towards You.",
     "I’m reading The Three-Body Problem 三体 by Liu Cixin 刘慈欣. If you like dystopian sci-fi mystery thrillers, I highly recommend the series or the Netflix adaptation."
   ],
+  shows: [
+    {
+      src: "/assets/sidequests/when_i_fly_towards_you.jpg",
+      alt: "When I Fly Towards You poster",
+      caption: "《当我飞奔向你》 — When I Fly Towards You"
+    },
+    {
+      src: "/assets/sidequests/pursuit_of_jade.png",
+      alt: "Pursuit of Jade poster",
+      caption: "《逐玉》 — Pursuit of Jade"
+    }
+  ]
+};
+
+export const photos = {
+  title: "Memory Lane",
+  intro:
+    "I hope you enjoy these old photos of mine. I was doing some digging and spent a lot of time laughing, reminiscing, and feeling grateful for the old days. I found this quote online and loved the reminder: you only get one chance to live this life, so take a little time to look back at the moments that made you.",
+  quote:
+    "One day, you're 17 and you're planning for someday. And then quietly, without you ever really noticing, someday is today. And then someday is yesterday. And this is your life.",
+  attribution: "John Green",
   gallery: [
-    { src: "/assets/sidequests/IMG_0192.JPG", alt: "Side quest moment 1" },
-    { src: "/assets/sidequests/IMG_0668.JPG", alt: "Side quest moment 2" },
-    { src: "/assets/sidequests/IMG_0734.JPG", alt: "Side quest moment 3" },
-    { src: "/assets/sidequests/IMG_0916.JPG", alt: "Side quest moment 4" },
-    { src: "/assets/sidequests/IMG_1953.JPG", alt: "Side quest moment 5" },
-    { src: "/assets/sidequests/IMG_2256.JPG", alt: "Side quest moment 6" },
-    { src: "/assets/sidequests/IMG_4235.JPG", alt: "Side quest moment 7" },
-    { src: "/assets/sidequests/swollen.JPG", alt: "Side quest moment 8" }
+    { src: "/assets/photos/IMG_0192.JPG", caption: "a very serious era" },
+    { src: "/assets/photos/IMG_0668.JPG", caption: "small human, big plans" },
+    { src: "/assets/photos/IMG_0734.JPG", caption: "main character evidence" },
+    { src: "/assets/photos/IMG_0916.JPG", caption: "archived side quest" },
+    { src: "/assets/photos/IMG_1953.JPG", caption: "museum of tiny Anson" },
+    { src: "/assets/photos/IMG_2256.JPG", caption: "before the caffeine arc" },
+    { src: "/assets/photos/IMG_4235.JPG", caption: "peak throwback energy" },
+    { src: "/assets/photos/swollen.JPG", caption: "legendary recovery frame" }
   ]
 };

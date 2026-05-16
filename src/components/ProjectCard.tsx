@@ -42,6 +42,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               >
                 <img alt="" className="h-5 w-5 object-contain" src="/assets/about/github_icon.png" />
               </a>
+              {project.live ? (
+                <a
+                  aria-label={`${project.title} live app`}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10"
+                  href={project.live}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <img alt="" className="h-5 w-5 object-contain" src="/assets/about/live_app.png" />
+                </a>
+              ) : null}
               <button
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Minimize project" : "Expand project"}
@@ -68,14 +79,28 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {isOpen && (
-        <ul className="mt-5 space-y-3 border-t border-black/10 pt-5 text-sm leading-7 text-zinc-700 dark:border-white/10 dark:text-zinc-300 sm:text-base">
-          {project.details.map((detail) => (
-            <li className="flex gap-3" key={detail}>
-              <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-              <span>{detail}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-5 border-t border-black/10 pt-5 dark:border-white/10">
+          <ul className="space-y-3 text-sm leading-7 text-zinc-700 dark:text-zinc-300 sm:text-base">
+            {project.details.map((detail) => (
+              <li className="flex gap-3" key={detail}>
+                <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {project.screenshots.map((screenshot) => (
+              <img
+                alt={`${project.title} screenshot`}
+                className="aspect-video w-full rounded-lg border border-black/10 object-cover shadow-sm dark:border-white/10"
+                key={screenshot}
+                loading="lazy"
+                src={screenshot}
+              />
+            ))}
+          </div>
+        </div>
       )}
     </article>
   );

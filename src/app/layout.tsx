@@ -4,7 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Anson Chan | SWE Portfolio",
   description:
-    "A playful, recruiter-friendly software engineering internship portfolio for Anson Chan."
+    "A playful, recruiter-friendly software engineering internship portfolio for Anson Chan.",
+  icons: {
+    icon: "/assets/favicon.png",
+    apple: "/assets/favicon.png"
+  }
 };
 
 const themeScript = `

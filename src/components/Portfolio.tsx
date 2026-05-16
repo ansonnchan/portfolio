@@ -7,8 +7,11 @@ import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import PetDogEgg from "@/components/PetDogEgg";
+import PhotosSection from "@/components/PhotosSection";
 import ProjectCard from "@/components/ProjectCard";
 import SideQuestGallery from "@/components/SideQuestGallery";
+import TopLeftWidgets from "@/components/TopLeftWidgets";
 import { experiences, projects, sideQuests } from "@/data/portfolio";
 
 export default function Portfolio() {
@@ -36,6 +39,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar isDark={isDark} onToggleTheme={handleToggleTheme} />
+      <TopLeftWidgets />
       <Hero isDark={isDark} />
 
       <main>
@@ -87,28 +91,30 @@ export default function Portfolio() {
               Side Quests
             </h2>
 
-            <div className="mx-auto max-w-4xl">
-              <p className="text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-                {sideQuests.intro}
-              </p>
-              <ul className="mt-6 space-y-4 text-base leading-8 text-zinc-700 dark:text-zinc-300">
-                {sideQuests.bullets.map((bullet) => (
-                  <li className="flex gap-3" key={bullet}>
-                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-10">
+            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <div>
+                <p className="text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+                  {sideQuests.intro}
+                </p>
+                <ul className="mt-6 space-y-4 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+                  {sideQuests.bullets.map((bullet) => (
+                    <li className="flex gap-3" key={bullet}>
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <SideQuestGallery />
             </div>
           </div>
         </section>
+
+        <PhotosSection />
       </main>
 
       <Footer />
+      <PetDogEgg />
       <ArchivedExperienceModal
         isOpen={isArchiveOpen}
         onClose={() => setIsArchiveOpen(false)}

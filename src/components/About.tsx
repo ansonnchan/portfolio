@@ -14,7 +14,7 @@ export default function About() {
             <div className="overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
               <img
                 alt="Anson Chan profile"
-                className="aspect-square w-full object-cover"
+                className="aspect-square w-full rounded-lg object-cover"
                 src={about.profileImage}
               />
             </div>
@@ -40,20 +40,6 @@ export default function About() {
                 <RichText segments={paragraph} />
               </p>
             ))}
-
-            <figure className="rounded-lg border border-emerald-600/20 bg-emerald-50 p-6 text-zinc-900 shadow-sm dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-white">
-              <blockquote>
-                <p className="text-2xl font-black tracking-normal text-emerald-800 dark:text-emerald-200 sm:text-3xl">
-                  {about.quote.original}
-                </p>
-                <p className="mt-3 text-base italic leading-7 text-zinc-700 dark:text-zinc-200">
-                  “{about.quote.translation}”
-                </p>
-              </blockquote>
-              <figcaption className="mt-4 text-sm font-semibold text-zinc-600 dark:text-zinc-300">
-                — {about.quote.attribution}
-              </figcaption>
-            </figure>
 
             <p>{about.closing}</p>
           </div>

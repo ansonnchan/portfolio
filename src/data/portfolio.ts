@@ -92,37 +92,34 @@ export const about = {
       { text: " student @ " },
       { text: "UBC", highlight: true },
       {
-        text: ", studying somewhere between the hell that is hardware and the heaven that is software, but you won’t catch me touching hardware with a ten-foot pole. I expect to graduate in 2029, but watch me take 10 years."
+        text: ", expecting to graduate in 2029."
       }
     ],
     [
       {
-        text: "I was born in Hong Kong, lived in Australia for 15 years, and moved to Canada in late 2021. Nothing could have prepared me for going from sunny Australian days to rainy Vancouver weather."
+        text: "I was born in Hong Kong, lived in Australia for 15 years, and moved to Canada in late 2021. I love playing basically every racket sport imaginable from tennis, badminton, table tennis to even freaking pickleball."
       }
     ],
     [
       {
-        text: "I love playing basically every racket sport imaginable: tennis, badminton, table tennis, squash, and even pickleball."
-      }
-    ],
-    [
-      {
-        text: "I’ve also been trying to learn Chinese, thank god I know Cantonese, hence my obsession with "
+        text: "I’ve also been binging way too many C-dramas recently. Right now,"
       },
-      { text: "C-dramas", highlight: true },
       { text: ". I’m currently watching " },
       { text: "Pursuit of Jade", highlight: true },
-      { text: " 《逐玉》 and " },
+      { text: " (逐玉) and " },
       { text: "When I Fly Towards You", highlight: true },
-      { text: " 《当我飞奔向你》. Genuinely peak." }
+      { text: " (当我飞奔向你)." }
     ]
-  ],
+  
+  /** 
   quote: {
     original: "十年树木，百年树人",
     translation:
       "It takes ten years to grow a tree, but a hundred years to cultivate a person.",
     attribution: "Guan Zhong 管仲"
   },
+  */
+],
   closing:
     "If you like what you see and want to chat, my socials are underneath my profile picture. I’m always down for a coffee chat or to connect anytime :) I also need someone to duo with me and carry me to Diamond in League."
 };
@@ -224,9 +221,9 @@ export const projects: Project[] = [
   {
     title: "Personal Portfolio",
     description:
-      "This website :) Rendition 3 of my portfolio, built to showcase everything you need to know about me.",
+      "This website :) The third rendition of my portfolio, built to showcase everything you need to know about me.",
     image: "/assets/projects/portfolio_pic1.png",
-    icon: "/assets/projects/portfolio_pic1.png",
+    icon: "/assets/favicon.png",
     screenshots: [
       "/assets/projects/portfolio_pic1.png",
       "/assets/projects/portfolio_pic2.png"

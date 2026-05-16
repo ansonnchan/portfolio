@@ -20,7 +20,7 @@ export default function PhotosSection() {
           {photos.title}
         </h2>
 
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-5xl text-center">
           <p className="text-base leading-8 text-zinc-700 dark:text-zinc-300 sm:text-lg">
             {photos.intro}
           </p>

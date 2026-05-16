@@ -48,7 +48,7 @@ export const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Side Quests", href: "#side-quests" },
-  { label: "Photos", href: "#photos" }
+  { label: "Memories", href: "#photos" }
 ];
 
 export const resumePath = "/assets/resume.pdf";
@@ -327,13 +327,13 @@ export const photos = {
     "One day, you're 17 and you're planning for someday. And then quietly, without you ever really noticing, someday is today. And then someday is yesterday. And this is your life.",
   attribution: "John Green",
   gallery: [
-    { src: "/assets/photos/IMG_0192.JPG", caption: "a very serious era" },
-    { src: "/assets/photos/IMG_0668.JPG", caption: "small human, big plans" },
-    { src: "/assets/photos/IMG_0734.JPG", caption: "main character evidence" },
-    { src: "/assets/photos/IMG_0916.JPG", caption: "archived side quest" },
-    { src: "/assets/photos/IMG_1953.JPG", caption: "museum of tiny Anson" },
-    { src: "/assets/photos/IMG_2256.JPG", caption: "before the caffeine arc" },
-    { src: "/assets/photos/IMG_4235.JPG", caption: "peak throwback energy" },
-    { src: "/assets/photos/swollen.JPG", caption: "legendary recovery frame" }
+    { src: "/assets/photos/IMG_0192.JPG", caption: "y'all, i was really wearing alphabet pajamas" },
+    { src: "/assets/photos/IMG_0668.JPG", caption: "get your eyes checked" },
+    { src: "/assets/photos/IMG_0734.JPG", caption: "i promise i hold chopsticks better now" },
+    { src: "/assets/photos/IMG_0916.JPG", caption: "pachinko" },
+    { src: "/assets/photos/IMG_1953.JPG", caption: "universal studios - orlando, florida" },
+    { src: "/assets/photos/IMG_2256.JPG", caption: "book title is \"unfortunate series of events\"" },
+    { src: "/assets/photos/IMG_4235.JPG", caption: "peak" },
+    { src: "/assets/photos/swollen.JPG", caption: "yo, why was my left ear hella swollen?" }
   ]
 };

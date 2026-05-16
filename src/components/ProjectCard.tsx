@@ -13,6 +13,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const toggleOpen = () => setIsOpen((current) => !current);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       toggleOpen();
@@ -84,7 +88,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 }}
                 type="button"
               >
-                {isOpen ? "∧" : "∨"}
+                <span className={`arrow-chevron ${isOpen ? "arrow-chevron-up" : ""}`} />
               </button>
             </div>
           </div>

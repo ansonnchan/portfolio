@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import About from "@/components/About";
+import CultivationCounter from "@/components/CultivationCounter";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import PetDogEgg from "@/components/PetDogEgg";
 import PhotosSection from "@/components/PhotosSection";
 import ProjectCard from "@/components/ProjectCard";
 import SideQuestGallery from "@/components/SideQuestGallery";
@@ -75,13 +75,13 @@ export default function Portfolio() {
         </section>
 
         <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="side-quests">
-          <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-6xl">
             <h2 className="mb-10 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
               Side Quests
             </h2>
 
-            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-              <div>
+            <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+              <div className="mx-auto max-w-xl lg:mx-0">
                 <p className="text-lg leading-8 text-zinc-700 dark:text-zinc-300">
                   {sideQuests.intro}
                 </p>
@@ -103,7 +103,7 @@ export default function Portfolio() {
       </main>
 
       <Footer />
-      <PetDogEgg />
+      <CultivationCounter />
     </div>
   );
 }

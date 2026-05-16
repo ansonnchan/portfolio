@@ -14,6 +14,10 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
   const toggleOpen = () => setIsOpen((current) => !current);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       toggleOpen();
@@ -62,7 +66,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
               }}
               type="button"
             >
-              {isOpen ? "∧" : "∨"}
+              <span className={`arrow-chevron ${isOpen ? "arrow-chevron-up" : ""}`} />
             </button>
           </div>
 

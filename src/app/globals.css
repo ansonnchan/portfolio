@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #fbfbf7;
+  --background: #ffffff;
   --foreground: #171a16;
   --muted: #5c645d;
   --surface: rgba(255, 255, 255, 0.82);
@@ -83,6 +83,14 @@ button {
   animation: reveal-up 0.7s ease both;
 }
 
+.animate-carousel {
+  animation: carousel-scroll 42s linear infinite;
+}
+
+.animate-carousel:hover {
+  animation-play-state: paused;
+}
+
 @keyframes caret-blink {
   0%,
   45% {
@@ -112,5 +120,14 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }

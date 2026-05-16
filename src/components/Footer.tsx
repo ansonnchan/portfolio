@@ -2,12 +2,12 @@ import { socials } from "@/data/portfolio";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/10 px-4 py-10 dark:border-white/10 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+    <footer className="border-t border-black/10 px-4 py-12 dark:border-white/10 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 text-center">
         <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-300">
-          Made with love, Anson Chan © 2026
+          Anson Chan © 2026
         </p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3">
           {socials.map((social) => (
             <a
               aria-label={social.label}

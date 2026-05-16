@@ -25,10 +25,12 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300">
-                {experience.eyebrow}
-              </p>
-              <h3 className="mt-2 text-2xl font-black tracking-normal text-zinc-950 dark:text-white">
+              {experience.eyebrow ? (
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300">
+                  {experience.eyebrow}
+                </p>
+              ) : null}
+              <h3 className="text-2xl font-black tracking-normal text-zinc-950 dark:text-white">
                 {experience.title}{" "}
                 <span className="text-zinc-500 dark:text-zinc-400">
                   @ {experience.organization}

@@ -41,17 +41,12 @@ export default function Portfolio() {
       <main>
         <About />
 
-        <section className="scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="experience">
+        <section className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
-                  Experience
-                </p>
-                <h2 className="mt-3 text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
-                  Places I’ve shipped, researched, and survived.
-                </h2>
-              </div>
+            <div className="mb-10 flex flex-col items-center gap-5 text-center">
+              <h2 className="text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+                Experience
+              </h2>
               <button
                 className="w-fit rounded-full border border-emerald-600/25 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-800 transition hover:-translate-y-0.5 hover:bg-emerald-100 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-200 dark:hover:bg-emerald-300/15"
                 onClick={() => setIsArchiveOpen(true)}
@@ -72,18 +67,13 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section className="scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="projects">
+        <section className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="projects">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-10">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
-                Projects
-              </p>
-              <h2 className="mt-3 text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
-                The stuff recruiters probably came here for.
-              </h2>
-            </div>
+            <h2 className="mb-10 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+              Projects
+            </h2>
 
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-5">
               {projects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
@@ -91,32 +81,28 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section className="scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="side-quests">
+        <section className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
-                  Side Quests
-                </p>
-                <h2 className="mt-3 text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
-                  Proof of grass-touching.
-                </h2>
-                <p className="mt-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-                  {sideQuests.intro}
-                </p>
-                <ul className="mt-6 space-y-4 text-base leading-8 text-zinc-700 dark:text-zinc-300">
-                  {sideQuests.bullets.map((bullet) => (
-                    <li className="flex gap-3" key={bullet}>
-                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <h2 className="mb-10 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+              Side Quests
+            </h2>
 
-              <div className="surface-card h-fit rounded-lg p-4 shadow-soft dark:shadow-soft-dark">
-                <SideQuestGallery />
-              </div>
+            <div className="mx-auto max-w-4xl">
+              <p className="text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+                {sideQuests.intro}
+              </p>
+              <ul className="mt-6 space-y-4 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+                {sideQuests.bullets.map((bullet) => (
+                  <li className="flex gap-3" key={bullet}>
+                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-10">
+              <SideQuestGallery />
             </div>
           </div>
         </section>

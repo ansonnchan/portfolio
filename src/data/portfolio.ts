@@ -15,7 +15,7 @@ export type Experience = {
   dates: string;
   location: string;
   image: string;
-  eyebrow: string;
+  eyebrow?: string;
   bullets: RichSegment[][];
   defaultOpen?: boolean;
 };
@@ -33,6 +33,7 @@ export type Project = {
   title: string;
   description: string;
   image: string;
+  icon: string;
   techStack: string[];
   github: string;
   live?: string;
@@ -44,14 +45,13 @@ export const navLinks = [
   { label: "About Me", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Resume", href: "/assets/resume.pdf", download: true },
   { label: "Side Quests", href: "#side-quests" }
 ];
 
 export const resumePath = "/assets/resume.pdf";
 
 export const hero = {
-  greeting: 'print("Hello World!")',
+  greeting: "Hey!",
   name: "Anson Chan",
   phrases: ["A software engineer", "A caffeine addict", "C-drama enthusiast"],
   lightImage: "/assets/hero-light-placeholder.svg",
@@ -132,12 +132,11 @@ export const experiences: Experience[] = [
     dates: "Jan 2026 - Apr 2026",
     location: "Vancouver, BC",
     image: "/assets/experiences/borrowd_org_logo.jpeg",
-    eyebrow: "Consumer lending platform",
     defaultOpen: true,
     bullets: [
       [
         {
-          text: "Delivered new features and performance improvements for a consumer lending platform, improving internal tooling and resolving user-facing issues."
+          text: "Delivered product features and performance improvements, improving internal tooling and resolving user-facing issues."
         }
       ],
       [
@@ -163,7 +162,6 @@ export const experiences: Experience[] = [
     dates: "June 2025 - Aug. 2025",
     location: "Adelaide, Australia",
     image: "/assets/experiences/unisa-logo.svg",
-    eyebrow: "Document retrieval research",
     bullets: [
       [
         { text: "Worked on " },
@@ -227,10 +225,10 @@ export const projects: Project[] = [
     description:
       "This website :) Rendition 3 of my portfolio, built to showcase everything you need to know about me.",
     image: "/assets/projects/portfolio_pic1.png",
+    icon: "/assets/projects/portfolio_pic1.png",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/ansonnchan/personal-portfolio",
     live: "https://www.ansonnchan.dev/",
-    defaultOpen: true,
     details: [
       "Built as a responsive portfolio with dark mode, playful interaction, and recruiter-friendly project storytelling."
     ]
@@ -240,6 +238,7 @@ export const projects: Project[] = [
     description:
       "A browser-based collaborative coding IDE with real-time editing, shared workspaces, live code execution, and AI-assisted coding features.",
     image: "/assets/projects/pear-program-pic2.png",
+    icon: "/assets/projects/pear-programming-favicon.png",
     techStack: [
       "Java",
       "TypeScript",
@@ -261,6 +260,7 @@ export const projects: Project[] = [
     description:
       "An AI-powered venting app where users can talk to five different AI personalities and crash out to their heart’s content.",
     image: "/assets/projects/vent.ai_pic1.png",
+    icon: "/assets/projects/vent.ai_icon.png",
     techStack: ["TypeScript", "React", "Next.js", "Groq SDK", "Upstash Redis"],
     github: "https://github.com/ansonnchan/vent.ai",
     live: "https://ventai-web.vercel.app/",
@@ -274,6 +274,7 @@ export const projects: Project[] = [
     description:
       "An AI-assisted hidden-state social deduction game inspired by Liu Cixin’s The Three-Body Problem 三体. The player acts as humanity’s Wallfacer and must figure out which alien civilizations are hostile by reading clues, transmissions, contradictions, and asking strategic questions.",
     image: "/assets/projects/wallfacer_pic1.png",
+    icon: "/assets/projects/wallfacer_icon.png",
     techStack: ["Python", "React", "TypeScript", "PostgreSQL", "FastAPI", "Groq"],
     github: "https://github.com/ansonnchan/dark-forest",
     live: "https://wallfacer-project.vercel.app/",

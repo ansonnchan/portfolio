@@ -5,14 +5,9 @@ export default function About() {
   return (
     <section className="scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
-            About Me
-          </p>
-          <h2 className="mt-3 text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
-            Somewhere between software and sleep deprivation.
-          </h2>
-        </div>
+        <h2 className="mb-12 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+          About Me
+        </h2>
 
         <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
           <aside className="surface-card h-fit rounded-lg p-4 shadow-soft dark:shadow-soft-dark">

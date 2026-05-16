@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import About from "@/components/About";
-import CultivationCounter from "@/components/CultivationCounter";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -103,7 +102,6 @@ export default function Portfolio() {
       </main>
 
       <Footer />
-      <CultivationCounter />
     </div>
   );
 }

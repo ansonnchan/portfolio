@@ -156,7 +156,7 @@ export default function CultivationCounter() {
   return (
     <aside
       aria-label="Cultivation Counter easter egg"
-      className="fixed bottom-3 left-3 z-40 w-[12rem] text-center sm:bottom-5 sm:left-5 sm:w-[14rem]"
+      className="absolute bottom-3 left-3 z-40 w-[12rem] text-center sm:bottom-5 sm:left-5 sm:w-[14rem]"
     >
       {breakthrough ? (
         <div className="mb-2 rounded-full bg-emerald-500/90 px-3 py-1 text-xs font-black text-white shadow-sm">

@@ -10,4 +10,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-public/
+public/assets/photos
+public/assets/about
+public/assets/Anson_Resume.pdf
+public/assets/resume.pdf
+public/assets/pfp.jpeg

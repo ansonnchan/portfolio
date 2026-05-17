@@ -73,8 +73,9 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
           <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/72 p-1.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72">
             <a
               className="inline-flex h-10 items-center gap-2 rounded-full bg-zinc-950 px-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700 dark:bg-white dark:text-[#10140f] dark:hover:bg-emerald-200"
-              download
               href={resumePath}
+              rel="noreferrer"
+              target="_blank"
             >
               <img alt="" className="h-4 w-4 invert dark:invert-0" src="/assets/download.png" />
               <span className="hidden sm:inline">Resume</span>

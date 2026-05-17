@@ -51,7 +51,7 @@ export const navLinks = [
   { label: "Memories", href: "#photos" }
 ];
 
-export const resumePath = "/assets/resume.pdf";
+export const resumePath = "/resume";
 
 export const hero = {
   greeting: "Hey!",

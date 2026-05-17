@@ -94,19 +94,26 @@ export const about = {
       { text: " student @ " },
       { text: "UBC", highlight: true },
       {
-        text: ", expecting to graduate in 2029."
-      }
+        text: ", expecting to graduate in "
+       },
+       { text:  "2029.", highlight: true }
     ],
     [
       {
-        text: "I was born in Hong Kong, lived in Australia for 15 years, and moved to Canada in late 2021. I love playing basically every racket sport imaginable from tennis, badminton, table tennis to even freaking pickleball."
-      }
+        text: "I was born in "},
+        { text: "Hong Kong", highlight: true },
+        { text: " but lived in " },
+        { text: "Australia", highlight: true },
+        { text: " for 15 years. I moved to Canada " },
+        { text: " in late 2021. I play basically every racket sport like tennis, badminton, table tennis and even pickleball." },
+
+      
     ],
     [
       {
         text: "I’ve also been binging way too many C-dramas recently. Right now,"
       },
-      { text: ". I’m currently watching " },
+      { text: "I’m currently watching " },
       { text: "Pursuit of Jade", highlight: true },
       { text: " (逐玉) and " },
       { text: "When I Fly Towards You", highlight: true },
@@ -123,7 +130,7 @@ export const about = {
   */
 ],
   closing:
-    "If you like what you see and want to chat, my socials are underneath my profile picture. I’m always down for a coffee chat or to connect anytime :) I also need someone to duo with me and carry me to Diamond in League."
+    "If you like what you see and want to chat, my socials are underneath my profile picture. I’m always down for a coffee chat or to connect anytime :) (i also lowk need someone to duo with me and carry me to Diamond in League)"
 };
 
 export const experiences: Experience[] = [
@@ -305,11 +312,12 @@ export const projects: Project[] = [
 
 export const sideQuests = {
   intro:
-    "Contrary to what people may believe, I do touch grass and I do talk to other people.",
+    "Contrary to what people may believe, I do have hobbies and interests, I do talk to other people, and I do touch grass.",
   bullets: [
     "I’ve played violin and trumpet for 12 years and 10 years respectively. Although I haven’t played as much as I used to in high school, I’m hoping to join UBC’s symphony orchestra before I graduate.",
     "I also play tennis and badminton regularly. In high school, our tennis team made it all the way to provincials. We don’t talk about our results there though.",
-    "I’m currently watching Pursuit of Jade and When I Fly Towards You (WIFTY).",
+    "I’m currently watching Pursuit of Jade and When I Fly Towards You.",
+    "I'm hardstuck Emerald rank in League of Legends and my mains are ahri and shen (pls save me from ELO hell).",
     "I’m reading The Three-Body Problem (三体) by Liu Cixin (刘慈欣). If you like dystopian sci-fi mystery thrillers, I highly recommend the series or the Netflix adaptation (so excited for season 2)."
   ],
   shows: [

@@ -28,6 +28,11 @@ type Particle = {
   delay: number;
 };
 
+type CultivationResponse = {
+  count: number;
+  persistent: boolean;
+};
+
 function realmSuffix(realm: string) {
   if (realm === "Immortal" || realm.endsWith("Realm")) {
     return realm;
@@ -81,6 +86,38 @@ function getCultivationInfo(count: number) {
   };
 }
 
+async function syncCultivationCount(localCount: number) {
+  const response = await fetch("/api/cultivation", {
+    body: JSON.stringify({ action: "sync", count: localCount }),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return (await response.json()) as CultivationResponse;
+}
+
+async function incrementCultivationCount() {
+  const response = await fetch("/api/cultivation", {
+    body: JSON.stringify({ action: "increment" }),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return (await response.json()) as CultivationResponse;
+}
+
 export default function CultivationCounter() {
   const [count, setCount] = useState(0);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -93,8 +130,26 @@ export default function CultivationCounter() {
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     const parsed = stored ? Number.parseInt(stored, 10) : 0;
-    setCount(Number.isFinite(parsed) ? parsed : 0);
+    const localCount = Number.isFinite(parsed) ? parsed : 0;
+
+    setCount(localCount);
     setHasLoaded(true);
+
+    let isCurrent = true;
+
+    syncCultivationCount(localCount)
+      .then((data) => {
+        if (isCurrent && data?.persistent) {
+          setCount(data.count);
+        }
+      })
+      .catch(() => {
+        // Keep the local count when remote persistence is unavailable.
+      });
+
+    return () => {
+      isCurrent = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -131,6 +186,16 @@ export default function CultivationCounter() {
 
     setCount(nextCount);
     createParticles();
+
+    incrementCultivationCount()
+      .then((data) => {
+        if (data?.persistent) {
+          setCount((current) => Math.max(current, data.count));
+        }
+      })
+      .catch(() => {
+        // The optimistic local click is already saved in localStorage.
+      });
 
     if (next.realmIndex > previous.realmIndex) {
       setGlow("realm");

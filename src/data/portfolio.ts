@@ -113,7 +113,7 @@ export const about = {
       {
         text: "I’ve also been binging way too many C-dramas recently. Right now,"
       },
-      { text: "I’m currently watching " },
+      { text: " I’m currently watching " },
       { text: "Pursuit of Jade", highlight: true },
       { text: " (逐玉) and " },
       { text: "When I Fly Towards You", highlight: true },
@@ -281,7 +281,7 @@ export const projects: Project[] = [
       "/assets/projects/vent.ai_pic1.png",
       "/assets/projects/vent.ai_pic2.png"
     ],
-    techStack: ["TypeScript", "React", "Next.js", "Groq SDK", "Upstash Redis"],
+    techStack: ["TypeScript", "React", "Next.js", "Groq", "Upstash Redis"],
     github: "https://github.com/ansonnchan/vent.ai",
     live: "https://ventai-web.vercel.app/",
     details: [
@@ -335,7 +335,7 @@ export const photos = {
     "I hope you enjoy these old photos of mine. I was doing some digging and spent a lot of time laughing, reminiscing, and feeling grateful for the old days. I found this quote online and loved the reminder: you only get one chance to live this life, so take a little time to look back at the moments that made you.",
   quote:
     "One day, you're 17 and you're planning for someday. And then quietly, without you ever really noticing, someday is today. And then someday is yesterday. And this is your life.",
-  attribution: "John Green",
+  attribution: "Nathan Scott, One Tree Hill (9x13)",
   gallery: [
     { src: "/assets/photos/IMG_0192.JPG", caption: "y'all, i was really wearing alphabet pajamas" },
     { src: "/assets/photos/IMG_0668.JPG", caption: "get your eyes checked" },

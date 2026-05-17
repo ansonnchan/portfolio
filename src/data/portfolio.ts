@@ -56,6 +56,7 @@ export const resumePath = "/assets/resume.pdf";
 export const hero = {
   greeting: "Hey!",
   name: "Anson Chan",
+  chineseName: "陳雋希",
   phrases: ["A software engineer", "A caffeine addict", "A C-drama enthusiast"],
   video: "/assets/chibi-wave-transparent.webm"
 };
@@ -80,6 +81,7 @@ export const socials: SocialLink[] = [
 
 export const about = {
   profileImage: "/assets/pfp.jpeg",
+  darkProfileImage: "/assets/about/dark_me.JPG",
   paragraphs: [
     [{ text: "Hi there!" }],
     [

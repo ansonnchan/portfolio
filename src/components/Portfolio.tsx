@@ -38,7 +38,7 @@ export default function Portfolio() {
       <Hero isDark={isDark} />
 
       <main>
-        <About />
+        <About isDark={isDark} />
 
         <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">

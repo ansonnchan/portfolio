@@ -1,7 +1,11 @@
 import { about, socials } from "@/data/portfolio";
 import RichText from "@/components/RichText";
 
-export default function About() {
+type AboutProps = {
+  isDark: boolean;
+};
+
+export default function About({ isDark }: AboutProps) {
   return (
     <section className="scroll-fade scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
@@ -11,11 +15,20 @@ export default function About() {
 
         <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
           <aside className="surface-card h-fit rounded-lg p-4 shadow-soft dark:shadow-soft-dark">
-            <div className="overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
+            <div className="relative aspect-square overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
               <img
                 alt="Anson Chan profile"
-                className="aspect-square w-full rounded-lg object-cover"
+                className={`absolute inset-0 h-full w-full rounded-lg object-cover transition-opacity duration-500 ${
+                  isDark ? "opacity-0" : "opacity-100"
+                }`}
                 src={about.profileImage}
+              />
+              <img
+                alt="Anson Chan profile in dark mode"
+                className={`absolute inset-0 h-full w-full rounded-lg object-cover transition-opacity duration-500 ${
+                  isDark ? "opacity-100" : "opacity-0"
+                }`}
+                src={about.darkProfileImage}
               />
             </div>
             <div className="mt-4 grid grid-cols-3 gap-3">

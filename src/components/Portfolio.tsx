@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import About from "@/components/About";
-import CursorQiGlow from "@/components/CursorQiGlow";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -35,7 +34,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <CursorQiGlow />
       <Navbar isDark={isDark} onToggleTheme={handleToggleTheme} />
       <Hero isDark={isDark} />
 

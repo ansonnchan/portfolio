@@ -118,51 +118,6 @@ button {
   animation-range: entry 0% cover 26%;
 }
 
-.cursor-qi-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.cursor-qi-glow {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 5.5rem;
-  width: 5.5rem;
-  border-radius: 9999px;
-  background:
-    radial-gradient(circle, rgba(34, 197, 94, 0.14), rgba(34, 197, 94, 0.05) 36%, transparent 70%);
-  filter: blur(10px);
-  opacity: 0.72;
-  will-change: transform;
-}
-
-.cursor-qi-particle {
-  position: absolute;
-  left: var(--cursor-qi-x);
-  top: var(--cursor-qi-y);
-  height: 0.24rem;
-  width: 0.24rem;
-  border-radius: 9999px;
-  background: rgba(22, 128, 63, 0.44);
-  box-shadow: 0 0 10px rgba(34, 197, 94, 0.24);
-  animation: cursor-qi-drift 1.2s ease-out forwards;
-}
-
-.dark .cursor-qi-glow {
-  background:
-    radial-gradient(circle, rgba(94, 226, 142, 0.15), rgba(94, 226, 142, 0.055) 36%, transparent 70%);
-  opacity: 0.74;
-}
-
-.dark .cursor-qi-particle {
-  background: rgba(94, 226, 142, 0.44);
-  box-shadow: 0 0 12px rgba(94, 226, 142, 0.28);
-}
-
 .cultivator-idle {
   animation: cultivator-hover 3.8s ease-in-out infinite;
 }
@@ -206,12 +161,6 @@ button {
     opacity: 1;
     transform: none;
     animation: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cursor-qi-layer {
-    display: none;
   }
 }
 
@@ -298,20 +247,6 @@ button {
   100% {
     opacity: 0;
     transform: translate3d(var(--qi-x, 10px), -34px, 0) scale(1.35);
-  }
-}
-
-@keyframes cursor-qi-drift {
-  0% {
-    opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(0.72);
-  }
-  24% {
-    opacity: 0.38;
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(calc(-50% + 7px), calc(-50% - 20px), 0) scale(1.08);
   }
 }
 

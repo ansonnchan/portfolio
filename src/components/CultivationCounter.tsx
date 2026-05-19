@@ -26,6 +26,8 @@ type Particle = {
   x: number;
   y: number;
   delay: number;
+  drift: number;
+  rotate: number;
 };
 
 type CultivationResponse = {
@@ -159,17 +161,19 @@ export default function CultivationCounter() {
   }, [count, hasLoaded]);
 
   const createParticles = () => {
-    const burst = Array.from({ length: 8 }, (_, index) => ({
+    const burst = Array.from({ length: 10 }, (_, index) => ({
       id: Date.now() + index,
-      x: 20 + Math.random() * 58,
-      y: 34 + Math.random() * 38,
-      delay: Math.random() * 0.16
+      x: 16 + Math.random() * 68,
+      y: 16 + Math.random() * 38,
+      delay: Math.random() * 0.12,
+      drift: -24 + Math.random() * 48,
+      rotate: -120 + Math.random() * 240
     }));
 
     setParticles((current) => [...current, ...burst]);
     window.setTimeout(() => {
       setParticles((current) => current.filter((particle) => !burst.some((item) => item.id === particle.id)));
-    }, 950);
+    }, 1050);
   };
 
   const cultivate = () => {
@@ -224,7 +228,7 @@ export default function CultivationCounter() {
       className="absolute bottom-3 left-3 z-40 w-[12rem] text-center sm:bottom-5 sm:left-5 sm:w-[14rem]"
     >
       {breakthrough ? (
-        <div className="mb-2 rounded-full bg-emerald-500/90 px-3 py-1 text-xs font-black text-white shadow-sm">
+        <div className="mb-2 rounded-full bg-amber-400/95 px-3 py-1 text-xs font-black text-amber-950 shadow-sm">
           {breakthrough}
         </div>
       ) : null}
@@ -250,7 +254,9 @@ export default function CultivationCounter() {
               {
                 left: `${particle.x}%`,
                 top: `${particle.y}%`,
-                animationDelay: `${particle.delay}s`
+                animationDelay: `${particle.delay}s`,
+                "--qi-drift": `${particle.drift}px`,
+                "--qi-rotate": `${particle.rotate}deg`
               } as CSSProperties
             }
           />

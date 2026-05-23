@@ -23,11 +23,12 @@ const realms = [
 
 type Particle = {
   id: number;
+  kind: "wisp" | "ring";
   x: number;
   y: number;
   delay: number;
   drift: number;
-  rotate: number;
+  scale: number;
 };
 
 type CultivationResponse = {
@@ -161,19 +162,31 @@ export default function CultivationCounter() {
   }, [count, hasLoaded]);
 
   const createParticles = () => {
-    const burst = Array.from({ length: 10 }, (_, index) => ({
-      id: Date.now() + index,
-      x: 16 + Math.random() * 68,
-      y: 16 + Math.random() * 38,
-      delay: Math.random() * 0.12,
-      drift: -24 + Math.random() * 48,
-      rotate: -120 + Math.random() * 240
+    const startedAt = Date.now();
+    const wisps: Particle[] = Array.from({ length: 9 }, (_, index) => ({
+      id: startedAt + index,
+      kind: "wisp",
+      x: 24 + Math.random() * 52,
+      y: 42 + Math.random() * 30,
+      delay: Math.random() * 0.18,
+      drift: -20 + Math.random() * 40,
+      scale: 0.78 + Math.random() * 0.58
     }));
+    const rings: Particle[] = Array.from({ length: 2 }, (_, index) => ({
+      id: startedAt + wisps.length + index,
+      kind: "ring",
+      x: 50,
+      y: 58,
+      delay: index * 0.13,
+      drift: 0,
+      scale: 0.95 + index * 0.16
+    }));
+    const burst = [...rings, ...wisps];
 
     setParticles((current) => [...current, ...burst]);
     window.setTimeout(() => {
       setParticles((current) => current.filter((particle) => !burst.some((item) => item.id === particle.id)));
-    }, 1050);
+    }, 1150);
   };
 
   const cultivate = () => {
@@ -248,7 +261,7 @@ export default function CultivationCounter() {
       <div className="relative mx-auto mt-1 h-32 w-32 sm:h-36 sm:w-36">
         {particles.map((particle) => (
           <span
-            className="qi-particle"
+            className={particle.kind === "ring" ? "qi-aura-ring" : "qi-aura-wisp"}
             key={particle.id}
             style={
               {
@@ -256,7 +269,7 @@ export default function CultivationCounter() {
                 top: `${particle.y}%`,
                 animationDelay: `${particle.delay}s`,
                 "--qi-drift": `${particle.drift}px`,
-                "--qi-rotate": `${particle.rotate}deg`
+                "--qi-scale": particle.scale
               } as CSSProperties
             }
           />

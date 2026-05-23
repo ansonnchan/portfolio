@@ -57,7 +57,7 @@ export const hero = {
   greeting: "Hey!",
   name: "Anson Chan",
   chineseName: "陳雋希",
-  phrases: ["A software engineer", "A caffeine addict", "A C-drama enthusiast"],
+  phrases: ["A software engineer", "CPEN student @ UBC", "A C-drama enthusiast"],
   video: "/assets/chibi-wave-transparent.webm"
 };
 

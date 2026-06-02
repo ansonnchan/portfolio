@@ -135,7 +135,17 @@ export const about = {
 
 export const experiences: Experience[] = [
   {
-    title: "Software Engineering Intern",
+    title: "Software Engineer Intern",
+    organization: "ScalePad",
+    dates: "June 2026 - Present",
+    location: "Vancouver, BC",
+    image: "/assets/experiences/scalepad_logo.jpeg",
+    bullets: [
+      [{ text: "incoming s26" }]
+    ]
+  },
+  {
+    title: "Software Engineer Intern",
     organization: "Borrow’d",
     dates: "Jan. 2026 - Apr. 2026",
     location: "Vancouver, BC",

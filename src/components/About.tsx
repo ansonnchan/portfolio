@@ -1,4 +1,4 @@
-import { about, socials } from "@/data/portfolio";
+import { about } from "@/data/portfolio";
 import RichText from "@/components/RichText";
 
 type AboutProps = {
@@ -30,20 +30,6 @@ export default function About({ isDark }: AboutProps) {
                 }`}
                 src={about.darkProfileImage}
               />
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-3">
-              {socials.map((social) => (
-                <a
-                  aria-label={social.label}
-                  className="flex h-12 items-center justify-center rounded-lg border border-black/10 bg-white/80 transition hover:-translate-y-0.5 hover:border-emerald-600/30 hover:bg-emerald-50 dark:border-white/10 dark:bg-white/8 dark:hover:bg-emerald-300/10"
-                  href={social.href}
-                  key={social.label}
-                  rel="noreferrer"
-                  target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-                >
-                  <img alt="" className="h-6 w-6 object-contain" src={social.icon} />
-                </a>
-              ))}
             </div>
           </aside>
 

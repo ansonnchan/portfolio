@@ -128,9 +128,9 @@ export const about = {
     attribution: "Guan Zhong 管仲"
   },
   */
-],
+  ],
   closing:
-    "If you like what you see and want to chat, my socials are underneath my profile picture. I’m always down for a coffee chat or to connect anytime :) (i also lowk need someone to duo with me and carry me to Diamond in League)"
+    "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :) (i also lowk need someone to duo with me and carry me to Diamond in League)"
 };
 
 export const experiences: Experience[] = [

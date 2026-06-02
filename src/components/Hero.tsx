@@ -1,4 +1,4 @@
-import { hero } from "@/data/portfolio";
+import { hero, socials } from "@/data/portfolio";
 import TopLeftWidgets from "@/components/TopLeftWidgets";
 import TypewriterText from "@/components/TypewriterText";
 
@@ -29,7 +29,7 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
           </p>
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-[500px] justify-center lg:justify-self-start">
+        <div className="relative mx-auto flex w-full max-w-[500px] flex-col items-center justify-center lg:justify-self-start">
           <video
             aria-label="Chibi Anson waving"
             autoPlay
@@ -39,6 +39,20 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
             playsInline
             src={hero.video}
           />
+          <div className="mt-5 grid w-full max-w-[15rem] grid-cols-3 gap-3 sm:max-w-[17rem]">
+            {socials.map((social) => (
+              <a
+                aria-label={social.label}
+                className="flex h-12 items-center justify-center rounded-lg border border-black/10 bg-white/80 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-600/30 hover:bg-emerald-50 dark:border-white/10 dark:bg-white/8 dark:hover:bg-emerald-300/10"
+                href={social.href}
+                key={social.label}
+                rel="noreferrer"
+                target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+              >
+                <img alt="" className="h-6 w-6 object-contain" src={social.icon} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
       <a

@@ -34,6 +34,17 @@ export default function About({ isDark }: AboutProps) {
           </aside>
 
           <div className="space-y-5 text-base leading-8 text-zinc-700 dark:text-zinc-300 sm:text-lg">
+            <div className="about-greeting-pop inline-flex">
+              <div className="about-greeting-bubble relative inline-flex items-center rounded-lg border border-emerald-500/25 bg-white/90 px-5 py-3 shadow-soft dark:border-emerald-300/20 dark:bg-white/10 dark:shadow-soft-dark">
+                <span className="about-greeting-spark about-greeting-spark-left" aria-hidden="true" />
+                <span className="text-2xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-3xl">
+                  {about.greeting}
+                </span>
+                <span className="about-greeting-spark about-greeting-spark-right" aria-hidden="true" />
+                <span className="about-greeting-tail" aria-hidden="true" />
+              </div>
+            </div>
+
             {about.paragraphs.map((paragraph, index) => (
               <p key={index}>
                 <RichText segments={paragraph} />
@@ -42,11 +53,13 @@ export default function About({ isDark }: AboutProps) {
 
             <p>{about.closing}</p>
 
-            <div className="flex">
-              <div className="group relative mt-1 inline-flex max-w-full -rotate-1 items-center gap-3 rounded-lg border border-emerald-500/25 bg-emerald-50/80 px-4 py-3 text-sm leading-6 shadow-soft transition duration-300 hover:rotate-0 hover:-translate-y-0.5 hover:border-emerald-500/45 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:shadow-soft-dark sm:text-base">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-950 text-xs font-black tracking-normal text-white shadow-sm dark:bg-emerald-300 dark:text-zinc-950">
-                  Q
-                </span>
+            <div className="!mt-28 flex sm:!mt-36">
+              <div className="relative inline-flex max-w-full items-center gap-3 rounded-lg border border-emerald-500/25 bg-emerald-50/80 pb-3 pl-32 pr-4 pt-4 text-sm leading-6 shadow-soft transition-colors duration-300 hover:border-emerald-500/45 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:shadow-soft-dark sm:min-h-24 sm:pl-44 sm:pr-5 sm:text-base">
+                <img
+                  alt="Chibi Ahri sitting on the duo queue banner ledge"
+                  className="pointer-events-none absolute -left-1 -top-20 h-32 w-32 object-contain drop-shadow-lg sm:-left-2 sm:-top-28 sm:h-40 sm:w-40"
+                  src="/assets/league/ahri_transparent.png"
+                />
                 <span className="min-w-0">
                   <span className="block text-[0.68rem] font-black uppercase tracking-normal text-emerald-700 dark:text-emerald-300">
                     duo queue distress signal

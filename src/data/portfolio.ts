@@ -82,44 +82,45 @@ export const socials: SocialLink[] = [
 export const about = {
   profileImage: "/assets/pfp.jpeg",
   darkProfileImage: "/assets/about/dark_me.JPG",
+  greeting: "Hey there!",
   paragraphs: [
-    [{ text: "Hi there!" }],
     [
       { text: "I’m " },
       { text: "Anson", highlight: true },
-      {
-        text: ", and welcome to my portfolio. I’m a third-year "
-      },
+      { text: ", and welcome to my portfolio." }
+    ],
+    [
+      { text: "I’m a third-year " },
       { text: "Computer Engineering", highlight: true },
       { text: " student @ " },
       { text: "UBC", highlight: true },
+      { text: ", expecting to graduate in " },
+      { text: "2029", highlight: true },
+      { text: ". I’m currently a software engineer intern @ " },
+      { text: "ScalePad", highlight: true },
+      { text: "." }
+    ],
+    [
+      { text: "I was born in " },
+      { text: "Hong Kong", highlight: true },
+      { text: " but lived in " },
+      { text: "Australia", highlight: true },
+      { text: " for 15 years. I moved to " },
+      { text: "Canada", highlight: true },
       {
-        text: ", expecting to graduate in "
-       },
-       { text:  "2029.", highlight: true }
+        text: " in late 2021. I play basically every racket sport, including tennis, badminton, table tennis, and even pickleball."
+      }
     ],
     [
       {
-        text: "I was born in "},
-        { text: "Hong Kong", highlight: true },
-        { text: " but lived in " },
-        { text: "Australia", highlight: true },
-        { text: " for 15 years. I moved to Canada " },
-        { text: " in late 2021. I play basically every racket sport like tennis, badminton, table tennis and even pickleball." },
-
-      
-    ],
-    [
-      {
-        text: "I’ve also been binging way too many C-dramas recently. Right now,"
+        text: "I’ve also been binging way too many C-dramas recently. Right now, I’m watching "
       },
-      { text: " I’m currently watching " },
       { text: "Pursuit of Jade", highlight: true },
       { text: " (逐玉) and " },
       { text: "When I Fly Towards You", highlight: true },
       { text: " (当我飞奔向你)." }
     ]
-  
+  ],
   /** 
   quote: {
     original: "十年树木，百年树人",
@@ -128,7 +129,6 @@ export const about = {
     attribution: "Guan Zhong 管仲"
   },
   */
-  ],
   closing:
     "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :)",
   rankedAside:

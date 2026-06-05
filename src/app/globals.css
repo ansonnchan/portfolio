@@ -170,6 +170,10 @@ button {
   animation-delay: 0.28s;
 }
 
+.ahri-banner-bob {
+  animation: ahri-banner-bob 3.6s ease-in-out infinite;
+}
+
 @supports not (animation-timeline: view()) {
   .scroll-fade {
     opacity: 1;
@@ -182,6 +186,7 @@ button {
   .about-greeting-bubble,
   .about-greeting-pop,
   .about-greeting-spark,
+  .ahri-banner-bob,
   .music-pfp-beat {
     animation: none;
   }
@@ -298,5 +303,15 @@ button {
   }
   58% {
     transform: scale(0.99);
+  }
+}
+
+@keyframes ahri-banner-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
   }
 }

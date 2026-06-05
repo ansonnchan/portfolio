@@ -55,7 +55,7 @@ export default function About({ isDark }: AboutProps) {
 
             <p>{about.closing}</p>
 
-            <div className="!mt-28 flex sm:!mt-36">
+            <div className="ahri-banner-bob !mt-28 flex sm:!mt-36">
               <div className="relative inline-flex max-w-full items-center gap-3 rounded-lg border border-emerald-500/25 bg-emerald-50/80 pb-3 pl-32 pr-4 pt-4 text-sm leading-6 shadow-soft transition-colors duration-300 hover:border-emerald-500/45 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:shadow-soft-dark sm:min-h-24 sm:pl-44 sm:pr-5 sm:text-base">
                 <img
                   alt="Chibi Ahri sitting on the duo queue banner ledge"

@@ -130,7 +130,9 @@ export const about = {
   */
   ],
   closing:
-    "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :) (i also lowk need someone to duo with me and carry me to Diamond in League)"
+    "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :)",
+  rankedAside:
+    "Also quietly recruiting a duo to carry me from Emerald to Diamond in League."
 };
 
 export const experiences: Experience[] = [

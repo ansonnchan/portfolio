@@ -6,6 +6,8 @@ type AboutProps = {
 };
 
 export default function About({ isDark }: AboutProps) {
+  const [rankedBeforeJuseyo, rankedAfterJuseyo = ""] = about.rankedAside.split("juseyo");
+
   return (
     <section className="scroll-fade scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
@@ -60,16 +62,18 @@ export default function About({ isDark }: AboutProps) {
                   className="pointer-events-none absolute -left-1 -top-20 h-32 w-32 object-contain drop-shadow-lg sm:-left-2 sm:-top-28 sm:h-40 sm:w-40"
                   src="/assets/league/ahri_transparent.png"
                 />
-                <span className="min-w-0">
-                  <span className="block text-[0.68rem] font-black uppercase tracking-normal text-emerald-700 dark:text-emerald-300">
-                    duo queue distress signal
-                  </span>
-                  <span className="block font-semibold text-zinc-800 dark:text-zinc-100">
-                    {about.rankedAside}
-                  </span>
+                <span className="min-w-0 font-semibold text-zinc-800 dark:text-zinc-100">
+                  {rankedBeforeJuseyo}
+                  <span className="font-black text-zinc-950 dark:text-white">juseyo</span>
+                  {rankedAfterJuseyo}
                 </span>
-                <span className="hidden shrink-0 rounded-md border border-emerald-600/20 bg-white/70 px-2.5 py-1 text-xs font-black text-emerald-800 dark:border-emerald-300/20 dark:bg-white/10 dark:text-emerald-200 sm:inline-flex">
-                  Emerald {"->"} Diamond
+
+                <span className="hidden shrink-0 items-center sm:inline-flex">
+                  <img
+                    alt="Emerald rank"
+                    className="h-16 w-16 object-contain drop-shadow-md"
+                    src="/assets/league/emerald.png"
+                  />
                 </span>
               </div>
             </div>

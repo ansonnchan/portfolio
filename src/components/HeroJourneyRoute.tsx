@@ -1,75 +1,63 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 const stops = [
-  { flag: "🇭🇰", x: 16, y: 66 },
-  { flag: "🇦🇺", x: 50, y: 30 },
-  { flag: "🇨🇦", x: 84, y: 62 }
+  {
+    city: "Hong Kong",
+    flag: "🇭🇰",
+    subtitle: "Born here",
+    x: 14,
+    y: 68
+  },
+  {
+    city: "Adelaide",
+    flag: "🇦🇺",
+    subtitle: "Grew up here",
+    x: 50,
+    y: 28
+  },
+  {
+    city: "Vancouver",
+    flag: "🇨🇦",
+    subtitle: "Studying here",
+    x: 86,
+    y: 66
+  }
 ];
 
+const routePath = "M 14 34 C 29 12, 42 10, 50 16 C 60 22, 72 36, 86 31";
+
 export default function HeroJourneyRoute() {
-  const routeRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const route = routeRef.current;
-    if (!route) {
-      return;
-    }
-
-    const heroSection = route.closest("section");
-    if (!heroSection) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.18 }
-    );
-
-    observer.observe(heroSection);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div
       aria-label="Anson's journey from Hong Kong to Adelaide to Vancouver"
-      className={`hero-journey-route mt-4 ${isVisible ? "is-visible" : "is-paused"}`}
-      ref={routeRef}
+      className="hero-journey-route mt-6"
     >
       <div className="hero-journey-mobile" aria-hidden="true">
-        <span>🇭🇰</span>
+        <span>🇭🇰 Hong Kong</span>
         <span>→</span>
-        <span>- - -</span>
-        <span>✈</span>
-        <span>- - -</span>
-        <span>🇦🇺</span>
+        <span>🇦🇺 Adelaide</span>
         <span>→</span>
-        <span>- - -</span>
-        <span>🇨🇦</span>
+        <span>🇨🇦 Vancouver</span>
       </div>
 
       <div className="hero-journey-map" aria-hidden="true">
-        <svg className="hero-journey-svg" viewBox="0 0 100 48" preserveAspectRatio="none">
+        <svg className="hero-journey-svg" preserveAspectRatio="none" viewBox="0 0 100 50">
           <path
             className="hero-journey-path"
-            d="M 16 32 C 28 12, 40 9, 50 15 S 70 36, 84 29"
+            d={routePath}
+            pathLength="100"
           />
         </svg>
 
-        <span className="hero-journey-plane">✈</span>
-
         {stops.map((stop) => (
           <span
-            className="hero-journey-flag"
-            key={stop.flag}
+            className="hero-journey-stop"
+            key={stop.city}
             style={{ left: `${stop.x}%`, top: `${stop.y}%` }}
           >
-            {stop.flag}
+            <span className="hero-journey-flag">{stop.flag}</span>
+            <span className="hero-journey-copy">
+              <span className="hero-journey-city">{stop.city}</span>
+              <span className="hero-journey-subtitle">{stop.subtitle}</span>
+            </span>
           </span>
         ))}
       </div>

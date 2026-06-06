@@ -128,13 +128,13 @@ button {
 }
 
 .hero-journey-route {
-  width: min(100%, 32rem);
+  width: min(100%, 39rem);
 }
 
 .hero-journey-map {
   position: relative;
   display: none;
-  height: 6rem;
+  height: 7.25rem;
 }
 
 .hero-journey-mobile {
@@ -160,8 +160,8 @@ button {
 
 .hero-journey-svg {
   position: absolute;
-  inset: 0.72rem 0 1.05rem;
-  height: calc(100% - 1.77rem);
+  inset: 0.78rem 0 1.15rem;
+  height: calc(100% - 1.93rem);
   width: 100%;
   overflow: visible;
 }
@@ -172,51 +172,52 @@ button {
 }
 
 .hero-journey-path {
-  stroke: rgba(36, 40, 37, 0.82);
+  stroke: rgba(36, 40, 37, 0.52);
   stroke-dasharray: 4 8;
-  stroke-dashoffset: 180;
   stroke-width: 2;
-  animation: hero-trail-reveal 5.8s ease-in-out infinite;
 }
 
 .dark .hero-journey-path {
   stroke: rgba(230, 244, 223, 0.78);
 }
 
-.hero-journey-plane {
+.hero-journey-stop {
   position: absolute;
-  left: 16%;
-  top: 55%;
-  z-index: 2;
+  z-index: 1;
   display: inline-flex;
-  height: 1.7rem;
-  width: 1.7rem;
   align-items: center;
-  justify-content: center;
-  color: #202421;
-  font-size: 1.08rem;
-  line-height: 1;
-  transform: translate(-50%, -50%) rotate(18deg);
-  animation: hero-plane-route 5.8s ease-in-out infinite;
-}
-
-.dark .hero-journey-plane {
-  color: #f4f7ef;
+  gap: 0.38rem;
+  transform: translate(-50%, -50%);
 }
 
 .hero-journey-flag {
-  position: absolute;
-  z-index: 1;
-  display: block;
-  font-size: 1.45rem;
+  display: inline-block;
+  font-size: 1.62rem;
   line-height: 1;
-  transform: translate(-50%, -50%);
-  opacity: 0.92;
 }
 
-.hero-journey-route.is-paused .hero-journey-path,
-.hero-journey-route.is-paused .hero-journey-plane {
-  animation-play-state: paused;
+.hero-journey-copy {
+  display: grid;
+  gap: 0.08rem;
+  line-height: 1.05;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.hero-journey-city {
+  color: #252a26;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.dark .hero-journey-city {
+  color: #f4f7ef;
+}
+
+.hero-journey-subtitle {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 750;
 }
 
 .about-greeting-pop {
@@ -279,14 +280,8 @@ button {
   .about-greeting-pop,
   .about-greeting-spark,
   .ahri-banner-bob,
-  .hero-journey-plane,
-  .hero-journey-path,
   .music-pfp-beat {
     animation: none;
-  }
-
-  .hero-journey-path {
-    stroke-dashoffset: 0;
   }
 }
 
@@ -329,59 +324,6 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes hero-plane-route {
-  0%,
-  5% {
-    opacity: 1;
-    left: 16%;
-    top: 55%;
-    transform: translate(-50%, -50%) rotate(22deg);
-  }
-  40% {
-    opacity: 1;
-    left: 50%;
-    top: 34%;
-    transform: translate(-50%, -50%) rotate(-8deg);
-  }
-  74%,
-  90% {
-    opacity: 1;
-    left: 84%;
-    top: 52%;
-    transform: translate(-50%, -50%) rotate(22deg);
-  }
-  96% {
-    opacity: 0;
-    left: 84%;
-    top: 52%;
-    transform: translate(-50%, -50%) rotate(22deg);
-  }
-  100% {
-    opacity: 0;
-    left: 16%;
-    top: 55%;
-    transform: translate(-50%, -50%) rotate(22deg);
-  }
-}
-
-@keyframes hero-trail-reveal {
-  0%,
-  5% {
-    opacity: 1;
-    stroke-dashoffset: 180;
-  }
-  74%,
-  90% {
-    opacity: 1;
-    stroke-dashoffset: 0;
-  }
-  96%,
-  100% {
-    opacity: 0;
-    stroke-dashoffset: 180;
   }
 }
 

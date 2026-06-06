@@ -127,99 +127,6 @@ button {
   animation: music-pfp-beat 1.05s ease-in-out infinite;
 }
 
-.hero-journey-route {
-  width: min(100%, 39rem);
-}
-
-.hero-journey-map {
-  position: relative;
-  display: none;
-  height: 7.25rem;
-}
-
-.hero-journey-mobile {
-  display: inline-flex;
-  max-width: 100%;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.42rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.54);
-  padding: 0.45rem 0.7rem;
-  color: #2f332f;
-  font-size: 0.95rem;
-  font-weight: 800;
-  line-height: 1.25;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
-}
-
-.dark .hero-journey-mobile {
-  background: rgba(255, 255, 255, 0.08);
-  color: #e6f4df;
-}
-
-.hero-journey-svg {
-  position: absolute;
-  inset: 0.78rem 0 1.15rem;
-  height: calc(100% - 1.93rem);
-  width: 100%;
-  overflow: visible;
-}
-
-.hero-journey-path {
-  fill: none;
-  stroke-linecap: round;
-}
-
-.hero-journey-path {
-  stroke: rgba(36, 40, 37, 0.52);
-  stroke-dasharray: 4 8;
-  stroke-width: 2;
-}
-
-.dark .hero-journey-path {
-  stroke: rgba(230, 244, 223, 0.78);
-}
-
-.hero-journey-stop {
-  position: absolute;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.38rem;
-  transform: translate(-50%, -50%);
-}
-
-.hero-journey-flag {
-  display: inline-block;
-  font-size: 1.62rem;
-  line-height: 1;
-}
-
-.hero-journey-copy {
-  display: grid;
-  gap: 0.08rem;
-  line-height: 1.05;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.hero-journey-city {
-  color: #252a26;
-  font-size: 0.82rem;
-  font-weight: 900;
-}
-
-.dark .hero-journey-city {
-  color: #f4f7ef;
-}
-
-.hero-journey-subtitle {
-  color: var(--muted);
-  font-size: 0.68rem;
-  font-weight: 750;
-}
-
 .about-greeting-pop {
   animation: about-greeting-pop 0.7s cubic-bezier(0.2, 1.4, 0.34, 1) both;
 }
@@ -282,16 +189,6 @@ button {
   .ahri-banner-bob,
   .music-pfp-beat {
     animation: none;
-  }
-}
-
-@media (min-width: 640px) {
-  .hero-journey-map {
-    display: block;
-  }
-
-  .hero-journey-mobile {
-    display: none;
   }
 }
 

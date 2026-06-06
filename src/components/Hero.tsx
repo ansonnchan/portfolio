@@ -1,4 +1,5 @@
 import { hero, socials } from "@/data/portfolio";
+import HeroJourneyRoute from "@/components/HeroJourneyRoute";
 import TopLeftWidgets from "@/components/TopLeftWidgets";
 import TypewriterText from "@/components/TypewriterText";
 
@@ -24,9 +25,7 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
           <p className="mt-7 min-h-12 text-3xl font-black tracking-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
             <TypewriterText phrases={hero.phrases} />
           </p>
-          <p aria-label="Hong Kong, Canada, Australia" className="mt-3 text-3xl tracking-normal sm:text-4xl">
-            🇭🇰🇨🇦🇦🇺
-          </p>
+          <HeroJourneyRoute />
         </div>
 
         <div className="relative mx-auto flex w-full max-w-[500px] flex-col items-center justify-center lg:justify-self-start">

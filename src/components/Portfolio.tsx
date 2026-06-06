@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AssistantWidget from "@/components/AssistantWidget";
 import About from "@/components/About";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
@@ -103,7 +102,6 @@ export default function Portfolio() {
       </main>
 
       <Footer />
-      <AssistantWidget />
     </div>
   );
 }

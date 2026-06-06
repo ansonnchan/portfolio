@@ -127,57 +127,6 @@ button {
   animation: music-pfp-beat 1.05s ease-in-out infinite;
 }
 
-.assistant-panel {
-  transform-origin: 100% 100%;
-}
-
-.assistant-typing {
-  display: inline-flex;
-  gap: 0.22rem;
-  align-items: center;
-}
-
-.assistant-typing span {
-  height: 0.32rem;
-  width: 0.32rem;
-  border-radius: 999px;
-  background: currentColor;
-  animation: assistant-typing-dot 0.9s ease-in-out infinite;
-}
-
-.assistant-typing span:nth-child(2) {
-  animation-delay: 0.14s;
-}
-
-.assistant-typing span:nth-child(3) {
-  animation-delay: 0.28s;
-}
-
-.assistant-launcher-bubble {
-  width: 7.8rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 999px;
-  background: rgba(220, 252, 231, 0.92);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
-  color: #14532d;
-  font-size: 0.74rem;
-  font-weight: 900;
-  line-height: 1;
-  min-height: 2rem;
-  padding: 0 0.75rem;
-  white-space: nowrap;
-}
-
-.dark .assistant-launcher-bubble {
-  background: rgba(20, 83, 45, 0.68);
-  color: #dcfce7;
-}
-
-.assistant-launcher-greeting {
-  animation: assistant-greeting-fade 0.28s ease both;
-}
-
 .about-greeting-pop {
   animation: about-greeting-pop 0.7s cubic-bezier(0.2, 1.4, 0.34, 1) both;
 }
@@ -238,8 +187,6 @@ button {
   .about-greeting-pop,
   .about-greeting-spark,
   .ahri-banner-bob,
-  .assistant-launcher-greeting,
-  .assistant-typing span,
   .music-pfp-beat {
     animation: none;
   }
@@ -274,27 +221,6 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes assistant-typing-dot {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: translateY(0);
-  }
-  45% {
-    opacity: 1;
-    transform: translateY(-3px);
-  }
-}
-
-@keyframes assistant-greeting-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 

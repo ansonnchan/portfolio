@@ -4,7 +4,24 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import ChatMessage, { type AssistantChatMessage } from "@/components/ChatMessage";
 import SuggestedPrompts from "@/components/SuggestedPrompts";
 
-const greetings = ["hello", "bonjour", "你好", "안녕", "こんにちは", "hi hi"];
+const greetings = [
+  "Hello",
+  "你好",
+  "Bonjour",
+  "Hola",
+  "Ciao",
+  "Hallo",
+  "こんにちは",
+  "안녕하세요",
+  "Olá",
+  "Xin chào",
+  "Sawubona",
+  "Namaste",
+  "مرحباً",
+  "Привет",
+  "Selamat pagi",
+  "Kumusta"
+];
 
 const welcomeMessage: AssistantChatMessage = {
   role: "assistant",
@@ -15,6 +32,8 @@ const welcomeMessage: AssistantChatMessage = {
 export default function AssistantWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [greetingIndex, setGreetingIndex] = useState(0);
+  const [isLauncherHovered, setIsLauncherHovered] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<AssistantChatMessage[]>([welcomeMessage]);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,13 +45,37 @@ export default function AssistantWidget() {
     [messages]
   );
 
+  const launcherGreeting = prefersReducedMotion
+    ? "Hello"
+    : isLauncherHovered
+      ? "Need info?"
+      : greetings[greetingIndex];
+
   useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => {
+      setPrefersReducedMotion(motionQuery.matches);
+    };
+
+    updateMotionPreference();
+    setGreetingIndex(Math.floor(Math.random() * greetings.length));
+
+    motionQuery.addEventListener("change", updateMotionPreference);
+
+    return () => motionQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen || isLauncherHovered || prefersReducedMotion) {
+      return;
+    }
+
     const interval = window.setInterval(() => {
       setGreetingIndex((current) => (current + 1) % greetings.length);
-    }, 2400);
+    }, 3000);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [isLauncherHovered, isOpen, prefersReducedMotion]);
 
   useEffect(() => {
     if (isOpen) {
@@ -99,10 +142,10 @@ export default function AssistantWidget() {
   return (
     <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
       <div
-        className={`assistant-panel mb-3 w-[calc(100vw-2rem)] max-w-[23rem] overflow-hidden rounded-lg border border-black/10 bg-white/90 shadow-soft backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-zinc-950/90 dark:shadow-soft-dark ${
+        className={`assistant-panel mb-3 w-[calc(100vw-2rem)] max-w-[23rem] overflow-hidden rounded-lg border border-black/10 bg-white/90 shadow-soft backdrop-blur-xl transition-opacity duration-300 dark:border-white/10 dark:bg-zinc-950/90 dark:shadow-soft-dark ${
           isOpen
-            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none translate-y-3 scale-95 opacity-0"
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
       >
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-3 dark:border-white/10">
@@ -173,20 +216,24 @@ export default function AssistantWidget() {
         <button
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close Ask Anson assistant" : "Open Ask Anson assistant"}
-          className="assistant-launcher group relative flex items-center gap-3 rounded-full border border-emerald-500/25 bg-white/90 px-3 py-2 shadow-soft backdrop-blur-xl transition hover:-translate-y-1 hover:border-emerald-500/45 dark:border-emerald-300/20 dark:bg-zinc-950/90 dark:shadow-soft-dark"
+          className="assistant-launcher group relative flex h-16 items-center gap-2 rounded-full border border-emerald-500/25 bg-white/90 px-2 py-2 shadow-soft backdrop-blur-xl transition-colors hover:border-emerald-500/45 dark:border-emerald-300/20 dark:bg-zinc-950/90 dark:shadow-soft-dark"
+          onBlur={() => setIsLauncherHovered(false)}
           onClick={() => setIsOpen((current) => !current)}
+          onFocus={() => setIsLauncherHovered(true)}
+          onMouseEnter={() => setIsLauncherHovered(true)}
+          onMouseLeave={() => setIsLauncherHovered(false)}
           type="button"
         >
-          <span className="hidden rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-800 dark:bg-emerald-300/10 dark:text-emerald-200 sm:inline-flex">
-            {isOpen ? "shoo..." : greetings[greetingIndex]}
+          <span className="assistant-launcher-bubble hidden sm:inline-flex">
+            <span className="assistant-launcher-greeting" key={launcherGreeting}>
+              {launcherGreeting}
+            </span>
           </span>
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-300/10">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-300/10">
             <img
               alt=""
-              className={`h-12 w-12 object-contain drop-shadow-md transition ${
-                isOpen ? "scale-95 saturate-75" : "assistant-chibi-float"
-              }`}
-              src="/assets/eastereggs/anson_angel.png"
+              className="h-12 w-12 object-contain drop-shadow-md"
+              src="/assets/chatbot/ai_chatbot.png"
             />
           </span>
         </button>

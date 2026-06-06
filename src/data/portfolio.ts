@@ -254,7 +254,8 @@ export const projects: Project[] = [
     github: "https://github.com/ansonnchan/portfolio",
     live: "https://www.ansonnchan.dev/",
     details: [
-      "Everything you need to know about me. Recently integrated an AI chatbot to answer questions about me :) Please give it a try. "
+      "Everything you need to know about me.",
+      "Recently integrated an AI chatbot to answer questions about me :) Please give it a try. "
     ]
   },
   {

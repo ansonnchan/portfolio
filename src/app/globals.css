@@ -131,10 +131,6 @@ button {
   transform-origin: 100% 100%;
 }
 
-.assistant-chibi-float {
-  animation: assistant-chibi-float 3.1s ease-in-out infinite;
-}
-
 .assistant-typing {
   display: inline-flex;
   gap: 0.22rem;
@@ -155,6 +151,31 @@ button {
 
 .assistant-typing span:nth-child(3) {
   animation-delay: 0.28s;
+}
+
+.assistant-launcher-bubble {
+  width: 7.8rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(220, 252, 231, 0.92);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+  color: #14532d;
+  font-size: 0.74rem;
+  font-weight: 900;
+  line-height: 1;
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  white-space: nowrap;
+}
+
+.dark .assistant-launcher-bubble {
+  background: rgba(20, 83, 45, 0.68);
+  color: #dcfce7;
+}
+
+.assistant-launcher-greeting {
+  animation: assistant-greeting-fade 0.28s ease both;
 }
 
 .about-greeting-pop {
@@ -217,7 +238,7 @@ button {
   .about-greeting-pop,
   .about-greeting-spark,
   .ahri-banner-bob,
-  .assistant-chibi-float,
+  .assistant-launcher-greeting,
   .assistant-typing span,
   .music-pfp-beat {
     animation: none;
@@ -256,16 +277,6 @@ button {
   }
 }
 
-@keyframes assistant-chibi-float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-2deg);
-  }
-  50% {
-    transform: translateY(-5px) rotate(2deg);
-  }
-}
-
 @keyframes assistant-typing-dot {
   0%,
   100% {
@@ -275,6 +286,15 @@ button {
   45% {
     opacity: 1;
     transform: translateY(-3px);
+  }
+}
+
+@keyframes assistant-greeting-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

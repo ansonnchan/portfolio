@@ -63,7 +63,7 @@ export default function AssistantWidget() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          messages: nextMessages.slice(-12)
+          messages: nextMessages.slice(-8)
         })
       });
 

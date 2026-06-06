@@ -41,8 +41,8 @@ export default function TopLeftWidgets() {
   });
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [isMusicExpanded, setIsMusicExpanded] = useState(true);
-  const [isBirthdayExpanded, setIsBirthdayExpanded] = useState(true);
+  const [isMusicExpanded, setIsMusicExpanded] = useState(false);
+  const [isBirthdayExpanded, setIsBirthdayExpanded] = useState(false);
   const [volume, setVolume] = useState(0.32);
   const muteIcon = isMuted ? "/assets/music/mute_button.png" : "/assets/music/mute_button.png";
 

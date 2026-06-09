@@ -96,24 +96,24 @@ export default function TopLeftWidgets() {
 
   return (
     <aside className="absolute left-3 top-3 z-40 flex max-w-[calc(100vw-1.5rem)] flex-col gap-2 sm:left-5 sm:top-4">
-      <audio loop preload="metadata" ref={audioRef} src="/assets/music/bgm.mp3" />
+      <audio loop preload="metadata" ref={audioRef} src="/assets/music/procrastination_diverseddie.mp3" />
 
       {isMusicExpanded ? (
         <div className="w-fit rounded-lg border border-black/10 bg-white/72 px-3 py-2 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72">
           <div className="flex items-start gap-3">
             <img
-              alt="Peace! by ryoish cover"
+              alt="diverseddie (舵) - procrastination (拖延症)"
               className={`h-12 w-12 rounded-md object-cover shadow-sm ${isPlaying && !isMuted ? "music-pfp-beat" : ""}`}
-              src="/assets/music/music_pfp.jpeg"
+              src="/assets/music/diverseddie_pfp.jpg"
             />
             <div className="min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">
-                    bgm.exe
+                    good vibes only 
                   </p>
                   <p className="mt-1 text-xs font-bold leading-5 text-zinc-700 dark:text-zinc-200">
-                    Peace! by ryoish
+                    diverseddie (舵) - procrastination (拖延症)
                   </p>
                 </div>
                 <button
@@ -175,7 +175,7 @@ export default function TopLeftWidgets() {
           <img
             alt=""
             className={`h-12 w-12 rounded-md object-cover ${isPlaying && !isMuted ? "music-pfp-beat" : ""}`}
-            src="/assets/music/music_pfp.jpeg"
+            src="/assets/spotify_logo.png"
           />
           <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-zinc-950 text-xs font-black text-white shadow-sm transition group-hover:bg-emerald-700 dark:bg-white dark:text-[#10140f] dark:group-hover:bg-emerald-200">
             +

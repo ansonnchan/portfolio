@@ -114,6 +114,9 @@ export default function TopLeftWidgets() {
                   </p>
                   <p className="mt-1 text-xs font-bold leading-5 text-zinc-700 dark:text-zinc-200">
                     diverseddie (舵) - procrastination (拖延症)
+                    <br></br>
+                    Used with permission from the artist. 
+                
                   </p>
                 </div>
                 <button

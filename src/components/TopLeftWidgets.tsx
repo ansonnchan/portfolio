@@ -109,8 +109,8 @@ export default function TopLeftWidgets() {
             <div className="min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">
-                    good vibes only 
+                  <p className="text-[11px] font-black tracking-[0.1em] text-emerald-700 dark:text-emerald-300">
+                    chill vibes only 
                   </p>
                   <p className="mt-1 text-xs font-bold leading-5 text-zinc-700 dark:text-zinc-200">
                     diverseddie (舵) - procrastination (拖延症)

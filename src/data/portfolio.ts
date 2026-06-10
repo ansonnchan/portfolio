@@ -349,7 +349,7 @@ export const sideQuests = {
 
 export const travel = {
   title: "World Map",
-  subtitle: "Countries I've visited so far and want to visit.",
+  subtitle: "Countries I've visited so far.",
   countries: [
     { name: "Canada", region: "North America" },
     { name: "United States", region: "North America" },
@@ -363,13 +363,6 @@ export const travel = {
     { name: "South Korea", region: "Asia" },
     { name: "Thailand", region: "Asia" },
     { name: "United Kingdom", region: "Europe" }
-  ] satisfies TravelCountry[],
-  wishCountries: [
-    { name: "Switzerland", region: "Europe" },
-    { name: "Greece", region: "Europe" },
-    { name: "France", region: "Europe" },
-    { name: "Italy", region: "Europe" },
-    { name: "Russia", region: "Europe" }
   ] satisfies TravelCountry[]
 };
 

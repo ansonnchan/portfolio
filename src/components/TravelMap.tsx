@@ -33,14 +33,6 @@ const visitedCountryNamesById = new Map([
   ["826", "United Kingdom"]
 ]);
 
-const wishCountryNamesById = new Map([
-  ["756", "Switzerland"],
-  ["300", "Greece"],
-  ["250", "France"],
-  ["380", "Italy"],
-  ["643", "Russia"]
-]);
-
 const placeMarkers: { name: string; coordinates: [number, number] }[] = [
   { name: "Bali", coordinates: [115.1889, -8.4095] },
   { name: "Hong Kong", coordinates: [114.1694, 22.3193] }
@@ -81,7 +73,6 @@ export default function TravelMap() {
   const countryGroups = useMemo(groupedCountries, []);
   const visitedCount = travel.countries.length;
   const tooltipWidth = activePlace ? Math.max(132, activePlace.length * 9.6) : 0;
-  const wishCountryNames = travel.wishCountries.map((country) => country.name).join(", ");
 
   return (
     <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="travel-map">
@@ -113,10 +104,6 @@ export default function TravelMap() {
                 Not yet visited
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-3.5 w-3.5 rounded bg-sky-500" />
-                Want to visit
-              </span>
-              <span className="inline-flex items-center gap-2">
                 <span className="h-3.5 w-3.5 rounded bg-zinc-300 dark:bg-zinc-600" />
                 Hover
               </span>
@@ -135,23 +122,17 @@ export default function TravelMap() {
                 {countryFeatures.map((country) => {
                   const id = getCountryId(country);
                   const visitedName = visitedCountryNamesById.get(id);
-                  const wishName = wishCountryNamesById.get(id);
                   const isVisited = Boolean(visitedName);
-                  const isWish = Boolean(wishName);
-                  const label = visitedName ?? wishName ?? country.properties.name;
+                  const label = visitedName ?? country.properties.name;
                   const isActive = activePlace === label;
                   const countryPath = pathGenerator(country);
                   const countryClasses = isVisited
                     ? isActive
                       ? "fill-emerald-500 dark:fill-emerald-300"
                       : "fill-emerald-600 hover:fill-emerald-500 dark:fill-emerald-400 dark:hover:fill-emerald-300"
-                    : isWish
-                      ? isActive
-                        ? "fill-sky-400 dark:fill-sky-300"
-                        : "fill-sky-500 hover:fill-sky-400 dark:fill-sky-400 dark:hover:fill-sky-300"
-                      : isActive
-                        ? "fill-zinc-300 dark:fill-zinc-600"
-                        : "fill-zinc-200 hover:fill-zinc-300 dark:fill-zinc-700 dark:hover:fill-zinc-600";
+                    : isActive
+                      ? "fill-zinc-300 dark:fill-zinc-600"
+                      : "fill-zinc-200 hover:fill-zinc-300 dark:fill-zinc-700 dark:hover:fill-zinc-600";
 
                   if (!countryPath) {
                     return null;
@@ -160,7 +141,7 @@ export default function TravelMap() {
                   return (
                     <path
                       aria-label={label}
-                      className={`cursor-help stroke-white stroke-[1.1] transition-colors focus:outline-none dark:stroke-[#10140f] ${countryClasses}`}
+                      className={`cursor-pointer stroke-white stroke-[1.1] transition-colors focus:outline-none dark:stroke-[#10140f] ${countryClasses}`}
                       d={countryPath}
                       key={id}
                       onBlur={() => setActivePlace(null)}
@@ -218,15 +199,16 @@ export default function TravelMap() {
               {activePlace ? (
                 <g pointerEvents="none">
                   <rect
-                    className="fill-zinc-950/90 dark:fill-white"
+                    className="fill-emerald-50 stroke-emerald-600/20 dark:fill-emerald-950 dark:stroke-emerald-300/20"
                     height="34"
                     rx="8"
+                    strokeWidth="1"
                     width={tooltipWidth}
                     x={mapWidth / 2 - tooltipWidth / 2}
                     y="22"
                   />
                   <text
-                    className="fill-white text-[15px] font-black dark:fill-[#10140f]"
+                    className="fill-emerald-800 text-[15px] font-black dark:fill-emerald-200"
                     dominantBaseline="middle"
                     textAnchor="middle"
                     x={mapWidth / 2}
@@ -256,15 +238,6 @@ export default function TravelMap() {
                 </p>
               </div>
             ))}
-          </div>
-
-          <div className="mx-auto mt-8 max-w-4xl rounded-lg border border-sky-500/20 bg-sky-50/80 p-5 text-center dark:border-sky-300/20 dark:bg-sky-300/10">
-            <h3 className="text-xl font-black text-sky-700 dark:text-sky-300">
-              Countries I'm Dying to Visit
-            </h3>
-            <p className="mt-3 text-sm font-semibold leading-7 text-zinc-700 dark:text-zinc-300">
-              {wishCountryNames}
-            </p>
           </div>
         </div>
       </div>

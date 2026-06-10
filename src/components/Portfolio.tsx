@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import PhotosSection from "@/components/PhotosSection";
 import ProjectCard from "@/components/ProjectCard";
 import SideQuestGallery from "@/components/SideQuestGallery";
+import TravelMap from "@/components/TravelMap";
 import { experiences, projects, sideQuests } from "@/data/portfolio";
 
 export default function Portfolio() {
@@ -97,6 +98,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <TravelMap />
 
         <PhotosSection />
       </main>

@@ -149,7 +149,7 @@ export const experiences: Experience[] = [
     location: "Vancouver, BC",
     image: "/assets/experiences/scalepad_logo.jpeg",
     bullets: [
-      [{ text: "incoming s26" }]
+      [{ text: "Currently on the Lifecycle Manager Team 🌱" }]
     ]
   },
   {

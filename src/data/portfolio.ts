@@ -168,10 +168,8 @@ export const experiences: Experience[] = [
         { text: "Streamlined " },
         { text: "CI/CD", highlight: true },
         {
-          text: " by integrating automated backend tests to support more reliable "
+          text: " by integrating automated backend tests to support more reliable deployments. "
         },
-        { text: "Kubernetes", highlight: true },
-        { text: " deployments." }
       ],
       [
         {

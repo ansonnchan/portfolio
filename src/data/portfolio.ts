@@ -251,18 +251,20 @@ export const projects: Project[] = [
   {
     title: "Personal Portfolio",
     description:
-      "This website :) The third rendition of my portfolio, built to showcase everything you need to know about me.",
+      "The third rendition of my portfolio",
     image: "/assets/projects/portfolio_pic1.png",
     icon: "/assets/projects/portfolio_icon.png",
     screenshots: [
       "/assets/projects/portfolio_pic1.png",
       "/assets/projects/portfolio_pic2.png"
     ],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API"],
     github: "https://github.com/ansonnchan/portfolio",
     live: "https://www.ansonnchan.dev/",
     details: [
-      "Everything you need to know about me."
+      "Added a server-side API route that calls GitHub’s GraphQL contributionCalendar API (showing you that I know how to code 😭😭).",
+      "Please enjoy :)"
+      //"Rendered the contribution data as a Jan-Dec activity heatmap with normalized weeks, month labels, hover titles, dark-mode styling, and future days greyed out."
     ]
   },
   {

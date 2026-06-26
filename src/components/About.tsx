@@ -38,6 +38,12 @@ export default function About({ isDark }: AboutProps) {
             <div className="about-greeting-pop inline-flex">
               <div className="about-greeting-bubble relative inline-flex items-center rounded-lg border border-emerald-500/25 bg-white/90 px-5 py-3 shadow-soft dark:border-emerald-300/20 dark:bg-white/10 dark:shadow-soft-dark">
                 <span className="about-greeting-spark about-greeting-spark-left" aria-hidden="true" />
+                <span
+                  aria-hidden="true"
+                  className="about-greeting-wave mr-2 inline-block origin-bottom-right text-2xl sm:text-3xl"
+                >
+                  👋
+                </span>
                 <span className="text-2xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-3xl">
                   {about.greeting}
                 </span>

@@ -344,7 +344,7 @@ export const sideQuests = {
   ],
   shows: [
     {
-      src: "/assets/sidequests/IMG_0668.JPG",
+      src: "/assets/photos/IMG_0668.JPG",
       alt: "Young Anson holding a violin before a performance",
       caption: "I promise I don't use stripes anymore"
     },

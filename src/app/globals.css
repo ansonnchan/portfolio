@@ -170,6 +170,10 @@ button {
   animation-delay: 0.28s;
 }
 
+.about-greeting-wave {
+  animation: about-greeting-wave 1.4s ease-in-out infinite;
+}
+
 @supports not (animation-timeline: view()) {
   .scroll-fade {
     opacity: 1;
@@ -182,6 +186,7 @@ button {
   .about-greeting-bubble,
   .about-greeting-pop,
   .about-greeting-spark,
+  .about-greeting-wave,
   .music-pfp-beat {
     animation: none;
   }
@@ -253,6 +258,26 @@ button {
   45% {
     opacity: 1;
     transform: rotate(45deg) scale(1.08);
+  }
+}
+
+@keyframes about-greeting-wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(12deg);
+  }
+  24% {
+    transform: rotate(-10deg);
+  }
+  36% {
+    transform: rotate(8deg);
+  }
+  48% {
+    transform: rotate(-6deg);
   }
 }
 

@@ -193,13 +193,13 @@ export const experiences: Experience[] = [
         { text: "Dr. Terence Chan", highlight: true },
         { text: "." }
       ],
-      [
+      /**[
         { text: "Architected " },
         { text: "LangGraph", highlight: true },
         {
           text: " pipelines to automate chunking, embedding, and reranking experiments."
         }
-      ],
+      ],**/
       [
         { text: "Built " },
         { text: "Python", highlight: true },

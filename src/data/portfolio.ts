@@ -337,16 +337,16 @@ export const sideQuests = {
     "Contrary to what people may believe, I do have hobbies and interests, I do talk to other people, and I do touch grass.",
   bullets: [
     "I’ve played violin and trumpet for 12 years and 10 years respectively. Although I haven’t played as much as I used to in high school, I’m hoping to join UBC’s symphony orchestra before I graduate.",
-    "I also play tennis and badminton regularly. In high school, our tennis team made it all the way to provincials. We don’t talk about our results there though.",
-    "I’m currently watching Pursuit of Jade and When I Fly Towards You.",
-    "I'm hardstuck Emerald rank in League of Legends and my mains are ahri and shen (pls save me from ELO hell).",
-    "I’m reading The Three-Body Problem (三体) by Liu Cixin (刘慈欣). If you like dystopian sci-fi mystery thrillers, I highly recommend the series or the Netflix adaptation (so excited for season 2)."
+    "I also play tennis and badminton regularly. In high school, our tennis team made it all the way to provincials.",
+    "I'm an avid lover of thrillers, mysteries, and sci-fi. Specifically the dystopian genre.",
+    "I'm about 270 episodes into Detective Conan.",
+    "I swear to god I will watch One Piece, Naruto, and Bleach one day.",
   ],
   shows: [
     {
-      src: "/assets/sidequests/when_i_fly_towards_you.jpg",
-      alt: "When I Fly Towards You poster",
-      caption: "When I Fly Towards You - what I'm binging rn"
+      src: "/assets/sidequests/IMG_0668.JPG",
+      alt: "Young Anson holding a violin before a performance",
+      caption: "I promise I don't use stripes anymore"
     },
   ]
 };
@@ -379,7 +379,6 @@ export const photos = {
   attribution: "Nathan Scott, One Tree Hill (9x13)",
   gallery: [
     { src: "/assets/photos/IMG_0192.JPG", caption: "y'all, i was really wearing alphabet pajamas" },
-    { src: "/assets/photos/IMG_0668.JPG", caption: "get your eyes checked" },
     { src: "/assets/photos/IMG_0734.JPG", caption: "i promise i hold chopsticks better now" },
     { src: "/assets/photos/IMG_0916.JPG", caption: "pachinko" },
     { src: "/assets/photos/IMG_1953.JPG", caption: "universal studios - orlando, florida" },

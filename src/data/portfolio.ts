@@ -63,7 +63,7 @@ export const hero = {
   greeting: "Hey!",
   name: "Anson Chan",
   chineseName: "陳雋希",
-  phrases: ["A software engineer", "CPEN student @ UBC", "A C-drama enthusiast"],
+  phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
   video: "/assets/chibi-wave-transparent.webm"
 };
 
@@ -93,7 +93,7 @@ export const about = {
     [
       { text: "I’m " },
       { text: "Anson", highlight: true },
-      { text: ", and welcome to my portfolio." }
+      { text: ", and welcome to my personal website." }
     ],
     [
       { text: "I’m a third-year " },
@@ -114,17 +114,18 @@ export const about = {
       { text: " for 15 years. I moved to " },
       { text: "Canada", highlight: true },
       {
-        text: " in late 2021. I play basically every racket sport, including tennis, badminton, table tennis, and even pickleball."
-      }
+        text: " in late 2021. I play every racket sport, including tennis, badminton, table tennis, and even pickleball."
+      },
     ],
     [
+      {text: "Like every other SoCal Asian, I also like playing volleyball, drinking boba, and eating Korean BBQ. "},
       {
-        text: "I’ve also been binging way too many C-dramas recently. Right now, I’m watching "
+        text: "I’ve also been binging way too many C and K dramas recently. Right now, I’m watching "
       },
-      { text: "Pursuit of Jade", highlight: true },
-      { text: " (逐玉) and " },
+      { text: "Night has Come ", highlight: true },
+      { text: "and " },
       { text: "When I Fly Towards You", highlight: true },
-      { text: " (当我飞奔向你)." }
+      {text: "."}
     ]
   ],
   /** 
@@ -136,7 +137,7 @@ export const about = {
   },
   */
   closing:
-    "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :)"
+    "If you like what you see and want to chat, I’m always down for a coffee chat or to connect :)"
 };
 
 export const githubActivity = {

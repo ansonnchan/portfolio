@@ -137,8 +137,8 @@ export const about = {
   },
   */
   closing:
-    "If you like what you see and want to chat, I’m always down for a coffee chat or to connect :)"
-};
+    "If you like what you see and want to chat, I’m always down for a coffee chat or to connect :)", highlight: true
+}; //maybe highlight doesn't work??
 
 export const githubActivity = {
   username: "ansonnchan",

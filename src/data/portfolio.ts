@@ -249,7 +249,7 @@ export const projects: Project[] = [
     description:
       "This website :) The third rendition of my portfolio, built to showcase everything you need to know about me.",
     image: "/assets/projects/portfolio_pic1.png",
-    icon: "/assets/favicon.png",
+    icon: "/assets/projects/portfolio_icon.png",
     screenshots: [
       "/assets/projects/portfolio_pic1.png",
       "/assets/projects/portfolio_pic2.png"

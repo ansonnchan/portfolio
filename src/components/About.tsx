@@ -1,4 +1,5 @@
 import { about } from "@/data/portfolio";
+import GitHubContributionGraph from "@/components/GitHubContributionGraph";
 import RichText from "@/components/RichText";
 
 type AboutProps = {
@@ -6,8 +7,6 @@ type AboutProps = {
 };
 
 export default function About({ isDark }: AboutProps) {
-  const [rankedBeforeJuseyo, rankedAfterJuseyo = ""] = about.rankedAside.split("juseyo");
-
   return (
     <section className="scroll-fade scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
@@ -55,28 +54,7 @@ export default function About({ isDark }: AboutProps) {
 
             <p>{about.closing}</p>
 
-            <div className="ahri-banner-bob !mt-28 flex sm:!mt-36">
-              <div className="relative inline-flex max-w-full items-center gap-3 rounded-lg border border-emerald-500/25 bg-emerald-50/80 pb-3 pl-32 pr-4 pt-4 text-sm leading-6 shadow-soft transition-colors duration-300 hover:border-emerald-500/45 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:shadow-soft-dark sm:min-h-24 sm:pl-44 sm:pr-5 sm:text-base">
-                <img
-                  alt="Chibi Ahri sitting on the duo queue banner ledge"
-                  className="pointer-events-none absolute -left-1 -top-20 h-32 w-32 object-contain drop-shadow-lg sm:-left-2 sm:-top-28 sm:h-40 sm:w-40"
-                  src="/assets/league/ahri_transparent.png"
-                />
-                <span className="min-w-0 font-semibold text-zinc-800 dark:text-zinc-100">
-                  {rankedBeforeJuseyo}
-                  <span className="font-black text-zinc-950 dark:text-white">juseyo</span>
-                  {rankedAfterJuseyo}
-                </span>
-
-                <span className="hidden shrink-0 items-center sm:inline-flex">
-                  <img
-                    alt="Emerald rank"
-                    className="h-16 w-16 object-contain drop-shadow-md"
-                    src="/assets/league/emerald.png"
-                  />
-                </span>
-              </div>
-            </div>
+            <GitHubContributionGraph />
           </div>
         </div>
       </div>

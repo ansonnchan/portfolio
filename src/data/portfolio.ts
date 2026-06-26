@@ -136,9 +136,12 @@ export const about = {
   },
   */
   closing:
-    "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :)",
-  rankedAside:
-    "need a senpai to carry me in league. i want diamond rank juseyo but i'm hardstuck emerald. onegai"
+    "If you like what you see and want to chat, my socials are underneath the chibi on the landing page. I’m always down for a coffee chat or to connect anytime :)"
+};
+
+export const githubActivity = {
+  username: "ansonnchan",
+  profileUrl: "https://github.com/ansonnchan"
 };
 
 export const experiences: Experience[] = [

@@ -120,7 +120,7 @@ export const about = {
     [
       {text: "Like every other SoCal Asian, I also like playing volleyball, drinking boba, and eating Korean BBQ. "},
       {
-        text: "I’ve also been binging way too many C and K dramas recently. Right now, I’m watching "
+        text: "I've also been binging way too many C-dramas and K-dramas recently. Right now, I'm watching "
       },
       { text: "Night has Come ", highlight: true },
       { text: "and " },
@@ -137,7 +137,7 @@ export const about = {
   },
   */
   closing:
-    "If you like what you see and want to chat, I’m always down for a coffee chat or to connect :)", highlight: true
+    "If you like what you see and want to chat, I’m always down to connect :)", highlight: true
 }; //maybe highlight doesn't work??
 
 export const githubActivity = {
@@ -270,7 +270,7 @@ export const projects: Project[] = [
   {
     title: "Pear Programming",
     description:
-      "A browser-based collaborative coding IDE with real-time editing, shared workspaces, and AI-assisted coding features.",
+      "A browser-based collaborative coding editor with real-time editing, shared workspaces, and AI-assisted coding features.",
     image: "/assets/projects/pear-program-pic2.png",
     icon: "/assets/projects/pear-programming-favicon.png",
     screenshots: [
@@ -336,11 +336,11 @@ export const sideQuests = {
   intro:
     "Contrary to what people may believe, I do have hobbies and interests, I do talk to other people, and I do touch grass.",
   bullets: [
-    "I’ve played violin and trumpet for 12 years and 10 years respectively. Although I haven’t played as much as I used to in high school, I’m hoping to join UBC’s symphony orchestra before I graduate.",
-    "I also play tennis and badminton regularly. In high school, our tennis team made it all the way to provincials.",
+    "I’ve played the violin and the trumpet for 12 years and 10 years respectively. Although I haven’t played as much as I used to in high school, I’m hoping to join UBC’s symphony orchestra before I graduate.",
+    "I also play tennis and badminton regularly. One of my favorite flexes is that two of my high school friends in Australia went on to become professional tennis players, and I can say I beat them... before they got really good 😭😭",
     "I'm an avid lover of thrillers, mysteries, and sci-fi. Specifically the dystopian genre.",
-    "I'm about 270 episodes into Detective Conan.",
-    "I swear to god I will watch One Piece, Naruto, and Bleach one day.",
+    "I'm about 270 episodes deep into Detective Conan.",
+    "My favorite anime is Your Lie in April, both from a musician's perspective and an emotional perspective. IT'S SO PEAK BUT SO SAD!!",
   ],
   shows: [
     {

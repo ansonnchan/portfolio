@@ -95,6 +95,33 @@ button {
   animation: homepage-arrow-bob 2.4s ease-in-out infinite;
 }
 
+.premium-heading-depth {
+  text-shadow: 0 7px 10px rgba(15, 23, 42, 0.07);
+}
+
+.dark .premium-heading-depth {
+  text-shadow: 0 7px 12px rgba(0, 0, 0, 0.16);
+}
+
+.hero-character-backdrop {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  z-index: 0;
+  height: min(64vw, 31rem);
+  width: min(68vw, 33rem);
+  pointer-events: none;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(250, 240, 230, 0.3) 0%, rgba(250, 240, 230, 0.12) 42%, transparent 72%);
+  filter: blur(30px);
+  opacity: 0.52;
+  transform: translate(-50%, -50%);
+}
+
+.dark .hero-character-backdrop {
+  opacity: 0.12;
+}
+
 .arrow-chevron {
   display: inline-block;
   height: 0.72rem;

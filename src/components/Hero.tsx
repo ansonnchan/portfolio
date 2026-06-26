@@ -13,26 +13,27 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
       <TopLeftWidgets />
       <div className="relative mx-auto grid min-h-screen max-w-6xl items-center gap-8 px-6 py-24 sm:px-10 lg:grid-cols-[1fr_1fr] lg:px-12">
         <div className="animate-reveal-up mx-auto w-full max-w-[720px] text-left lg:relative lg:-top-12 lg:justify-self-end">
-          <p className="text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+          <p className="premium-heading-depth text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
             {hero.greeting} I’m
           </p>
-          <h1 className="mt-5 whitespace-nowrap text-5xl font-black leading-[1.03] tracking-normal text-zinc-950 dark:text-white sm:text-6xl">
+          <h1 className="premium-heading-depth mt-5 whitespace-nowrap text-5xl font-black leading-[1.03] tracking-normal text-zinc-950 dark:text-white sm:text-6xl">
             <span className="text-emerald-700 dark:text-emerald-300">{hero.name}</span>{" "}
             <span className="inline-block align-baseline text-3xl text-zinc-800 dark:text-zinc-200 sm:text-4xl">
               ({hero.chineseName})
             </span>
           </h1>
-          <p className="mt-7 min-h-12 text-3xl font-black tracking-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
+          <p className="premium-heading-depth mt-7 min-h-12 text-3xl font-black tracking-normal text-zinc-900 dark:text-zinc-100 sm:text-4xl">
             <TypewriterText phrases={hero.phrases} />
           </p>
           <HeroJourneyRoute />
         </div>
 
         <div className="relative mx-auto flex w-full max-w-[500px] flex-col items-center justify-center lg:justify-self-start">
+          <span className="hero-character-backdrop" aria-hidden="true" />
           <video
             aria-label="Chibi Anson waving"
             autoPlay
-            className="animate-float-soft h-auto max-h-[44vh] w-auto max-w-full object-contain sm:max-h-[56vh] lg:max-h-[62vh]"
+            className="animate-float-soft relative z-10 h-auto max-h-[44vh] w-auto max-w-full object-contain sm:max-h-[56vh] lg:max-h-[62vh]"
             loop
             muted
             playsInline

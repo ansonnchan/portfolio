@@ -92,9 +92,9 @@ export async function GET() {
     );
   }
 
-  const to = new Date();
-  const from = new Date(to);
-  from.setFullYear(to.getFullYear() - 1);
+  const now = new Date();
+  const year = now.getFullYear();
+  const from = new Date(Date.UTC(year, 0, 1, 0, 0, 0));
 
   try {
     const response = await fetch(GITHUB_GRAPHQL_ENDPOINT, {
@@ -109,7 +109,7 @@ export async function GET() {
         variables: {
           from: from.toISOString(),
           login: githubActivity.username,
-          to: to.toISOString()
+          to: now.toISOString()
         }
       })
     });
@@ -156,9 +156,10 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        fetchedAt: to.toISOString(),
+        fetchedAt: now.toISOString(),
         profileUrl: githubActivity.profileUrl,
         username: githubActivity.username,
+        year,
         ...calendar
       },
       {

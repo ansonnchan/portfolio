@@ -2,7 +2,6 @@
 
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useState } from "react";
-import { githubActivity } from "@/data/portfolio";
 
 type ContributionLevel =
   | "NONE"
@@ -38,6 +37,23 @@ type ContributionCalendar = {
   totalContributions: number;
   username: string;
   weeks: ContributionWeek[];
+  year: number;
+};
+
+type NormalizedContributionDay = ContributionDay & {
+  isFuture: boolean;
+  isOutsideYear: boolean;
+};
+
+type NormalizedContributionWeek = {
+  contributionDays: NormalizedContributionDay[];
+  firstDay: string;
+};
+
+type MonthSpan = {
+  name: string;
+  span: number;
+  startColumn: number;
 };
 
 type LoadState =
@@ -53,6 +69,21 @@ const levelClasses: Record<ContributionLevel, string> = {
   FOURTH_QUARTILE: "bg-emerald-800 dark:bg-emerald-300"
 };
 
+const futureDayClass = "bg-zinc-100 dark:bg-white/5";
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
 const weekdayLabels = [
   { label: "Mon", row: 2 },
   { label: "Wed", row: 4 },
@@ -73,48 +104,97 @@ function getContributionLabel(day: ContributionDay) {
   return `${contributions} on ${dateFormatter.format(new Date(`${day.date}T00:00:00`))}`;
 }
 
-function getDayForWeekday(week: ContributionWeek, weekday: number) {
-  return week.contributionDays.find((day) => day.weekday === weekday);
+function toDateKey(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
 }
 
-function getMonthSpans(months: ContributionMonth[], weekCount: number) {
-  let remainingWeeks = weekCount;
+function addDays(date: Date, days: number) {
+  const nextDate = new Date(date);
+  nextDate.setDate(date.getDate() + days);
 
-  return months
-    .map((month, index) => {
-      const span =
-        index === months.length - 1 ? remainingWeeks : Math.min(month.totalWeeks, remainingWeeks);
+  return nextDate;
+}
 
-      remainingWeeks = Math.max(remainingWeeks - span, 0);
+function getWeekStart(date: Date) {
+  return addDays(date, -date.getDay());
+}
+
+function getWeekEnd(date: Date) {
+  return addDays(date, 6 - date.getDay());
+}
+
+function getWeekIndex(gridStart: Date, date: Date) {
+  const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
+
+  return Math.floor((getWeekStart(date).getTime() - gridStart.getTime()) / millisecondsPerWeek);
+}
+
+function getNormalizedCalendar(calendar: ContributionCalendar) {
+  const contributionDaysByDate = new Map(
+    calendar.weeks.flatMap((week) => week.contributionDays).map((day) => [day.date, day])
+  );
+  const yearStart = new Date(calendar.year, 0, 1);
+  const yearEnd = new Date(calendar.year, 11, 31);
+  const gridStart = getWeekStart(yearStart);
+  const gridEnd = getWeekEnd(yearEnd);
+  const todayKey = toDateKey(new Date(calendar.fetchedAt));
+  const weeks: NormalizedContributionWeek[] = [];
+
+  for (let weekStart = gridStart; weekStart <= gridEnd; weekStart = addDays(weekStart, 7)) {
+    const contributionDays = Array.from({ length: 7 }, (_, weekday) => {
+      const date = addDays(weekStart, weekday);
+      const dateKey = toDateKey(date);
+      const isOutsideYear = date.getFullYear() !== calendar.year;
+      const existingDay = contributionDaysByDate.get(dateKey);
 
       return {
-        ...month,
-        span
-      };
-    })
-    .filter((month) => month.span > 0);
-}
+        color: existingDay?.color ?? "",
+        contributionCount: existingDay?.contributionCount ?? 0,
+        contributionLevel: existingDay?.contributionLevel ?? "NONE",
+        date: dateKey,
+        isFuture: !isOutsideYear && dateKey > todayKey,
+        isOutsideYear,
+        weekday
+      } satisfies NormalizedContributionDay;
+    });
 
-function getCalendarStats(calendar: ContributionCalendar) {
-  const days = calendar.weeks.flatMap((week) => week.contributionDays);
-  const bestDay = days.reduce<ContributionDay | null>((best, day) => {
-    if (!best || day.contributionCount > best.contributionCount) {
-      return day;
-    }
-
-    return best;
-  }, null);
-  const activeDays = days.filter((day) => day.contributionCount > 0).length;
+    weeks.push({
+      contributionDays,
+      firstDay: toDateKey(weekStart)
+    });
+  }
 
   return {
-    activeDays,
-    bestDay
+    gridStart,
+    weeks,
+    year: calendar.year
   };
+}
+
+function getMonthSpans(gridStart: Date, weekCount: number, year: number): MonthSpan[] {
+  return monthNames.map((name, index) => {
+    const monthStart = new Date(year, index, 1);
+    const nextMonthStart = index === 11 ? null : new Date(year, index + 1, 1);
+    const startColumn = getWeekIndex(gridStart, monthStart) + 1;
+    const nextStartColumn = nextMonthStart
+      ? getWeekIndex(gridStart, nextMonthStart) + 1
+      : weekCount + 1;
+
+    return {
+      name,
+      span: Math.max(nextStartColumn - startColumn, 1),
+      startColumn
+    };
+  });
 }
 
 function SkeletonGraph() {
   return (
-    <div className="mt-5 overflow-x-auto pb-2">
+    <div className="overflow-x-auto pb-2">
       <div
         aria-hidden="true"
         className="grid w-max animate-pulse grid-flow-col grid-rows-7 gap-[3px]"
@@ -161,10 +241,20 @@ export default function GitHubContributionGraph() {
   }, []);
 
   const calendar = state.status === "success" ? state.calendar : null;
-  const stats = useMemo(() => (calendar ? getCalendarStats(calendar) : null), [calendar]);
-  const monthSpans = useMemo(
-    () => (calendar ? getMonthSpans(calendar.months, calendar.weeks.length) : []),
+  const normalizedCalendar = useMemo(
+    () => (calendar ? getNormalizedCalendar(calendar) : null),
     [calendar]
+  );
+  const monthSpans = useMemo(
+    () =>
+      normalizedCalendar
+        ? getMonthSpans(
+            normalizedCalendar.gridStart,
+            normalizedCalendar.weeks.length,
+            normalizedCalendar.year
+          )
+        : [],
+    [normalizedCalendar]
   );
 
   return (
@@ -173,77 +263,30 @@ export default function GitHubContributionGraph() {
       className="!mt-10 rounded-lg border border-zinc-950/10 bg-white/80 p-4 shadow-soft backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:border-white/10 dark:bg-white/10 dark:shadow-soft-dark sm:p-5"
       style={{ "--github-day-size": "0.62rem" } as CSSProperties}
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="min-w-0">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/10">
-              <img alt="" className="h-5 w-5 object-contain dark:invert" src="/assets/about/github_icon.png" />
-            </span>
-            <div className="min-w-0">
-              <h3 className="text-lg font-black leading-tight text-zinc-950 dark:text-white sm:text-xl">
-                GitHub Contributions
-              </h3>
-              <a
-                className="text-sm font-semibold text-emerald-700 transition hover:text-emerald-900 dark:text-emerald-300 dark:hover:text-emerald-100"
-                href={githubActivity.profileUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                @{githubActivity.username}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {calendar && (
-          <div className="grid grid-cols-3 gap-5 border-t border-black/10 pt-4 text-left dark:border-white/10 sm:min-w-72 sm:border-t-0 sm:pt-0">
-            <div>
-              <p className="text-base font-black leading-none text-zinc-950 dark:text-white">
-                {numberFormatter.format(calendar.totalContributions)}
-              </p>
-              <p className="mt-1 text-[11px] font-semibold uppercase text-zinc-500 dark:text-zinc-400">
-                total
-              </p>
-            </div>
-            <div>
-              <p className="text-base font-black leading-none text-zinc-950 dark:text-white">
-                {numberFormatter.format(stats?.activeDays ?? 0)}
-              </p>
-              <p className="mt-1 text-[11px] font-semibold uppercase text-zinc-500 dark:text-zinc-400">
-                active
-              </p>
-            </div>
-            <div>
-              <p className="text-base font-black leading-none text-zinc-950 dark:text-white">
-                {numberFormatter.format(stats?.bestDay?.contributionCount ?? 0)}
-              </p>
-              <p className="mt-1 text-[11px] font-semibold uppercase text-zinc-500 dark:text-zinc-400">
-                best
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
-
       {state.status === "loading" && <SkeletonGraph />}
 
       {state.status === "error" && (
-        <div className="mt-5 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-4 py-6 text-sm font-semibold text-zinc-600 dark:border-white/15 dark:bg-white/5 dark:text-zinc-300">
+        <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-4 py-6 text-sm font-semibold text-zinc-600 dark:border-white/15 dark:bg-white/5 dark:text-zinc-300">
           GitHub activity is unavailable right now.
         </div>
       )}
 
-      {calendar && (
-        <div className="mt-5 overflow-x-auto pb-2">
+      {calendar && normalizedCalendar && (
+        <div className="overflow-x-auto pb-2">
           <div className="min-w-max">
-            <div className="ml-9 grid gap-[3px]" style={{ gridTemplateColumns: `repeat(${calendar.weeks.length}, var(--github-day-size))` }}>
+            <div
+              className="ml-9 grid gap-[3px]"
+              style={{
+                gridTemplateColumns: `repeat(${normalizedCalendar.weeks.length}, var(--github-day-size))`
+              }}
+            >
               {monthSpans.map((month) => (
                 <span
                   className="truncate text-[10px] font-semibold leading-4 text-zinc-500 dark:text-zinc-400"
-                  key={`${month.name}-${month.year}-${month.firstDay}`}
-                  style={{ gridColumn: `span ${month.span}` }}
+                  key={month.name}
+                  style={{ gridColumn: `${month.startColumn} / span ${month.span}` }}
                 >
-                  {month.name.slice(0, 3)}
+                  {month.name}
                 </span>
               ))}
             </div>
@@ -258,28 +301,30 @@ export default function GitHubContributionGraph() {
               </div>
 
               <div
-                aria-label={`${numberFormatter.format(calendar.totalContributions)} GitHub contributions in the last year`}
+                aria-label={`${numberFormatter.format(calendar.totalContributions)} GitHub contributions in ${calendar.year}`}
                 className="grid w-max grid-flow-col grid-rows-7 gap-[3px]"
                 role="img"
               >
-                {calendar.weeks.flatMap((week) =>
-                  Array.from({ length: 7 }, (_, weekday) => {
-                    const day = getDayForWeekday(week, weekday);
-
-                    if (!day) {
+                {normalizedCalendar.weeks.flatMap((week) =>
+                  week.contributionDays.map((day) => {
+                    if (day.isOutsideYear) {
                       return (
                         <span
                           aria-hidden="true"
                           className="h-[var(--github-day-size)] w-[var(--github-day-size)]"
-                          key={`${week.firstDay}-${weekday}`}
+                          key={`${week.firstDay}-${day.weekday}`}
                         />
                       );
                     }
 
+                    const dayClass = day.isFuture
+                      ? futureDayClass
+                      : levelClasses[day.contributionLevel];
+
                     return (
                       <span
                         aria-label={getContributionLabel(day)}
-                        className={`h-[var(--github-day-size)] w-[var(--github-day-size)] rounded-[3px] border border-black/5 transition hover:scale-125 hover:ring-2 hover:ring-emerald-500/30 dark:border-white/10 ${levelClasses[day.contributionLevel]}`}
+                        className={`h-[var(--github-day-size)] w-[var(--github-day-size)] rounded-[3px] border border-black/5 transition hover:scale-125 hover:ring-2 hover:ring-emerald-500/30 dark:border-white/10 ${dayClass}`}
                         key={day.date}
                         title={getContributionLabel(day)}
                       />

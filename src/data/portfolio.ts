@@ -144,7 +144,7 @@ export const experiences: Experience[] = [
     organization: "ScalePad",
     dates: "June 2026 - Present",
     location: "Vancouver, BC",
-    image: "/assets/experiences/scalepad_logo.jpeg",
+    image: "/assets/experiences/scalepad_logo_black.png",
     bullets: [
       [{ text: "Currently on the Lifecycle Manager Team 🌱" }]
     ]

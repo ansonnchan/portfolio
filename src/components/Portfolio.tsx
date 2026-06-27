@@ -6,7 +6,6 @@ import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import PhotosSection from "@/components/PhotosSection";
 import ProjectCard from "@/components/ProjectCard";
 import SideQuestGallery from "@/components/SideQuestGallery";
 import { experiences, projects, sideQuests } from "@/data/portfolio";
@@ -97,8 +96,6 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-        <PhotosSection />
       </main>
 
       <Footer />

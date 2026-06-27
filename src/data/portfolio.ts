@@ -47,8 +47,7 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Side Quests", href: "#side-quests" },
-  { label: "Memories", href: "#photos" }
+  { label: "Side Quests", href: "#side-quests" }
 ];
 
 export const resumePath = "/resume";
@@ -342,23 +341,5 @@ export const sideQuests = {
       alt: "Young Anson holding a violin before a performance",
       caption: "I promise I don't use stripes anymore"
     },
-  ]
-};
-
-export const photos = {
-  title: "Memory Lane",
-  intro:
-    "I hope you enjoy these old photos of mine. I was doing some digging and spent a lot of time laughing, reminiscing, and feeling grateful for the old days. I found this quote online and loved the reminder: you only get one chance to live this life, so take a little time to look back at the moments that made you.",
-  quote:
-    "One day, you're 17 and you're planning for someday. And then quietly, without you ever really noticing, someday is today. And then someday is yesterday. And this is your life.",
-  attribution: "Nathan Scott, One Tree Hill (9x13)",
-  gallery: [
-    { src: "/assets/photos/IMG_0192.JPG", caption: "y'all, i was really wearing alphabet pajamas" },
-    { src: "/assets/photos/IMG_0734.JPG", caption: "i promise i hold chopsticks better now" },
-    { src: "/assets/photos/IMG_0916.JPG", caption: "pachinko" },
-    { src: "/assets/photos/IMG_1953.JPG", caption: "universal studios - orlando, florida" },
-    { src: "/assets/photos/IMG_2256.JPG", caption: "book title is \"unfortunate series of events\"" },
-    { src: "/assets/photos/IMG_4235.JPG", caption: "peak" },
-    { src: "/assets/photos/swollen.JPG", caption: "yo, why was my left ear hella swollen?" }
   ]
 };

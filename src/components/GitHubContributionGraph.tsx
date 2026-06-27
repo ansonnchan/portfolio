@@ -286,9 +286,9 @@ export default function GitHubContributionGraph() {
       {calendar && normalizedCalendar && (
         <>
           <header className="flex items-baseline justify-between gap-4 font-mono text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-300 sm:text-sm">
-            <h3>Contributions</h3>
+            <h3>GitHub Contributions</h3>
             <p className="shrink-0 text-right">
-              {numberFormatter.format(calendar.totalContributions)} in {calendar.year}
+              {numberFormatter.format(calendar.totalContributions)} commits in {calendar.year}
             </p>
           </header>
 
@@ -356,10 +356,20 @@ export default function GitHubContributionGraph() {
             </div>
           </div>
 
-          <footer className="mt-4 flex flex-col items-end gap-5 font-mono uppercase text-zinc-600 dark:text-zinc-300">
+          <footer className="mt-4 flex items-start justify-between gap-4 font-mono uppercase text-zinc-600 dark:text-zinc-300">
+            <div className="text-left">
+              <p className="text-xs font-semibold sm:text-sm">Last updated</p>
+              <time
+                className="mt-1 block text-sm font-semibold text-zinc-900 dark:text-white"
+                dateTime={calendar.fetchedAt}
+              >
+                {lastUpdatedFormatter.format(new Date(calendar.fetchedAt))}
+              </time>
+            </div>
+
             <div
               aria-label="Contribution intensity from less to more"
-              className="flex items-center gap-1.5 text-xs font-semibold"
+              className="flex shrink-0 items-center justify-end gap-1.5 text-xs font-semibold"
             >
               <span className="mr-0.5">Less</span>
               <span aria-hidden="true" className="flex gap-1">
@@ -371,16 +381,6 @@ export default function GitHubContributionGraph() {
                 ))}
               </span>
               <span className="ml-0.5">More</span>
-            </div>
-
-            <div className="text-right">
-              <p className="text-xs font-semibold sm:text-sm">Last updated</p>
-              <time
-                className="mt-1 block text-sm font-semibold text-zinc-900 dark:text-white"
-                dateTime={calendar.fetchedAt}
-              >
-                {lastUpdatedFormatter.format(new Date(calendar.fetchedAt))}
-              </time>
             </div>
           </footer>
         </>

@@ -42,18 +42,12 @@ export type Project = {
   defaultOpen?: boolean;
 };
 
-export type TravelCountry = {
-  name: string;
-  region: string;
-};
-
 export const navLinks = [
   { label: "Home", href: "#top" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Side Quests", href: "#side-quests" },
-  { label: "World Map", href: "#travel-map" },
   { label: "Memories", href: "#photos" }
 ];
 
@@ -349,25 +343,6 @@ export const sideQuests = {
       caption: "I promise I don't use stripes anymore"
     },
   ]
-};
-
-export const travel = {
-  title: "World Map",
-  subtitle: "Countries I've visited so far.",
-  countries: [
-    { name: "Canada", region: "North America" },
-    { name: "United States", region: "North America" },
-    { name: "Mexico", region: "North America" },
-    { name: "Australia", region: "Oceania" },
-    { name: "Bali", region: "Asia" },
-    { name: "China", region: "Asia" },
-    { name: "Hong Kong", region: "Asia" },
-    { name: "Malaysia", region: "Asia" },
-    { name: "Japan", region: "Asia" },
-    { name: "South Korea", region: "Asia" },
-    { name: "Thailand", region: "Asia" },
-    { name: "United Kingdom", region: "Europe" }
-  ] satisfies TravelCountry[]
 };
 
 export const photos = {

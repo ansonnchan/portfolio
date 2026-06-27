@@ -69,6 +69,13 @@ const levelClasses: Record<ContributionLevel, string> = {
   FOURTH_QUARTILE: "bg-emerald-800 dark:bg-emerald-300"
 };
 
+const legendLevels: ContributionLevel[] = [
+  "NONE",
+  "FIRST_QUARTILE",
+  "SECOND_QUARTILE",
+  "THIRD_QUARTILE",
+  "FOURTH_QUARTILE"
+];
 const futureDayClass = "bg-zinc-100 dark:bg-white/5";
 const monthNames = [
   "Jan",
@@ -95,6 +102,11 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   month: "short",
   year: "numeric"
+});
+const lastUpdatedFormatter = new Intl.DateTimeFormat("en-GB", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "2-digit"
 });
 
 function getContributionLabel(day: ContributionDay) {
@@ -272,69 +284,106 @@ export default function GitHubContributionGraph() {
       )}
 
       {calendar && normalizedCalendar && (
-        <div className="overflow-x-auto pb-2">
-          <div className="min-w-max">
-            <div
-              className="ml-9 grid gap-[3px]"
-              style={{
-                gridTemplateColumns: `repeat(${normalizedCalendar.weeks.length}, var(--github-day-size))`
-              }}
-            >
-              {monthSpans.map((month) => (
-                <span
-                  className="truncate text-[10px] font-semibold leading-4 text-zinc-500 dark:text-zinc-400"
-                  key={month.name}
-                  style={{ gridColumn: `${month.startColumn} / span ${month.span}` }}
-                >
-                  {month.name}
-                </span>
-              ))}
-            </div>
+        <>
+          <header className="flex items-baseline justify-between gap-4 font-mono text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-300 sm:text-sm">
+            <h3>Contributions</h3>
+            <p className="shrink-0 text-right">
+              {numberFormatter.format(calendar.totalContributions)} in {calendar.year}
+            </p>
+          </header>
 
-            <div className="mt-1 grid grid-cols-[2rem_auto] gap-x-2">
-              <div className="grid grid-rows-7 gap-[3px] text-[10px] font-semibold leading-[var(--github-day-size)] text-zinc-500 dark:text-zinc-400">
-                {weekdayLabels.map((weekday) => (
-                  <span key={weekday.label} style={{ gridRow: weekday.row }}>
-                    {weekday.label}
+          <div className="mt-5 overflow-x-auto pb-2">
+            <div className="min-w-max">
+              <div
+                className="ml-9 grid gap-[3px]"
+                style={{
+                  gridTemplateColumns: `repeat(${normalizedCalendar.weeks.length}, var(--github-day-size))`
+                }}
+              >
+                {monthSpans.map((month) => (
+                  <span
+                    className="truncate text-[10px] font-semibold leading-4 text-zinc-500 dark:text-zinc-400"
+                    key={month.name}
+                    style={{ gridColumn: `${month.startColumn} / span ${month.span}` }}
+                  >
+                    {month.name}
                   </span>
                 ))}
               </div>
 
-              <div
-                aria-label={`${numberFormatter.format(calendar.totalContributions)} GitHub contributions in ${calendar.year}`}
-                className="grid w-max grid-flow-col grid-rows-7 gap-[3px]"
-                role="img"
-              >
-                {normalizedCalendar.weeks.flatMap((week) =>
-                  week.contributionDays.map((day) => {
-                    if (day.isOutsideYear) {
+              <div className="mt-1 grid grid-cols-[2rem_auto] gap-x-2">
+                <div className="grid grid-rows-7 gap-[3px] text-[10px] font-semibold leading-[var(--github-day-size)] text-zinc-500 dark:text-zinc-400">
+                  {weekdayLabels.map((weekday) => (
+                    <span key={weekday.label} style={{ gridRow: weekday.row }}>
+                      {weekday.label}
+                    </span>
+                  ))}
+                </div>
+
+                <div
+                  aria-label={`${numberFormatter.format(calendar.totalContributions)} GitHub contributions in ${calendar.year}`}
+                  className="grid w-max grid-flow-col grid-rows-7 gap-[3px]"
+                  role="img"
+                >
+                  {normalizedCalendar.weeks.flatMap((week) =>
+                    week.contributionDays.map((day) => {
+                      if (day.isOutsideYear) {
+                        return (
+                          <span
+                            aria-hidden="true"
+                            className="h-[var(--github-day-size)] w-[var(--github-day-size)]"
+                            key={`${week.firstDay}-${day.weekday}`}
+                          />
+                        );
+                      }
+
+                      const dayClass = day.isFuture
+                        ? futureDayClass
+                        : levelClasses[day.contributionLevel];
+
                       return (
                         <span
-                          aria-hidden="true"
-                          className="h-[var(--github-day-size)] w-[var(--github-day-size)]"
-                          key={`${week.firstDay}-${day.weekday}`}
+                          aria-label={getContributionLabel(day)}
+                          className={`h-[var(--github-day-size)] w-[var(--github-day-size)] rounded-[3px] border border-black/5 transition hover:scale-125 hover:ring-2 hover:ring-emerald-500/30 dark:border-white/10 ${dayClass}`}
+                          key={day.date}
+                          title={getContributionLabel(day)}
                         />
                       );
-                    }
-
-                    const dayClass = day.isFuture
-                      ? futureDayClass
-                      : levelClasses[day.contributionLevel];
-
-                    return (
-                      <span
-                        aria-label={getContributionLabel(day)}
-                        className={`h-[var(--github-day-size)] w-[var(--github-day-size)] rounded-[3px] border border-black/5 transition hover:scale-125 hover:ring-2 hover:ring-emerald-500/30 dark:border-white/10 ${dayClass}`}
-                        key={day.date}
-                        title={getContributionLabel(day)}
-                      />
-                    );
-                  })
-                )}
+                    })
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
+          <footer className="mt-4 flex flex-col items-end gap-5 font-mono uppercase text-zinc-600 dark:text-zinc-300">
+            <div
+              aria-label="Contribution intensity from less to more"
+              className="flex items-center gap-1.5 text-xs font-semibold"
+            >
+              <span className="mr-0.5">Less</span>
+              <span aria-hidden="true" className="flex gap-1">
+                {legendLevels.map((level) => (
+                  <span
+                    className={`h-2.5 w-2.5 rounded-[3px] border border-black/5 dark:border-white/10 ${levelClasses[level]}`}
+                    key={level}
+                  />
+                ))}
+              </span>
+              <span className="ml-0.5">More</span>
+            </div>
+
+            <div className="text-right">
+              <p className="text-xs font-semibold sm:text-sm">Last updated</p>
+              <time
+                className="mt-1 block text-sm font-semibold text-zinc-900 dark:text-white"
+                dateTime={calendar.fetchedAt}
+              >
+                {lastUpdatedFormatter.format(new Date(calendar.fetchedAt))}
+              </time>
+            </div>
+          </footer>
+        </>
       )}
     </section>
   );

@@ -57,7 +57,7 @@ export const hero = {
   name: "Anson Chan",
   chineseName: "陳雋希",
   phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
-  video: "/assets/chibi-wave-transparent.webm"
+  video: "/assets/chibi_dance.mp4"
 };
 
 export const socials: SocialLink[] = [

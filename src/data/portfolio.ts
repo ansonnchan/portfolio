@@ -172,8 +172,7 @@ export const experiences: Experience[] = [
         {
           text: "Collaborated with product and design teams to ship practical features from bug reports and user feedback."
         }
-      ],
-      [{ text: "Touched grass and talked to people once." }]
+      ], 
     ]
   },
   {

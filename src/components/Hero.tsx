@@ -1,6 +1,6 @@
 import { hero, socials } from "@/data/portfolio";
 import HeroJourneyRoute from "@/components/HeroJourneyRoute";
-import TopLeftWidgets from "@/components/TopLeftWidgets";
+import NowPlayingPlayer from "@/components/NowPlayingPlayer";
 import TypewriterText from "@/components/TypewriterText";
 
 type HeroProps = {
@@ -10,7 +10,6 @@ type HeroProps = {
 export default function Hero({ isDark: _isDark }: HeroProps) {
   return (
     <section className="relative overflow-hidden" id="top">
-      <TopLeftWidgets />
       <div className="relative mx-auto grid min-h-screen max-w-6xl items-center gap-8 px-6 py-24 sm:px-10 lg:grid-cols-[1fr_1fr] lg:px-12">
         <div className="animate-reveal-up mx-auto w-full max-w-[720px] text-left lg:relative lg:-top-12 lg:justify-self-end">
           <p className="premium-heading-depth text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
@@ -33,7 +32,7 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
           <video
             aria-label="Chibi Anson waving"
             autoPlay
-            className="animate-float-soft relative z-10 h-auto max-h-[44vh] w-auto max-w-full object-contain sm:max-h-[56vh] lg:max-h-[62vh]"
+            className="animate-float-soft relative z-10 h-auto max-h-[44vh] w-auto max-w-full object-contain sm:max-h-[56vh] lg:max-h-[52vh]"
             loop
             muted
             playsInline
@@ -53,6 +52,7 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
               </a>
             ))}
           </div>
+          <NowPlayingPlayer />
         </div>
       </div>
       <a

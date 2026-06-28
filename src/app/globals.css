@@ -145,13 +145,15 @@ button {
   animation-range: entry 0% cover 26%;
 }
 
-.bgm-volume-slider {
-  accent-color: var(--accent);
-  cursor: pointer;
+.now-playing-wave-bar {
+  transform-origin: bottom;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
-.music-pfp-beat {
-  animation: music-pfp-beat 1.05s ease-in-out infinite;
+.now-playing-wave-bar-active {
+  animation: now-playing-wave-pulse 0.9s ease-in-out infinite;
 }
 
 .about-greeting-pop {
@@ -214,7 +216,7 @@ button {
   .about-greeting-pop,
   .about-greeting-spark,
   .about-greeting-wave,
-  .music-pfp-beat {
+  .now-playing-wave-bar-active {
     animation: none;
   }
 }
@@ -338,17 +340,12 @@ button {
   }
 }
 
-@keyframes music-pfp-beat {
+@keyframes now-playing-wave-pulse {
   0%,
   100% {
-    transform: scale(1);
-    filter: saturate(1);
+    transform: scaleY(0.72);
   }
-  42% {
-    transform: scale(1.045);
-    filter: saturate(1.08);
-  }
-  58% {
-    transform: scale(0.99);
+  50% {
+    transform: scaleY(1);
   }
 }

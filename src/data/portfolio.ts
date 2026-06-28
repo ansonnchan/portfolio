@@ -302,6 +302,7 @@ export const projects: Project[] = [
       "Uses Upstash Redis rate limiting and progressive context compression to control usage while keeping conversations responsive."
     ]
   },
+  /*
   {
     title: "The Wallfacer Project",
     description:
@@ -321,6 +322,7 @@ export const projects: Project[] = [
       "Stored turns, actions, accusations, and outcomes so each run can be reviewed after the game."
     ]
   }
+  */
 ];
 
 export const sideQuests = {

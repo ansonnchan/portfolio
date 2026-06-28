@@ -1,6 +1,5 @@
 import { hero, socials } from "@/data/portfolio";
 import HeroJourneyRoute from "@/components/HeroJourneyRoute";
-import NowPlayingPlayer from "@/components/NowPlayingPlayer";
 import TypewriterText from "@/components/TypewriterText";
 
 type HeroProps = {
@@ -32,7 +31,7 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
           <video
             aria-label="Chibi Anson waving"
             autoPlay
-            className="animate-float-soft relative z-10 h-auto max-h-[44vh] w-auto max-w-full object-contain sm:max-h-[56vh] lg:max-h-[52vh]"
+            className="animate-float-soft relative z-10 h-auto max-h-[44vh] w-auto max-w-full object-contain sm:max-h-[56vh] lg:max-h-[62vh]"
             loop
             muted
             playsInline
@@ -52,7 +51,6 @@ export default function Hero({ isDark: _isDark }: HeroProps) {
               </a>
             ))}
           </div>
-          <NowPlayingPlayer />
         </div>
       </div>
       <a

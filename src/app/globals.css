@@ -145,17 +145,6 @@ button {
   animation-range: entry 0% cover 26%;
 }
 
-.now-playing-wave-bar {
-  transform-origin: bottom;
-  transition:
-    background-color 180ms ease,
-    transform 180ms ease;
-}
-
-.now-playing-wave-bar-active {
-  animation: now-playing-wave-pulse 0.9s ease-in-out infinite;
-}
-
 .about-greeting-pop {
   animation: about-greeting-pop 0.7s cubic-bezier(0.2, 1.4, 0.34, 1) both;
 }
@@ -215,8 +204,7 @@ button {
   .about-greeting-bubble,
   .about-greeting-pop,
   .about-greeting-spark,
-  .about-greeting-wave,
-  .now-playing-wave-bar-active {
+  .about-greeting-wave {
     animation: none;
   }
 }
@@ -337,15 +325,5 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes now-playing-wave-pulse {
-  0%,
-  100% {
-    transform: scaleY(0.72);
-  }
-  50% {
-    transform: scaleY(1);
   }
 }

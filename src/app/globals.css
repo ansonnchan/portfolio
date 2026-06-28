@@ -121,6 +121,40 @@ button {
   animation-range: entry 0% cover 26%;
 }
 
+.music-title-marquee-track {
+  animation: music-title-marquee var(--marquee-duration) linear infinite;
+}
+
+.music-title-viewport:hover .music-title-marquee-track {
+  animation-play-state: paused;
+}
+
+.music-progress-slider {
+  height: 0.25rem;
+  appearance: none;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.music-progress-slider::-webkit-slider-thumb {
+  height: 0.75rem;
+  width: 0.75rem;
+  appearance: none;
+  border: 2px solid #faf8f4;
+  border-radius: 50%;
+  background: #16803f;
+  box-shadow: 0 1px 4px rgba(22, 128, 63, 0.28);
+}
+
+.music-progress-slider::-moz-range-thumb {
+  height: 0.6rem;
+  width: 0.6rem;
+  border: 2px solid #faf8f4;
+  border-radius: 50%;
+  background: #16803f;
+  box-shadow: 0 1px 4px rgba(22, 128, 63, 0.28);
+}
+
 .about-greeting-pop {
   animation: about-greeting-pop 0.7s cubic-bezier(0.2, 1.4, 0.34, 1) both;
 }
@@ -180,7 +214,8 @@ button {
   .about-greeting-bubble,
   .about-greeting-pop,
   .about-greeting-spark,
-  .about-greeting-wave {
+  .about-greeting-wave,
+  .music-title-marquee-track {
     animation: none;
   }
 }
@@ -301,5 +336,14 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes music-title-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--marquee-distance));
   }
 }

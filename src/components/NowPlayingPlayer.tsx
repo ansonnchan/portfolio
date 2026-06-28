@@ -134,15 +134,15 @@ export default function NowPlayingPlayer() {
   }
 
   return (
-    <div className="pointer-events-none fixed inset-x-4 z-40 flex justify-end bottom-[max(1rem,env(safe-area-inset-bottom))] sm:left-auto sm:right-5 sm:w-auto">
+    <div className="pointer-events-none fixed inset-x-4 top-3 z-40 flex justify-start sm:right-auto sm:left-5 sm:top-4 sm:w-auto">
       <AnimatePresence initial={false} mode="wait">
         {isExpanded ? (
           <motion.aside
             animate={{ opacity: 1, scale: 1, y: 0 }}
             aria-label="Now playing"
             className="pointer-events-auto w-full max-w-[25rem] overflow-hidden rounded-[18px] border border-[#e5e7eb] bg-white text-zinc-900 shadow-[0_18px_45px_rgba(15,23,42,0.16)] sm:w-[25rem]"
-            exit={{ opacity: 0, scale: 0.96, y: 10 }}
-            initial={{ opacity: 0, scale: 0.96, y: 10 }}
+            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            initial={{ opacity: 0, scale: 0.96, y: -10 }}
             key="expanded-player"
             transition={transition}
           >
@@ -325,8 +325,8 @@ export default function NowPlayingPlayer() {
           <motion.div
             animate={{ opacity: 1, scale: 1, y: 0 }}
             className="group pointer-events-auto relative flex h-16 w-full max-w-[22rem] items-center gap-3 rounded-full border border-[#e5e7eb] bg-white px-3 text-zinc-900 shadow-[0_14px_35px_rgba(15,23,42,0.16)] transition-colors hover:border-emerald-600/30 sm:w-[22rem]"
-            exit={{ opacity: 0, scale: 0.96, y: 10 }}
-            initial={{ opacity: 0, scale: 0.96, y: 10 }}
+            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            initial={{ opacity: 0, scale: 0.96, y: -10 }}
             key="minimized-player"
             transition={transition}
           >

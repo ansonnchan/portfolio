@@ -33,8 +33,6 @@ const playlist: PlaylistTrack[] = [
 ];
 
 const playerStateStorageKey = "portfolio-now-playing-expanded";
-const rotationMilliseconds = 10_000;
-const progressTickMilliseconds = 250;
 
 export default function NowPlayingPlayer() {
   const shouldReduceMotion = useReducedMotion();
@@ -43,7 +41,6 @@ export default function NowPlayingPlayer() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isEqualizerActive, setIsEqualizerActive] = useState(true);
   const [isExpanded, setIsExpanded] = useState<boolean | null>(null);
-  const [progress, setProgress] = useState(0);
   const [albumArtFailed, setAlbumArtFailed] = useState(false);
   const track = playlist[trackIndex];
 
@@ -59,33 +56,6 @@ export default function NowPlayingPlayer() {
   }, []);
 
   useEffect(() => {
-    if (!isPlaying) {
-      return;
-    }
-
-    const interval = window.setInterval(() => {
-      setProgress((current) =>
-        Math.min(
-          current + (progressTickMilliseconds / rotationMilliseconds) * 100,
-          100
-        )
-      );
-    }, progressTickMilliseconds);
-
-    return () => window.clearInterval(interval);
-  }, [isPlaying]);
-
-  useEffect(() => {
-    if (progress < 100) {
-      return;
-    }
-
-    setTrackIndex((current) => (current + 1) % playlist.length);
-    setTrackChangeKey((current) => current + 1);
-    setProgress(0);
-  }, [progress]);
-
-  useEffect(() => {
     setAlbumArtFailed(false);
   }, [trackChangeKey]);
 
@@ -99,7 +69,6 @@ export default function NowPlayingPlayer() {
       (current) => (current + direction + playlist.length) % playlist.length
     );
     setTrackChangeKey((current) => current + 1);
-    setProgress(0);
   };
 
   const handleShuffle = () => {
@@ -112,7 +81,6 @@ export default function NowPlayingPlayer() {
       return (current + offset) % playlist.length;
     });
     setTrackChangeKey((current) => current + 1);
-    setProgress(0);
   };
 
   const transition = shouldReduceMotion
@@ -286,14 +254,6 @@ export default function NowPlayingPlayer() {
             key="minimized-player"
             transition={transition}
           >
-            <button
-              aria-label="Expand music player"
-              className="absolute inset-0 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/35"
-              onClick={() => updateExpandedState(true)}
-              title="Expand music player"
-              type="button"
-            />
-
             <span className="pointer-events-none relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
               <Music2 aria-hidden="true" className="h-5 w-5" />
             </span>

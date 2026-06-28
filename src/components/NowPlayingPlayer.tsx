@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  Check,
+  ListMusic,
   Maximize2,
   Minimize2,
   Music2,
@@ -95,8 +97,9 @@ export default function NowPlayingPlayer() {
   const [trackChangeKey, setTrackChangeKey] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(68);
+  const [volume, setVolume] = useState(20);
   const [isExpanded, setIsExpanded] = useState(true);
+  const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [durationSeconds, setDurationSeconds] = useState(() =>
     durationToSeconds(playlist[0].duration)
@@ -167,8 +170,7 @@ export default function NowPlayingPlayer() {
     }
 
     const measureTitle = () => {
-      const overflow = title.scrollWidth - viewport.clientWidth;
-      setMarqueeDistance(overflow > 0 ? title.scrollWidth + 48 : 0);
+      setMarqueeDistance(title.scrollWidth + 48);
     };
 
     measureTitle();
@@ -224,18 +226,21 @@ export default function NowPlayingPlayer() {
     }
   };
 
-  const handleShuffle = () => {
+  const handleSelectTrack = (nextTrackIndex: number) => {
     resumeAfterTrackChangeRef.current = isPlaying;
-    setTrackIndex((current) => {
-      if (playlist.length === 1) {
-        return current;
-      }
-
-      const offset = Math.floor(Math.random() * (playlist.length - 1)) + 1;
-      return (current + offset) % playlist.length;
-    });
+    setTrackIndex(nextTrackIndex);
     setTrackChangeKey((current) => current + 1);
     setElapsedSeconds(0);
+    setIsPlaylistOpen(false);
+  };
+
+  const handleShuffle = () => {
+    if (playlist.length === 1) {
+      return;
+    }
+
+    const offset = Math.floor(Math.random() * (playlist.length - 1)) + 1;
+    handleSelectTrack((trackIndex + offset) % playlist.length);
   };
 
   const handleVolumeChange = (nextVolume: number) => {
@@ -281,6 +286,46 @@ export default function NowPlayingPlayer() {
       />
 
       <div className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto">
+        <AnimatePresence>
+          {isPlaylistOpen && (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              className="pointer-events-auto absolute right-0 bottom-full mb-2 w-full max-w-[20rem] border border-[#e2ded7] bg-[#faf8f4] p-1.5 text-zinc-900 shadow-[0_16px_40px_rgba(38,34,29,0.16)]"
+              exit={{ opacity: 0, y: 6 }}
+              id="music-playlist-menu"
+              initial={{ opacity: 0, y: 6 }}
+              transition={transition}
+            >
+              {playlist.map((playlistTrack, index) => (
+                <button
+                  aria-current={index === trackIndex ? "true" : undefined}
+                  className="flex w-full items-center gap-2 px-2 py-1.5 text-left transition-colors hover:bg-emerald-50"
+                  key={playlistTrack.title}
+                  onClick={() => handleSelectTrack(index)}
+                  type="button"
+                >
+                  <img
+                    alt=""
+                    className="h-9 w-9 shrink-0 object-cover"
+                    src={playlistTrack.albumArt}
+                  />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-xs font-bold">
+                      {playlistTrack.title}
+                    </span>
+                    <span className="block truncate text-[11px] text-zinc-500">
+                      {playlistTrack.artist}
+                    </span>
+                  </span>
+                  {index === trackIndex && (
+                    <Check aria-hidden="true" className="h-4 w-4 text-emerald-700" />
+                  )}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <AnimatePresence initial={false} mode="popLayout">
         {isExpanded ? (
           <motion.aside
@@ -293,9 +338,24 @@ export default function NowPlayingPlayer() {
           >
             <motion.button
               {...buttonMotion}
+              aria-controls="music-playlist-menu"
+              aria-expanded={isPlaylistOpen}
+              aria-label="Choose a song"
+              className="absolute top-1.5 right-8 z-20 flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-colors hover:text-zinc-700"
+              onClick={() => setIsPlaylistOpen((current) => !current)}
+              title="Choose a song"
+              type="button"
+            >
+              <ListMusic aria-hidden="true" className="h-3.5 w-3.5" />
+            </motion.button>
+            <motion.button
+              {...buttonMotion}
               aria-label="Minimize music player"
               className="absolute top-1.5 right-1.5 z-20 flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-colors hover:text-zinc-700"
-              onClick={() => setIsExpanded(false)}
+              onClick={() => {
+                setIsPlaylistOpen(false);
+                setIsExpanded(false);
+              }}
               title="Minimize"
               type="button"
             >

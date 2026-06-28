@@ -35,7 +35,7 @@ const playlist: PlaylistTrack[] = [
     artist: "(G)I-DLE",
     audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
     duration: "2:42",
-    title: "Fate"
+    title: "Fate (나는 아픈 건 딱 질색이니까)"
   },
   {
     albumArt: "/assets/playlist/album/enhypen_polaroid_love.webp",
@@ -56,21 +56,21 @@ const playlist: PlaylistTrack[] = [
     artist: "iKON",
     audioSrc: "/assets/playlist/soundtrack/love_scenario.mp3",
     duration: "3:31",
-    title: "Love Scenario"
+    title: "Love Scenario (사랑을 했다)"
   },
   {
     albumArt: "/assets/playlist/album/fifty_fifty_cupid.jpg",
     artist: "FIFTY FIFTY",
     audioSrc: "/assets/playlist/soundtrack/cupid.mp3",
     duration: "2:50",
-    title: "Cupid"
+    title: "Cupid (큐피드) · Twin Ver."
   },
   {
     albumArt: "/assets/playlist/album/qwer_tbh.jpg",
     artist: "QWER",
     audioSrc: "/assets/playlist/soundtrack/qwer_tbh.mp3",
     duration: "2:55",
-    title: "TBH"
+    title: "T.B.H (고민중독)"
   }
 ];
 
@@ -290,7 +290,7 @@ export default function NowPlayingPlayer() {
           {isPlaylistOpen && (
             <motion.div
               animate={{ opacity: 1, y: 0 }}
-              className="pointer-events-auto absolute right-0 bottom-full mb-2 w-full max-w-[20rem] border border-[#e2ded7] bg-[#faf8f4] p-1.5 text-zinc-900 shadow-[0_16px_40px_rgba(38,34,29,0.16)]"
+              className="pointer-events-auto absolute right-0 bottom-full mb-2 w-full max-w-[19rem] border border-[#e2ded7] bg-[#faf8f4] p-1.5 text-zinc-900 shadow-[0_16px_40px_rgba(38,34,29,0.16)]"
               exit={{ opacity: 0, y: 6 }}
               id="music-playlist-menu"
               initial={{ opacity: 0, y: 6 }}
@@ -330,7 +330,7 @@ export default function NowPlayingPlayer() {
         {isExpanded ? (
           <motion.aside
             aria-label="Music player"
-            className="pointer-events-auto relative w-full max-w-[26rem] overflow-hidden border border-[#e2ded7] bg-[#faf8f4] text-zinc-900 shadow-[0_18px_45px_rgba(38,34,29,0.13)] sm:w-[26rem]"
+            className="pointer-events-auto relative w-full max-w-[23rem] overflow-hidden border border-[#e2ded7] bg-[#faf8f4] text-zinc-900 shadow-[0_18px_45px_rgba(38,34,29,0.13)] sm:w-[23rem]"
             key="expanded-player"
             layout
             layoutId="now-playing-player"
@@ -362,9 +362,9 @@ export default function NowPlayingPlayer() {
               <Minimize2 aria-hidden="true" className="h-3.5 w-3.5" />
             </motion.button>
 
-            <div className="grid min-h-[5.5rem] grid-cols-[4.5rem_minmax(0,1fr)_6.5rem] items-center gap-3 px-4 pt-3">
-              <div className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
-                <Music2 aria-hidden="true" className="h-7 w-7" strokeWidth={1.8} />
+            <div className="grid min-h-[4.5rem] grid-cols-[3.5rem_minmax(0,1fr)_6.5rem] items-center gap-2.5 px-3 pt-2.5">
+              <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
+                <Music2 aria-hidden="true" className="h-6 w-6" strokeWidth={1.8} />
                 <AnimatePresence initial={false} mode="wait">
                   {!albumArtFailed && (
                     <motion.img
@@ -483,7 +483,7 @@ export default function NowPlayingPlayer() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 px-4 pt-2 pb-3 font-mono text-[11px] text-zinc-500">
+            <div className="flex items-center gap-2.5 px-3 pt-1.5 pb-2.5 font-mono text-[11px] text-zinc-500">
               <time className="w-8 shrink-0">{formatTime(elapsedSeconds)}</time>
               <input
                 aria-label="Playback position"
@@ -504,14 +504,14 @@ export default function NowPlayingPlayer() {
         ) : (
           <motion.aside
             aria-label="Minimized music player"
-            className="pointer-events-auto flex h-16 w-full max-w-[26rem] items-center gap-3 border border-[#e2ded7] bg-[#faf8f4] px-2.5 text-zinc-900 shadow-[0_14px_35px_rgba(38,34,29,0.13)] sm:w-[26rem]"
+            className="pointer-events-auto flex h-14 w-full max-w-[23rem] items-center gap-2 border border-[#e2ded7] bg-[#faf8f4] px-2 text-zinc-900 shadow-[0_14px_35px_rgba(38,34,29,0.13)] sm:w-[23rem]"
             key="minimized-player"
             layout
             layoutId="now-playing-player"
             transition={transition}
           >
-            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
-              <Music2 aria-hidden="true" className="h-5 w-5" />
+            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
+              <Music2 aria-hidden="true" className="h-[1.15rem] w-[1.15rem]" />
               {!albumArtFailed && (
                 <motion.img
                   alt=""

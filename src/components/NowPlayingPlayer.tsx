@@ -99,15 +99,14 @@ export default function NowPlayingPlayer() {
 
   return (
     <div className="pointer-events-none fixed inset-x-4 top-3 z-40 flex justify-start sm:right-auto sm:left-5 sm:top-4 sm:w-auto">
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence initial={false} mode="popLayout">
         {isExpanded ? (
           <motion.aside
-            animate={{ opacity: 1, scale: 1, y: 0 }}
             aria-label="Now playing"
             className="pointer-events-auto w-full max-w-[25rem] overflow-hidden rounded-[18px] border border-[#e5e7eb] bg-white text-zinc-900 shadow-[0_18px_45px_rgba(15,23,42,0.16)] sm:w-[25rem]"
-            exit={{ opacity: 0, scale: 0.96, y: -10 }}
-            initial={{ opacity: 0, scale: 0.96, y: -10 }}
             key="expanded-player"
+            layout
+            layoutId="now-playing-player"
             transition={transition}
           >
             <div className="flex min-h-[6.5rem] items-center gap-3 px-3 py-3">
@@ -247,11 +246,10 @@ export default function NowPlayingPlayer() {
           </motion.aside>
         ) : (
           <motion.div
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="group pointer-events-auto relative flex h-16 w-full max-w-[22rem] items-center gap-3 rounded-full border border-[#e5e7eb] bg-white px-3 text-zinc-900 shadow-[0_14px_35px_rgba(15,23,42,0.16)] transition-colors hover:border-emerald-600/30 sm:w-[22rem]"
-            exit={{ opacity: 0, scale: 0.96, y: -10 }}
-            initial={{ opacity: 0, scale: 0.96, y: -10 }}
+            className="group pointer-events-auto relative flex h-16 w-full max-w-[25rem] items-center gap-3 rounded-full border border-[#e5e7eb] bg-white px-3 text-zinc-900 shadow-[0_14px_35px_rgba(15,23,42,0.16)] transition-colors hover:border-emerald-600/30 sm:w-[25rem]"
             key="minimized-player"
+            layout
+            layoutId="now-playing-player"
             transition={transition}
           >
             <span className="pointer-events-none relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">

@@ -74,7 +74,7 @@ const playlist: PlaylistTrack[] = [
   }
 ];
 
-const outputGain = 0.6;
+const outputGain = 0.3;
 
 function durationToSeconds(duration: string) {
   const [minutes, seconds] = duration.split(":").map(Number);
@@ -146,7 +146,7 @@ export default function NowPlayingPlayer() {
   const [trackChangeKey, setTrackChangeKey] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(10);
+  const [volume, setVolume] = useState(5);
   const [isExpanded, setIsExpanded] = useState(true);
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [hasSelectedInitialTrack, setHasSelectedInitialTrack] = useState(false);

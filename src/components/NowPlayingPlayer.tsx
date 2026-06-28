@@ -35,10 +35,6 @@ const playlist: PlaylistTrack[] = [
 const playerStateStorageKey = "portfolio-now-playing-expanded";
 const rotationMilliseconds = 10_000;
 const progressTickMilliseconds = 250;
-const waveformHeights = [
-  42, 68, 36, 78, 52, 88, 46, 64, 32, 72, 56, 92, 48, 76, 38, 82, 58, 96, 44, 70,
-  34, 80, 54, 90, 40, 66, 50, 84, 36, 74, 60, 94
-];
 
 export default function NowPlayingPlayer() {
   const shouldReduceMotion = useReducedMotion();
@@ -146,7 +142,7 @@ export default function NowPlayingPlayer() {
             key="expanded-player"
             transition={transition}
           >
-            <div className="flex min-h-[5.25rem] items-center gap-3 px-3 pt-3 pb-2">
+            <div className="flex min-h-[6.5rem] items-center gap-3 px-3 py-3">
               <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-emerald-50 text-emerald-700">
                 <Music2 aria-hidden="true" className="h-7 w-7" strokeWidth={1.8} />
                 <AnimatePresence initial={false} mode="wait">
@@ -280,46 +276,6 @@ export default function NowPlayingPlayer() {
               </div>
             </div>
 
-            <div
-              aria-label={`${Math.round(progress)} percent played`}
-              aria-valuemax={100}
-              aria-valuemin={0}
-              aria-valuenow={Math.round(progress)}
-              className="flex h-7 items-end gap-1 px-3 pb-3"
-              role="progressbar"
-            >
-              {waveformHeights.map((height, index) => {
-                const barProgress = ((index + 1) / waveformHeights.length) * 100;
-                const isPlayed = barProgress <= progress;
-                const animateWaveform =
-                  isPlayed && isPlaying && isEqualizerActive && !shouldReduceMotion;
-
-                return (
-                  <motion.span
-                    animate={{
-                      backgroundColor: isPlayed ? "#059669" : "#e5e7eb",
-                      scaleY: animateWaveform ? [0.72, 1, 0.78] : 1
-                    }}
-                    aria-hidden="true"
-                    className="min-w-0 flex-1 rounded-full"
-                    key={`${height}-${index}`}
-                    style={{
-                      height: `${height}%`,
-                      transformOrigin: "bottom"
-                    }}
-                    transition={{
-                      backgroundColor: { duration: shouldReduceMotion ? 0 : 0.18 },
-                      scaleY: {
-                        delay: (index % 6) * 0.08,
-                        duration: 0.9,
-                        ease: "easeInOut",
-                        repeat: animateWaveform ? Infinity : 0
-                      }
-                    }}
-                  />
-                );
-              })}
-            </div>
           </motion.aside>
         ) : (
           <motion.div

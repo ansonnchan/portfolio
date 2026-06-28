@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 type ContributionLevel =
   | "NONE"
@@ -61,6 +62,11 @@ type LoadState =
   | { status: "success"; calendar: ContributionCalendar }
   | { status: "error" };
 
+type TooltipPosition = {
+  left: number;
+  top: number;
+};
+
 const levelClasses: Record<ContributionLevel, string> = {
   NONE: "bg-zinc-200/80 dark:bg-white/10",
   FIRST_QUARTILE: "bg-emerald-200 dark:bg-emerald-900",
@@ -101,6 +107,7 @@ const numberFormatter = new Intl.NumberFormat("en-US");
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   month: "short",
+  weekday: "short",
   year: "numeric"
 });
 const lastUpdatedFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -108,12 +115,48 @@ const lastUpdatedFormatter = new Intl.DateTimeFormat("en-GB", {
   month: "2-digit",
   year: "2-digit"
 });
+const tooltipMonthFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "long"
+});
 
 function getContributionLabel(day: ContributionDay) {
   const contributions =
     day.contributionCount === 1 ? "1 contribution" : `${day.contributionCount} contributions`;
 
   return `${contributions} on ${dateFormatter.format(new Date(`${day.date}T00:00:00`))}`;
+}
+
+function getOrdinalSuffix(day: number) {
+  if (day >= 11 && day <= 13) {
+    return "th";
+  }
+
+  if (day % 10 === 1) {
+    return "st";
+  }
+
+  if (day % 10 === 2) {
+    return "nd";
+  }
+
+  if (day % 10 === 3) {
+    return "rd";
+  }
+
+  return "th";
+}
+
+function getContributionTooltipLabel(day: ContributionDay) {
+  const date = new Date(`${day.date}T00:00:00`);
+  const dayOfMonth = date.getDate();
+  const contributions =
+    day.contributionCount === 0
+      ? "No contributions"
+      : day.contributionCount === 1
+        ? "1 contribution"
+        : `${day.contributionCount} contributions`;
+
+  return `${contributions} on ${tooltipMonthFormatter.format(date)} ${dayOfMonth}${getOrdinalSuffix(dayOfMonth)}.`;
 }
 
 function toDateKey(date: Date) {
@@ -224,6 +267,8 @@ function SkeletonGraph() {
 
 export default function GitHubContributionGraph() {
   const [state, setState] = useState<LoadState>({ status: "loading" });
+  const [activeDay, setActiveDay] = useState<NormalizedContributionDay | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<TooltipPosition | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -268,6 +313,26 @@ export default function GitHubContributionGraph() {
         : [],
     [normalizedCalendar]
   );
+
+  const showDayTooltip = (
+    day: NormalizedContributionDay,
+    target: HTMLButtonElement
+  ) => {
+    const bounds = target.getBoundingClientRect();
+    setActiveDay(day);
+    setTooltipPosition({
+      left: Math.min(
+        window.innerWidth - 12,
+        Math.max(12, bounds.left + bounds.width / 2)
+      ),
+      top: bounds.top - 8
+    });
+  };
+
+  const hideDayTooltip = () => {
+    setActiveDay(null);
+    setTooltipPosition(null);
+  };
 
   return (
     <section
@@ -323,7 +388,7 @@ export default function GitHubContributionGraph() {
                 <div
                   aria-label={`${numberFormatter.format(calendar.totalContributions)} GitHub contributions in ${calendar.year}`}
                   className="grid w-max grid-flow-col grid-rows-7 gap-[3px]"
-                  role="img"
+                  role="group"
                 >
                   {normalizedCalendar.weeks.flatMap((week) =>
                     week.contributionDays.map((day) => {
@@ -341,12 +406,27 @@ export default function GitHubContributionGraph() {
                         ? futureDayClass
                         : levelClasses[day.contributionLevel];
 
+                      const isActive = activeDay?.date === day.date;
+
                       return (
-                        <span
+                        <button
                           aria-label={getContributionLabel(day)}
-                          className={`h-[var(--github-day-size)] w-[var(--github-day-size)] rounded-[3px] border border-black/5 transition hover:scale-125 hover:ring-2 hover:ring-emerald-500/30 dark:border-white/10 ${dayClass}`}
+                          className={`h-[var(--github-day-size)] w-[var(--github-day-size)] rounded-[3px] border border-black/5 transition hover:scale-125 hover:ring-2 hover:ring-emerald-500/30 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 dark:border-white/10 ${dayClass} ${
+                            isActive ? "ring-2 ring-emerald-500/50" : ""
+                          }`}
                           key={day.date}
-                          title={getContributionLabel(day)}
+                          onBlur={hideDayTooltip}
+                          onClick={(event) => showDayTooltip(day, event.currentTarget)}
+                          onFocus={(event) => showDayTooltip(day, event.currentTarget)}
+                          onMouseEnter={(event) =>
+                            showDayTooltip(day, event.currentTarget)
+                          }
+                          onMouseLeave={(event) => {
+                            if (event.currentTarget !== document.activeElement) {
+                              hideDayTooltip();
+                            }
+                          }}
+                          type="button"
                         />
                       );
                     })
@@ -385,6 +465,23 @@ export default function GitHubContributionGraph() {
           </footer>
         </>
       )}
+
+      {activeDay &&
+        tooltipPosition &&
+        createPortal(
+          <div
+            className="pointer-events-none fixed z-[100] -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-lg"
+            role="tooltip"
+            style={{
+              left: tooltipPosition.left,
+              top: tooltipPosition.top
+            }}
+          >
+            {getContributionTooltipLabel(activeDay)}
+            <span className="absolute left-1/2 top-full h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-zinc-900" />
+          </div>,
+          document.body
+        )}
     </section>
   );
 }

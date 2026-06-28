@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import About from "@/components/About";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
@@ -12,33 +9,13 @@ import SideQuestGallery from "@/components/SideQuestGallery";
 import { experiences, projects, sideQuests } from "@/data/portfolio";
 
 export default function Portfolio() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const shouldUseDark = storedTheme ? storedTheme === "dark" : prefersDark;
-
-    setIsDark(shouldUseDark);
-    document.documentElement.classList.toggle("dark", shouldUseDark);
-  }, []);
-
-  const handleToggleTheme = () => {
-    setIsDark((current) => {
-      const next = !current;
-      document.documentElement.classList.toggle("dark", next);
-      window.localStorage.setItem("theme", next ? "dark" : "light");
-      return next;
-    });
-  };
-
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <Navbar isDark={isDark} onToggleTheme={handleToggleTheme} />
-      <Hero isDark={isDark} />
+      <Navbar />
+      <Hero />
 
       <main>
-        <About isDark={isDark} />
+        <About />
 
         <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">

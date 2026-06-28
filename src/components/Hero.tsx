@@ -2,11 +2,7 @@ import { hero, socials } from "@/data/portfolio";
 import HeroJourneyRoute from "@/components/HeroJourneyRoute";
 import TypewriterText from "@/components/TypewriterText";
 
-type HeroProps = {
-  isDark: boolean;
-};
-
-export default function Hero({ isDark: _isDark }: HeroProps) {
+export default function Hero() {
   return (
     <section className="relative overflow-hidden" id="top">
       <div className="relative mx-auto grid min-h-screen max-w-6xl items-center gap-8 px-6 py-24 sm:px-10 lg:grid-cols-[1fr_1fr] lg:px-12">

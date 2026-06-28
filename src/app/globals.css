@@ -12,16 +12,6 @@
   --accent: #16803f;
 }
 
-.dark {
-  --background: #10140f;
-  --foreground: #f4f7ef;
-  --muted: #b4bdae;
-  --surface: rgba(20, 25, 18, 0.82);
-  --surface-strong: #171d15;
-  --border: rgba(226, 232, 215, 0.14);
-  --accent: #5ee28e;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -69,12 +59,6 @@ button {
   background-size: 34px 34px;
 }
 
-.dark .soft-grid {
-  background-image:
-    linear-gradient(rgba(94, 226, 142, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 226, 142, 0.08) 1px, transparent 1px);
-}
-
 .animate-float-soft {
   animation: float-soft 6s ease-in-out infinite;
 }
@@ -99,10 +83,6 @@ button {
   text-shadow: 0 7px 10px rgba(15, 23, 42, 0.07);
 }
 
-.dark .premium-heading-depth {
-  text-shadow: 0 7px 12px rgba(0, 0, 0, 0.16);
-}
-
 .hero-character-backdrop {
   position: absolute;
   left: 50%;
@@ -116,10 +96,6 @@ button {
   filter: blur(30px);
   opacity: 0.52;
   transform: translate(-50%, -50%);
-}
-
-.dark .hero-character-backdrop {
-  opacity: 0.12;
 }
 
 .arrow-chevron {

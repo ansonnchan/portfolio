@@ -80,7 +80,6 @@ export const socials: SocialLink[] = [
 
 export const about = {
   profileImage: "/assets/pfp.jpeg",
-  darkProfileImage: "/assets/about/dark_me.JPG",
   greeting: "Hey there!",
   paragraphs: [
     [

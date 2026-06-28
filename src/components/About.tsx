@@ -2,11 +2,7 @@ import { about } from "@/data/portfolio";
 import GitHubContributionGraph from "@/components/GitHubContributionGraph";
 import RichText from "@/components/RichText";
 
-type AboutProps = {
-  isDark: boolean;
-};
-
-export default function About({ isDark }: AboutProps) {
+export default function About() {
   return (
     <section className="scroll-fade scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
@@ -19,17 +15,8 @@ export default function About({ isDark }: AboutProps) {
             <div className="relative aspect-square overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
               <img
                 alt="Anson Chan profile"
-                className={`absolute inset-0 h-full w-full rounded-lg object-cover transition-opacity duration-500 ${
-                  isDark ? "opacity-0" : "opacity-100"
-                }`}
+                className="absolute inset-0 h-full w-full rounded-lg object-cover"
                 src={about.profileImage}
-              />
-              <img
-                alt="Anson Chan profile in dark mode"
-                className={`absolute inset-0 h-full w-full rounded-lg object-cover transition-opacity duration-500 ${
-                  isDark ? "opacity-100" : "opacity-0"
-                }`}
-                src={about.darkProfileImage}
               />
             </div>
           </aside>

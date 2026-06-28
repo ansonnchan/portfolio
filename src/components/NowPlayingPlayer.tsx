@@ -17,8 +17,8 @@ import { useEffect, useRef, useState } from "react";
 type PlaylistTrack = {
   albumArt: string;
   artist: string;
+  audioSrc: string;
   duration: string;
-  mood: string;
   title: string;
 };
 
@@ -29,11 +29,46 @@ type PlayerStyle = CSSProperties & {
 
 const playlist: PlaylistTrack[] = [
   {
-    albumArt: "/assets/music/diverseddie_pfp.jpg",
-    artist: "diverseddie (舵)",
-    duration: "3:34",
-    mood: "chill vibes",
-    title: "procrastination (拖延症)"
+    albumArt: "/assets/playlist/album/gidle_fate.jpg",
+    artist: "(G)I-DLE",
+    audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
+    duration: "2:42",
+    title: "Fate"
+  },
+  {
+    albumArt: "/assets/playlist/album/enhypen_polaroid_love.webp",
+    artist: "ENHYPEN",
+    audioSrc: "/assets/playlist/soundtrack/polaroid_love.mp3",
+    duration: "3:05",
+    title: "Polaroid Love"
+  },
+  {
+    albumArt: "/assets/playlist/album/illit_midnight_fiction.jpg",
+    artist: "ILLIT",
+    audioSrc: "/assets/playlist/soundtrack/Midnight Fiction.mp3",
+    duration: "2:48",
+    title: "Midnight Fiction"
+  },
+  {
+    albumArt: "/assets/playlist/album/ikon_love_scenario.jpeg",
+    artist: "iKON",
+    audioSrc: "/assets/playlist/soundtrack/love_scenario.mp3",
+    duration: "3:31",
+    title: "Love Scenario"
+  },
+  {
+    albumArt: "/assets/playlist/album/fifty_fifty_cupid.jpg",
+    artist: "FIFTY FIFTY",
+    audioSrc: "/assets/playlist/soundtrack/cupid.mp3",
+    duration: "2:50",
+    title: "Cupid"
+  },
+  {
+    albumArt: "/assets/playlist/album/qwer_tbh.jpg",
+    artist: "QWER",
+    audioSrc: "/assets/playlist/soundtrack/qwer_tbh.mp3",
+    duration: "2:55",
+    title: "TBH"
   }
 ];
 
@@ -52,6 +87,8 @@ function formatTime(timeInSeconds: number) {
 
 export default function NowPlayingPlayer() {
   const shouldReduceMotion = useReducedMotion();
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const resumeAfterTrackChangeRef = useRef(false);
   const titleViewportRef = useRef<HTMLDivElement>(null);
   const titleTextRef = useRef<HTMLSpanElement>(null);
   const [trackIndex, setTrackIndex] = useState(0);
@@ -61,31 +98,57 @@ export default function NowPlayingPlayer() {
   const [volume, setVolume] = useState(68);
   const [isExpanded, setIsExpanded] = useState(true);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [durationSeconds, setDurationSeconds] = useState(() =>
+    durationToSeconds(playlist[0].duration)
+  );
   const [albumArtFailed, setAlbumArtFailed] = useState(false);
   const [marqueeDistance, setMarqueeDistance] = useState(0);
   const track = playlist[trackIndex];
-  const durationSeconds = durationToSeconds(track.duration);
+  const fallbackDurationSeconds = durationToSeconds(track.duration);
   const progressPercent =
     durationSeconds > 0 ? (elapsedSeconds / durationSeconds) * 100 : 0;
   const shouldMarquee = marqueeDistance > 0 && !shouldReduceMotion;
 
   useEffect(() => {
-    if (!isPlaying) {
+    const audio = audioRef.current;
+
+    if (!audio) {
       return;
     }
 
-    const interval = window.setInterval(() => {
-      setElapsedSeconds((current) => Math.min(current + 0.1, durationSeconds));
-    }, 100);
+    const shouldResume = resumeAfterTrackChangeRef.current;
+    resumeAfterTrackChangeRef.current = false;
+    setElapsedSeconds(0);
+    setDurationSeconds(fallbackDurationSeconds);
+    audio.load();
 
-    return () => window.clearInterval(interval);
-  }, [durationSeconds, isPlaying]);
+    if (!shouldResume) {
+      audio.pause();
+      setIsPlaying(false);
+      return;
+    }
+
+    const resumePlayback = () => {
+      void audio.play().catch(() => setIsPlaying(false));
+    };
+
+    if (audio.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      resumePlayback();
+      return;
+    }
+
+    audio.addEventListener("canplay", resumePlayback, { once: true });
+    return () => audio.removeEventListener("canplay", resumePlayback);
+  }, [fallbackDurationSeconds, trackChangeKey, trackIndex]);
 
   useEffect(() => {
-    if (elapsedSeconds >= durationSeconds && isPlaying) {
-      setIsPlaying(false);
+    const audio = audioRef.current;
+
+    if (audio) {
+      audio.muted = isMuted;
+      audio.volume = volume / 100;
     }
-  }, [durationSeconds, elapsedSeconds, isPlaying]);
+  }, [isMuted, volume]);
 
   useEffect(() => {
     setAlbumArtFailed(false);
@@ -137,15 +200,32 @@ export default function NowPlayingPlayer() {
     background: `linear-gradient(to right, #16803f 0%, #16803f ${displayedVolume}%, #dedbd5 ${displayedVolume}%, #dedbd5 100%)`
   };
 
-  const handleTogglePlay = () => {
-    if (!isPlaying && elapsedSeconds >= durationSeconds) {
+  const handleTogglePlay = async () => {
+    const audio = audioRef.current;
+
+    if (!audio) {
+      return;
+    }
+
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+
+    if (audio.currentTime >= durationSeconds) {
+      audio.currentTime = 0;
       setElapsedSeconds(0);
     }
 
-    setIsPlaying((current) => !current);
+    try {
+      await audio.play();
+    } catch {
+      setIsPlaying(false);
+    }
   };
 
   const handleShuffle = () => {
+    resumeAfterTrackChangeRef.current = isPlaying;
     setTrackIndex((current) => {
       if (playlist.length === 1) {
         return current;
@@ -166,9 +246,42 @@ export default function NowPlayingPlayer() {
     }
   };
 
+  const handleSeek = (nextTime: number) => {
+    const audio = audioRef.current;
+
+    if (audio) {
+      audio.currentTime = nextTime;
+    }
+
+    setElapsedSeconds(nextTime);
+  };
+
   return (
-    <div className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto">
-      <AnimatePresence initial={false} mode="popLayout">
+    <>
+      <audio
+        onDurationChange={(event) => {
+          const actualDuration = event.currentTarget.duration;
+          setDurationSeconds(
+            Number.isFinite(actualDuration) && actualDuration > 0
+              ? actualDuration
+              : fallbackDurationSeconds
+          );
+        }}
+        onEnded={() => {
+          setElapsedSeconds(durationSeconds);
+          setIsPlaying(false);
+        }}
+        onError={() => setDurationSeconds(fallbackDurationSeconds)}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+        onTimeUpdate={(event) => setElapsedSeconds(event.currentTarget.currentTime)}
+        preload="metadata"
+        ref={audioRef}
+        src={track.audioSrc}
+      />
+
+      <div className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto">
+        <AnimatePresence initial={false} mode="popLayout">
         {isExpanded ? (
           <motion.aside
             aria-label="Music player"
@@ -317,13 +430,15 @@ export default function NowPlayingPlayer() {
                 className="music-progress-slider min-w-0 flex-1"
                 max={durationSeconds}
                 min="0"
-                onChange={(event) => setElapsedSeconds(Number(event.target.value))}
+                onChange={(event) => handleSeek(Number(event.target.value))}
                 step="0.1"
                 style={progressStyle}
                 type="range"
                 value={elapsedSeconds}
               />
-              <time className="w-8 shrink-0 text-right">{track.duration}</time>
+              <time className="w-8 shrink-0 text-right">
+                {formatTime(durationSeconds)}
+              </time>
             </div>
           </motion.aside>
         ) : (
@@ -425,7 +540,8 @@ export default function NowPlayingPlayer() {
             </motion.button>
           </motion.aside>
         )}
-      </AnimatePresence>
-    </div>
+        </AnimatePresence>
+      </div>
+    </>
   );
 }

@@ -123,20 +123,24 @@ button {
 
 .music-title-marquee-track {
   animation: music-title-marquee var(--marquee-duration) linear infinite;
+  animation-delay: 1s;
+  animation-fill-mode: both;
 }
 
 .music-title-viewport:hover .music-title-marquee-track {
   animation-play-state: paused;
 }
 
-.music-progress-slider {
+.music-progress-slider,
+.music-volume-slider {
   height: 0.25rem;
   appearance: none;
   border-radius: 9999px;
   cursor: pointer;
 }
 
-.music-progress-slider::-webkit-slider-thumb {
+.music-progress-slider::-webkit-slider-thumb,
+.music-volume-slider::-webkit-slider-thumb {
   height: 0.75rem;
   width: 0.75rem;
   appearance: none;
@@ -146,7 +150,8 @@ button {
   box-shadow: 0 1px 4px rgba(22, 128, 63, 0.28);
 }
 
-.music-progress-slider::-moz-range-thumb {
+.music-progress-slider::-moz-range-thumb,
+.music-volume-slider::-moz-range-thumb {
   height: 0.6rem;
   width: 0.6rem;
   border: 2px solid #faf8f4;

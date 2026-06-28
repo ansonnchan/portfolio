@@ -56,8 +56,9 @@ export default function NowPlayingPlayer() {
   const titleTextRef = useRef<HTMLSpanElement>(null);
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackChangeKey, setTrackChangeKey] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(68);
   const [isExpanded, setIsExpanded] = useState(true);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [albumArtFailed, setAlbumArtFailed] = useState(false);
@@ -131,6 +132,10 @@ export default function NowPlayingPlayer() {
   const progressStyle = {
     background: `linear-gradient(to right, #16803f 0%, #16803f ${progressPercent}%, #dedbd5 ${progressPercent}%, #dedbd5 100%)`
   };
+  const displayedVolume = isMuted ? 0 : volume;
+  const volumeStyle = {
+    background: `linear-gradient(to right, #16803f 0%, #16803f ${displayedVolume}%, #dedbd5 ${displayedVolume}%, #dedbd5 100%)`
+  };
 
   const handleTogglePlay = () => {
     if (!isPlaying && elapsedSeconds >= durationSeconds) {
@@ -153,8 +158,16 @@ export default function NowPlayingPlayer() {
     setElapsedSeconds(0);
   };
 
+  const handleVolumeChange = (nextVolume: number) => {
+    setVolume(nextVolume);
+
+    if (nextVolume > 0) {
+      setIsMuted(false);
+    }
+  };
+
   return (
-    <div className="pointer-events-none fixed inset-x-4 top-3 z-40 flex justify-start sm:right-auto sm:left-5 sm:top-4 sm:w-auto">
+    <div className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto">
       <AnimatePresence initial={false} mode="popLayout">
         {isExpanded ? (
           <motion.aside
@@ -212,6 +225,7 @@ export default function NowPlayingPlayer() {
                       className={`flex w-max items-center whitespace-nowrap font-mono text-sm font-bold ${
                         shouldMarquee ? "music-title-marquee-track" : ""
                       }`}
+                      key={`expanded-title-${trackChangeKey}`}
                       style={marqueeStyle}
                     >
                       <span ref={titleTextRef}>{track.title}</span>
@@ -226,50 +240,73 @@ export default function NowPlayingPlayer() {
                 <p className="mt-1 truncate text-xs text-zinc-500">{track.artist}</p>
               </div>
 
-              <div className="flex items-center justify-end gap-1 pr-1">
-                <motion.button
-                  {...buttonMotion}
-                  aria-label="Shuffle playlist"
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
-                  onClick={handleShuffle}
-                  title="Shuffle"
-                  type="button"
-                >
-                  <Shuffle aria-hidden="true" className="h-4 w-4" />
-                </motion.button>
-                <motion.button
-                  {...buttonMotion}
-                  aria-label={isPlaying ? "Pause playlist" : "Play playlist"}
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700"
-                  onClick={handleTogglePlay}
-                  title={isPlaying ? "Pause" : "Play"}
-                  type="button"
-                >
-                  {isPlaying ? (
-                    <Pause aria-hidden="true" className="h-5 w-5" fill="currentColor" />
-                  ) : (
-                    <Play
-                      aria-hidden="true"
-                      className="ml-0.5 h-5 w-5"
-                      fill="currentColor"
-                    />
-                  )}
-                </motion.button>
-                <motion.button
-                  {...buttonMotion}
-                  aria-label={isMuted ? "Unmute player" : "Mute player"}
-                  aria-pressed={isMuted}
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
-                  onClick={() => setIsMuted((current) => !current)}
-                  title={isMuted ? "Unmute" : "Mute"}
-                  type="button"
-                >
-                  {isMuted ? (
-                    <VolumeX aria-hidden="true" className="h-[1.15rem] w-[1.15rem]" />
-                  ) : (
-                    <Volume2 aria-hidden="true" className="h-[1.15rem] w-[1.15rem]" />
-                  )}
-                </motion.button>
+              <div className="flex flex-col items-end pr-1">
+                <div className="flex items-center justify-end gap-1">
+                  <motion.button
+                    {...buttonMotion}
+                    aria-label="Shuffle playlist"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+                    onClick={handleShuffle}
+                    title="Shuffle"
+                    type="button"
+                  >
+                    <Shuffle aria-hidden="true" className="h-4 w-4" />
+                  </motion.button>
+                  <motion.button
+                    {...buttonMotion}
+                    aria-label={isPlaying ? "Pause playlist" : "Play playlist"}
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700"
+                    onClick={handleTogglePlay}
+                    title={isPlaying ? "Pause" : "Play"}
+                    type="button"
+                  >
+                    {isPlaying ? (
+                      <Pause
+                        aria-hidden="true"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                      />
+                    ) : (
+                      <Play
+                        aria-hidden="true"
+                        className="ml-0.5 h-5 w-5"
+                        fill="currentColor"
+                      />
+                    )}
+                  </motion.button>
+                  <motion.button
+                    {...buttonMotion}
+                    aria-label={isMuted ? "Unmute player" : "Mute player"}
+                    aria-pressed={isMuted}
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+                    onClick={() => setIsMuted((current) => !current)}
+                    title={isMuted ? "Unmute" : "Mute"}
+                    type="button"
+                  >
+                    {isMuted ? (
+                      <VolumeX
+                        aria-hidden="true"
+                        className="h-[1.15rem] w-[1.15rem]"
+                      />
+                    ) : (
+                      <Volume2
+                        aria-hidden="true"
+                        className="h-[1.15rem] w-[1.15rem]"
+                      />
+                    )}
+                  </motion.button>
+                </div>
+                <input
+                  aria-label="Player volume"
+                  className="music-volume-slider mt-1.5 w-24"
+                  max="100"
+                  min="0"
+                  onChange={(event) => handleVolumeChange(Number(event.target.value))}
+                  step="1"
+                  style={volumeStyle}
+                  type="range"
+                  value={displayedVolume}
+                />
               </div>
             </div>
 
@@ -319,6 +356,7 @@ export default function NowPlayingPlayer() {
                   className={`flex w-max items-center whitespace-nowrap font-mono text-sm font-bold ${
                     shouldMarquee ? "music-title-marquee-track" : ""
                   }`}
+                  key={`minimized-title-${trackChangeKey}`}
                   style={marqueeStyle}
                 >
                   <span ref={titleTextRef}>{track.title}</span>
@@ -334,8 +372,18 @@ export default function NowPlayingPlayer() {
 
             <motion.button
               {...buttonMotion}
+              aria-label="Shuffle playlist"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+              onClick={handleShuffle}
+              title="Shuffle"
+              type="button"
+            >
+              <Shuffle aria-hidden="true" className="h-4 w-4" />
+            </motion.button>
+            <motion.button
+              {...buttonMotion}
               aria-label={isPlaying ? "Pause playlist" : "Play playlist"}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700"
               onClick={handleTogglePlay}
               title={isPlaying ? "Pause" : "Play"}
               type="button"
@@ -352,8 +400,23 @@ export default function NowPlayingPlayer() {
             </motion.button>
             <motion.button
               {...buttonMotion}
+              aria-label={isMuted ? "Unmute player" : "Mute player"}
+              aria-pressed={isMuted}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+              onClick={() => setIsMuted((current) => !current)}
+              title={isMuted ? "Unmute" : "Mute"}
+              type="button"
+            >
+              {isMuted ? (
+                <VolumeX aria-hidden="true" className="h-[1.15rem] w-[1.15rem]" />
+              ) : (
+                <Volume2 aria-hidden="true" className="h-[1.15rem] w-[1.15rem]" />
+              )}
+            </motion.button>
+            <motion.button
+              {...buttonMotion}
               aria-label="Maximize music player"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors hover:text-emerald-700"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors hover:text-emerald-700"
               onClick={() => setIsExpanded(true)}
               title="Maximize"
               type="button"

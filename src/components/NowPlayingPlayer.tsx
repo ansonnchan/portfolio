@@ -35,13 +35,13 @@ const playlist: PlaylistTrack[] = [
     artist: "(G)I-DLE",
     audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
     duration: "2:42",
-    title: "Fate (나는 아픈 건 딱 질색이니까)"
+    title: "Fate (나는아픈건딱질색이니까)"
   },
   {
     albumArt: "/assets/playlist/album/enhypen_polaroid_love.webp",
     artist: "ENHYPEN",
     audioSrc: "/assets/playlist/soundtrack/polaroid_love.mp3",
-    duration: "3:05",
+    duration: "3:04",
     title: "Polaroid Love"
   },
   {
@@ -49,7 +49,7 @@ const playlist: PlaylistTrack[] = [
     artist: "ILLIT",
     audioSrc: "/assets/playlist/soundtrack/Midnight Fiction.mp3",
     duration: "2:48",
-    title: "Midnight Fiction"
+    title: "Midnight Fiction (마지막 이야기)"
   },
   {
     albumArt: "/assets/playlist/album/ikon_love_scenario.jpeg",
@@ -100,6 +100,7 @@ export default function NowPlayingPlayer() {
   const [volume, setVolume] = useState(20);
   const [isExpanded, setIsExpanded] = useState(true);
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
+  const [hasSelectedInitialTrack, setHasSelectedInitialTrack] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [durationSeconds, setDurationSeconds] = useState(() =>
     durationToSeconds(playlist[0].duration)
@@ -111,6 +112,12 @@ export default function NowPlayingPlayer() {
   const progressPercent =
     durationSeconds > 0 ? (elapsedSeconds / durationSeconds) * 100 : 0;
   const shouldMarquee = marqueeDistance > 0 && !shouldReduceMotion;
+
+  useEffect(() => {
+    setTrackIndex(Math.floor(Math.random() * playlist.length));
+    setTrackChangeKey((current) => current + 1);
+    setHasSelectedInitialTrack(true);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -192,7 +199,7 @@ export default function NowPlayingPlayer() {
       };
   const marqueeStyle: PlayerStyle = {
     "--marquee-distance": `-${marqueeDistance}px`,
-    "--marquee-duration": `${Math.max(7, marqueeDistance / 24)}s`
+    "--marquee-duration": `${Math.max(3.5, marqueeDistance / 52)}s`
   };
   const progressStyle = {
     background: `linear-gradient(to right, #16803f 0%, #16803f ${progressPercent}%, #dedbd5 ${progressPercent}%, #dedbd5 100%)`
@@ -227,7 +234,7 @@ export default function NowPlayingPlayer() {
   };
 
   const handleSelectTrack = (nextTrackIndex: number) => {
-    resumeAfterTrackChangeRef.current = isPlaying;
+    resumeAfterTrackChangeRef.current = true;
     setTrackIndex(nextTrackIndex);
     setTrackChangeKey((current) => current + 1);
     setElapsedSeconds(0);
@@ -261,6 +268,14 @@ export default function NowPlayingPlayer() {
     setElapsedSeconds(nextTime);
   };
 
+  const handleTrackEnd = () => {
+    handleSelectTrack((trackIndex + 1) % playlist.length);
+  };
+
+  if (!hasSelectedInitialTrack) {
+    return null;
+  }
+
   return (
     <>
       <audio
@@ -272,10 +287,7 @@ export default function NowPlayingPlayer() {
               : fallbackDurationSeconds
           );
         }}
-        onEnded={() => {
-          setElapsedSeconds(durationSeconds);
-          setIsPlaying(false);
-        }}
+        onEnded={handleTrackEnd}
         onError={() => setDurationSeconds(fallbackDurationSeconds)}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}

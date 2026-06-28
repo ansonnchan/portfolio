@@ -123,7 +123,7 @@ button {
 
 .music-title-marquee-track {
   animation: music-title-marquee var(--marquee-duration) linear infinite;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
   animation-fill-mode: both;
 }
 

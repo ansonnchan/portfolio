@@ -33,7 +33,7 @@ const playlist: PlaylistTrack[] = [
     artist: "diverseddie (舵)",
     duration: "3:34",
     mood: "chill vibes",
-    title: "diverseddie (舵) - procrastination (拖延症)"
+    title: "procrastination (拖延症)"
   }
 ];
 
@@ -159,7 +159,7 @@ export default function NowPlayingPlayer() {
         {isExpanded ? (
           <motion.aside
             aria-label="Music player"
-            className="pointer-events-auto relative w-full max-w-[26rem] overflow-hidden rounded-[18px] border border-[#e2ded7] bg-[#faf8f4] text-zinc-900 shadow-[0_18px_45px_rgba(38,34,29,0.13)] sm:w-[26rem]"
+            className="pointer-events-auto relative w-full max-w-[26rem] overflow-hidden border border-[#e2ded7] bg-[#faf8f4] text-zinc-900 shadow-[0_18px_45px_rgba(38,34,29,0.13)] sm:w-[26rem]"
             key="expanded-player"
             layout
             layoutId="now-playing-player"
@@ -177,7 +177,7 @@ export default function NowPlayingPlayer() {
             </motion.button>
 
             <div className="grid min-h-[5.5rem] grid-cols-[4.5rem_minmax(0,1fr)_6.5rem] items-center gap-3 px-4 pt-3">
-              <div className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden rounded-xl bg-white text-emerald-700 shadow-sm">
+              <div className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
                 <Music2 aria-hidden="true" className="h-7 w-7" strokeWidth={1.8} />
                 <AnimatePresence initial={false} mode="wait">
                   {!albumArtFailed && (
@@ -197,31 +197,34 @@ export default function NowPlayingPlayer() {
                 </AnimatePresence>
               </div>
 
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  animate={{ opacity: 1, y: 0 }}
-                  className="music-title-viewport min-w-0 overflow-hidden"
-                  exit={{ opacity: 0, y: -4 }}
-                  initial={{ opacity: 0, y: 4 }}
-                  key={`title-${trackChangeKey}`}
-                  ref={titleViewportRef}
-                  transition={transition}
-                >
-                  <span
-                    className={`flex w-max items-center whitespace-nowrap font-mono text-sm font-bold ${
-                      shouldMarquee ? "music-title-marquee-track" : ""
-                    }`}
-                    style={marqueeStyle}
+              <div className="min-w-0">
+                <AnimatePresence initial={false} mode="wait">
+                  <motion.div
+                    animate={{ opacity: 1, y: 0 }}
+                    className="music-title-viewport min-w-0 overflow-hidden"
+                    exit={{ opacity: 0, y: -4 }}
+                    initial={{ opacity: 0, y: 4 }}
+                    key={`title-${trackChangeKey}`}
+                    ref={titleViewportRef}
+                    transition={transition}
                   >
-                    <span ref={titleTextRef}>{track.title}</span>
-                    {shouldMarquee && (
-                      <span aria-hidden="true" className="ml-12">
-                        {track.title}
-                      </span>
-                    )}
-                  </span>
-                </motion.div>
-              </AnimatePresence>
+                    <span
+                      className={`flex w-max items-center whitespace-nowrap font-mono text-sm font-bold ${
+                        shouldMarquee ? "music-title-marquee-track" : ""
+                      }`}
+                      style={marqueeStyle}
+                    >
+                      <span ref={titleTextRef}>{track.title}</span>
+                      {shouldMarquee && (
+                        <span aria-hidden="true" className="ml-12">
+                          {track.title}
+                        </span>
+                      )}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
+                <p className="mt-1 truncate text-xs text-zinc-500">{track.artist}</p>
+              </div>
 
               <div className="flex items-center justify-end gap-1 pr-1">
                 <motion.button
@@ -289,13 +292,13 @@ export default function NowPlayingPlayer() {
         ) : (
           <motion.aside
             aria-label="Minimized music player"
-            className="pointer-events-auto flex h-16 w-full max-w-[26rem] items-center gap-3 rounded-full border border-[#e2ded7] bg-[#faf8f4] px-2.5 text-zinc-900 shadow-[0_14px_35px_rgba(38,34,29,0.13)] sm:w-[26rem]"
+            className="pointer-events-auto flex h-16 w-full max-w-[26rem] items-center gap-3 border border-[#e2ded7] bg-[#faf8f4] px-2.5 text-zinc-900 shadow-[0_14px_35px_rgba(38,34,29,0.13)] sm:w-[26rem]"
             key="minimized-player"
             layout
             layoutId="now-playing-player"
             transition={transition}
           >
-            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white text-emerald-700 shadow-sm">
+            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
               <Music2 aria-hidden="true" className="h-5 w-5" />
               {!albumArtFailed && (
                 <motion.img
@@ -307,9 +310,27 @@ export default function NowPlayingPlayer() {
               )}
             </div>
 
-            <span className="min-w-0 flex-1 truncate font-mono text-sm font-bold">
-              {track.title}
-            </span>
+            <div className="min-w-0 flex-1">
+              <div
+                className="music-title-viewport min-w-0 overflow-hidden"
+                ref={titleViewportRef}
+              >
+                <span
+                  className={`flex w-max items-center whitespace-nowrap font-mono text-sm font-bold ${
+                    shouldMarquee ? "music-title-marquee-track" : ""
+                  }`}
+                  style={marqueeStyle}
+                >
+                  <span ref={titleTextRef}>{track.title}</span>
+                  {shouldMarquee && (
+                    <span aria-hidden="true" className="ml-12">
+                      {track.title}
+                    </span>
+                  )}
+                </span>
+              </div>
+              <p className="mt-0.5 truncate text-xs text-zinc-500">{track.artist}</p>
+            </div>
 
             <motion.button
               {...buttonMotion}

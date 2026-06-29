@@ -146,7 +146,7 @@ export default function NowPlayingPlayer() {
   const [trackChangeKey, setTrackChangeKey] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(5);
+  const [volume, setVolume] = useState(25); // starting volume - maybe 15%??
   const [isExpanded, setIsExpanded] = useState(true);
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [hasSelectedInitialTrack, setHasSelectedInitialTrack] = useState(false);
@@ -205,7 +205,7 @@ export default function NowPlayingPlayer() {
       audio.muted = isMuted;
       audio.volume = (volume / 100) * outputGain;
     }
-  }, [isMuted, volume]);
+  }, [hasSelectedInitialTrack, isMuted, volume]);
 
   useEffect(() => {
     setAlbumArtFailed(false);
@@ -244,6 +244,9 @@ export default function NowPlayingPlayer() {
       audio.currentTime = 0;
       setElapsedSeconds(0);
     }
+
+    audio.muted = isMuted;
+    audio.volume = (volume / 100) * outputGain;
 
     try {
       await audio.play();

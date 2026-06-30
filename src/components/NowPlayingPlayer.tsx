@@ -71,6 +71,13 @@ const playlist: PlaylistTrack[] = [
     audioSrc: "/assets/playlist/soundtrack/qwer_tbh.mp3",
     duration: "2:55",
     title: "T.B.H (고민중독)"
+  },
+  {
+    albumArt: "/assets/playlist/album/lesserafim_perfect_night.jpg",
+    artist: "LE SSERAFIM",
+    audioSrc: "/assets/playlist/soundtrack/lesserafim_perfect_night.mp3",
+    duration: "2:39",
+    title: "Perfect Night"
   }
 ];
 

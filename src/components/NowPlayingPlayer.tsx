@@ -78,6 +78,13 @@ const playlist: PlaylistTrack[] = [
     audioSrc: "/assets/playlist/soundtrack/lesserafim_perfect_night.mp3",
     duration: "2:39",
     title: "Perfect Night"
+  },
+  {
+    albumArt: "/assets/playlist/album/newjeans_ditto.jpg",
+    artist: "NewJeans",
+    audioSrc: "/assets/playlist/soundtrack/newjeans_ditto.mp3",
+    duration: "3:05",
+    title: "Ditto (디토)"
   }
 ];
 

@@ -85,6 +85,13 @@ const playlist: PlaylistTrack[] = [
     audioSrc: "/assets/playlist/soundtrack/newjeans_ditto.mp3",
     duration: "3:05",
     title: "Ditto (디토)"
+  },
+  {
+    albumArt: "/assets/playlist/album/zb1_doctor_doctor.jpeg",
+    artist: "ZEROBASEONE",
+    audioSrc: "/assets/playlist/soundtrack/zb1_doctor_doctor.mp3",
+    duration: "2:32",
+    title: "Doctor! Doctor! (닥터! 닥터!)"
   }
 ];
 

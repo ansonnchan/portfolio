@@ -35,7 +35,7 @@ const playlist: PlaylistTrack[] = [
     artist: "(G)I-DLE",
     audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
     duration: "2:41",
-    title: "Fate (나는아픈건딱질색이니까)"
+    title: "Fate"
   },
   {
     albumArt: "/assets/playlist/album/enhypen_polaroid_love.webp",
@@ -49,28 +49,28 @@ const playlist: PlaylistTrack[] = [
     artist: "ILLIT",
     audioSrc: "/assets/playlist/soundtrack/Midnight Fiction.mp3",
     duration: "2:48",
-    title: "Midnight Fiction (마지막 이야기)"
+    title: "Midnight Fiction"
   },
   {
     albumArt: "/assets/playlist/album/ikon_love_scenario.jpeg",
     artist: "iKON",
     audioSrc: "/assets/playlist/soundtrack/love_scenario.mp3",
     duration: "3:31",
-    title: "Love Scenario (사랑을 했다)"
+    title: "Love Scenario"
   },
   {
     albumArt: "/assets/playlist/album/fifty_fifty_cupid.jpg",
     artist: "FIFTY FIFTY",
     audioSrc: "/assets/playlist/soundtrack/cupid.mp3",
     duration: "2:54",
-    title: "Cupid (큐피드) · Twin Ver."
+    title: "Cupid"
   },
   {
     albumArt: "/assets/playlist/album/qwer_tbh.jpg",
     artist: "QWER",
     audioSrc: "/assets/playlist/soundtrack/qwer_tbh.mp3",
     duration: "2:55",
-    title: "T.B.H (고민중독)"
+    title: "T.B.H"
   },
   {
     albumArt: "/assets/playlist/album/lesserafim_perfect_night.jpg",
@@ -84,14 +84,14 @@ const playlist: PlaylistTrack[] = [
     artist: "NewJeans",
     audioSrc: "/assets/playlist/soundtrack/newjeans_ditto.mp3",
     duration: "3:05",
-    title: "Ditto (디토)"
+    title: "Ditto"
   },
   {
     albumArt: "/assets/playlist/album/zb1_doctor_doctor.jpeg",
     artist: "ZEROBASEONE",
     audioSrc: "/assets/playlist/soundtrack/zb1_doctor_doctor.mp3",
     duration: "2:32",
-    title: "Doctor! Doctor! (닥터! 닥터!)"
+    title: "Doctor! Doctor!"
   },
   {
     albumArt: "/assets/playlist/album/shaun_way_back_home.jpeg",
@@ -105,18 +105,18 @@ const playlist: PlaylistTrack[] = [
     artist: "ILLIT",
     audioSrc: "/assets/playlist/soundtrack/illit_not_cute_anymore.mp3",
     duration: "2:10",
-    title: "Not Cute Anymore (이제 더 이상 귀엽지 않아)"
+    title: "Not Cute Anymore"
   },
   {
     albumArt: "/assets/playlist/album/unlove_zion_t.jpeg",
     artist: "Zion.T",
     audioSrc: "/assets/playlist/soundtrack/unlove_zion_t.mp3",
     duration: "3:00",
-    title: "Unlove (노래방에서)"
+    title: "Unlove (prod. HONNE)"
   },
   {
     albumArt: "/assets/playlist/album/lngshot_next2u.png",
-    artist: "LNGSHOT",
+    artist: "OHYUL of LNGSHOT, LOUIS of LNGSHOT",
     audioSrc: "/assets/playlist/soundtrack/lngshot_next2u.mp3",
     duration: "3:00",
     title: "Next 2 U"

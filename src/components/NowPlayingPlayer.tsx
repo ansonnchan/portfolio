@@ -117,7 +117,7 @@ const playlist: PlaylistTrack[] = [
   {
     albumArt: "/assets/playlist/album/lngshot_next2u.png",
     artist: "OHYUL of LNGSHOT, LOUIS of LNGSHOT",
-    audioSrc: "/assets/playlist/soundtrack/lngshot_next2u.mp3",
+    audioSrc: "/assets/playlist/soundtrack/lngshot_next_2_u.mp3",
     duration: "3:00",
     title: "Next 2 U"
   }

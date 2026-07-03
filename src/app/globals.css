@@ -121,12 +121,6 @@ button {
   animation-range: entry 0% cover 26%;
 }
 
-.music-title-marquee-track {
-  animation: music-title-marquee var(--marquee-duration) linear infinite;
-  animation-delay: 0.5s;
-  animation-fill-mode: both;
-}
-
 .playlist-scrollbar {
   scrollbar-color: #ded9d1 transparent;
   scrollbar-width: thin;
@@ -238,8 +232,7 @@ button {
   .about-greeting-bubble,
   .about-greeting-pop,
   .about-greeting-spark,
-  .about-greeting-wave,
-  .music-title-marquee-track {
+  .about-greeting-wave {
     animation: none;
   }
 }
@@ -360,14 +353,5 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes music-title-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(var(--marquee-distance));
   }
 }

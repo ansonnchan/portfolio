@@ -13,8 +13,7 @@ import {
   VolumeX
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import type { CSSProperties } from "react";
-import { memo, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type PlaylistTrack = {
   albumArt: string;
@@ -22,11 +21,6 @@ type PlaylistTrack = {
   audioSrc: string;
   duration: string;
   title: string;
-};
-
-type PlayerStyle = CSSProperties & {
-  "--marquee-distance"?: string;
-  "--marquee-duration"?: string;
 };
 
 const playlist: PlaylistTrack[] = [
@@ -110,7 +104,7 @@ const playlist: PlaylistTrack[] = [
   {
     albumArt: "/assets/playlist/album/unlove_zion_t.jpeg",
     artist: "Zion.T",
-    audioSrc: "/assets/playlist/soundtrack/unlove_zion_t.mp3",
+    audioSrc: "/assets/playlist/soundtrack/zion_t_unlove.mp3",
     duration: "3:00",
     title: "Unlove (prod. HONNE)"
   },
@@ -137,55 +131,6 @@ function formatTime(timeInSeconds: number) {
 
   return `${minutes}:${seconds}`;
 }
-
-const MarqueeTitle = memo(function MarqueeTitle({ title }: { title: string }) {
-  const shouldReduceMotion = useReducedMotion();
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLSpanElement>(null);
-  const [distance, setDistance] = useState(0);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    const titleElement = titleRef.current;
-
-    if (!viewport || !titleElement) {
-      return;
-    }
-
-    const measureTitle = () => setDistance(titleElement.scrollWidth + 48);
-    measureTitle();
-
-    const observer = new ResizeObserver(measureTitle);
-    observer.observe(viewport);
-    observer.observe(titleElement);
-
-    return () => observer.disconnect();
-  }, [title]);
-
-  const shouldMarquee = distance > 0 && !shouldReduceMotion;
-  const style: PlayerStyle = {
-    "--marquee-distance": `-${distance}px`,
-    "--marquee-duration": "4s"
-  };
-
-  return (
-    <div className="music-title-viewport min-w-0 overflow-hidden" ref={viewportRef}>
-      <span
-        className={`flex w-max items-center whitespace-nowrap font-mono text-sm font-bold ${
-          shouldMarquee ? "music-title-marquee-track" : ""
-        }`}
-        style={style}
-      >
-        <span ref={titleRef}>{title}</span>
-        {shouldMarquee && (
-          <span aria-hidden="true" className="ml-12">
-            {title}
-          </span>
-        )}
-      </span>
-    </div>
-  );
-});
 
 export default function NowPlayingPlayer() {
   const shouldReduceMotion = useReducedMotion();
@@ -507,7 +452,12 @@ export default function NowPlayingPlayer() {
                     key={`title-${trackChangeKey}`}
                     transition={transition}
                   >
-                    <MarqueeTitle title={track.title} />
+                    <p
+                      className="truncate font-mono text-sm font-bold"
+                      title={track.title}
+                    >
+                      {track.title}
+                    </p>
                   </motion.div>
                 </AnimatePresence>
                 <p className="mt-1 truncate text-xs text-zinc-500">{track.artist}</p>
@@ -623,7 +573,12 @@ export default function NowPlayingPlayer() {
             </div>
 
             <div className="min-w-0 flex-1">
-              <MarqueeTitle key={`minimized-title-${trackChangeKey}`} title={track.title} />
+              <p
+                className="truncate font-mono text-sm font-bold"
+                title={track.title}
+              >
+                {track.title}
+              </p>
               <p className="mt-0.5 truncate text-xs text-zinc-500">{track.artist}</p>
             </div>
 

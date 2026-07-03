@@ -190,6 +190,7 @@ const MarqueeTitle = memo(function MarqueeTitle({ title }: { title: string }) {
 export default function NowPlayingPlayer() {
   const shouldReduceMotion = useReducedMotion();
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
   const resumeAfterTrackChangeRef = useRef(false);
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackChangeKey, setTrackChangeKey] = useState(0);
@@ -259,6 +260,28 @@ export default function NowPlayingPlayer() {
   useEffect(() => {
     setAlbumArtFailed(false);
   }, [trackChangeKey]);
+
+  useEffect(() => {
+    if (!isPlaylistOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const container = playerContainerRef.current;
+
+      if (
+        container &&
+        event.target instanceof Node &&
+        !container.contains(event.target)
+      ) {
+        setIsPlaylistOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown, true);
+    return () =>
+      document.removeEventListener("pointerdown", handlePointerDown, true);
+  }, [isPlaylistOpen]);
 
   const transition = shouldReduceMotion
     ? { duration: 0 }
@@ -368,7 +391,10 @@ export default function NowPlayingPlayer() {
         src={track.audioSrc}
       />
 
-      <div className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto">
+      <div
+        className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto"
+        ref={playerContainerRef}
+      >
         <AnimatePresence>
           {isPlaylistOpen && (
             <motion.div
@@ -379,32 +405,37 @@ export default function NowPlayingPlayer() {
               initial={{ opacity: 0, y: 6 }}
               transition={transition}
             >
-              {playlist.map((playlistTrack, index) => (
-                <button
-                  aria-current={index === trackIndex ? "true" : undefined}
-                  className="flex w-full items-center gap-2 px-2 py-1.5 text-left transition-colors hover:bg-emerald-50"
-                  key={playlistTrack.title}
-                  onClick={() => handleSelectTrack(index)}
-                  type="button"
-                >
-                  <img
-                    alt=""
-                    className="h-9 w-9 shrink-0 object-cover"
-                    src={playlistTrack.albumArt}
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-xs font-bold">
-                      {playlistTrack.title}
+              <div className="max-h-[21rem] overflow-y-auto overscroll-contain">
+                {playlist.map((playlistTrack, index) => (
+                  <button
+                    aria-current={index === trackIndex ? "true" : undefined}
+                    className="flex w-full items-center gap-2 px-2 py-1.5 text-left transition-colors hover:bg-emerald-50"
+                    key={playlistTrack.title}
+                    onClick={() => handleSelectTrack(index)}
+                    type="button"
+                  >
+                    <img
+                      alt=""
+                      className="h-9 w-9 shrink-0 object-cover"
+                      src={playlistTrack.albumArt}
+                    />
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-xs font-bold">
+                        {playlistTrack.title}
+                      </span>
+                      <span className="block truncate text-[11px] text-zinc-500">
+                        {playlistTrack.artist}
+                      </span>
                     </span>
-                    <span className="block truncate text-[11px] text-zinc-500">
-                      {playlistTrack.artist}
-                    </span>
-                  </span>
-                  {index === trackIndex && (
-                    <Check aria-hidden="true" className="h-4 w-4 text-emerald-700" />
-                  )}
-                </button>
-              ))}
+                    {index === trackIndex && (
+                      <Check
+                        aria-hidden="true"
+                        className="h-4 w-4 text-emerald-700"
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

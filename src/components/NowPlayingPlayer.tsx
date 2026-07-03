@@ -25,53 +25,11 @@ type PlaylistTrack = {
 
 const playlist: PlaylistTrack[] = [
   {
-    albumArt: "/assets/playlist/album/gidle_fate.jpg",
-    artist: "(G)I-DLE",
-    audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
-    duration: "2:41",
-    title: "Fate"
-  },
-  {
-    albumArt: "/assets/playlist/album/enhypen_polaroid_love.webp",
-    artist: "ENHYPEN",
-    audioSrc: "/assets/playlist/soundtrack/polaroid_love.mp3",
-    duration: "3:04",
-    title: "Polaroid Love"
-  },
-  {
-    albumArt: "/assets/playlist/album/illit_midnight_fiction.jpg",
-    artist: "ILLIT",
-    audioSrc: "/assets/playlist/soundtrack/Midnight Fiction.mp3",
-    duration: "2:48",
-    title: "Midnight Fiction"
-  },
-  {
-    albumArt: "/assets/playlist/album/ikon_love_scenario.jpeg",
-    artist: "iKON",
-    audioSrc: "/assets/playlist/soundtrack/love_scenario.mp3",
-    duration: "3:31",
-    title: "Love Scenario"
-  },
-  {
     albumArt: "/assets/playlist/album/fifty_fifty_cupid.jpg",
     artist: "FIFTY FIFTY",
     audioSrc: "/assets/playlist/soundtrack/cupid.mp3",
     duration: "2:54",
     title: "Cupid"
-  },
-  {
-    albumArt: "/assets/playlist/album/qwer_tbh.jpg",
-    artist: "QWER",
-    audioSrc: "/assets/playlist/soundtrack/qwer_tbh.mp3",
-    duration: "2:55",
-    title: "T.B.H"
-  },
-  {
-    albumArt: "/assets/playlist/album/lesserafim_perfect_night.jpg",
-    artist: "LE SSERAFIM",
-    audioSrc: "/assets/playlist/soundtrack/lesserafim_perfect_night.mp3",
-    duration: "2:38",
-    title: "Perfect Night"
   },
   {
     albumArt: "/assets/playlist/album/newjeans_ditto.jpg",
@@ -88,11 +46,32 @@ const playlist: PlaylistTrack[] = [
     title: "Doctor! Doctor!"
   },
   {
-    albumArt: "/assets/playlist/album/shaun_way_back_home.jpeg",
-    artist: "SHAUN",
-    audioSrc: "/assets/playlist/soundtrack/shaun_way_back_home.mp3",
-    duration: "3:34",
-    title: "Way Back Home"
+    albumArt: "/assets/playlist/album/gidle_fate.jpg",
+    artist: "(G)I-DLE",
+    audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
+    duration: "2:41",
+    title: "Fate"
+  },
+  {
+    albumArt: "/assets/playlist/album/ikon_love_scenario.jpeg",
+    artist: "iKON",
+    audioSrc: "/assets/playlist/soundtrack/love_scenario.mp3",
+    duration: "3:31",
+    title: "Love Scenario"
+  },
+  {
+    albumArt: "/assets/playlist/album/illit_midnight_fiction.jpg",
+    artist: "ILLIT",
+    audioSrc: "/assets/playlist/soundtrack/Midnight Fiction.mp3",
+    duration: "2:48",
+    title: "Midnight Fiction"
+  },
+  {
+    albumArt: "/assets/playlist/album/lngshot_next2u.png",
+    artist: "OHYUL, LOUIS of LNGSHOT",
+    audioSrc: "/assets/playlist/soundtrack/lngshot_next_2_u.mp3",
+    duration: "3:00",
+    title: "Next 2 U"
   },
   {
     albumArt: "/assets/playlist/album/illit_not_cute_anymore.webp",
@@ -102,6 +81,27 @@ const playlist: PlaylistTrack[] = [
     title: "Not Cute Anymore"
   },
   {
+    albumArt: "/assets/playlist/album/lesserafim_perfect_night.jpg",
+    artist: "LE SSERAFIM",
+    audioSrc: "/assets/playlist/soundtrack/lesserafim_perfect_night.mp3",
+    duration: "2:38",
+    title: "Perfect Night"
+  },
+  {
+    albumArt: "/assets/playlist/album/enhypen_polaroid_love.webp",
+    artist: "ENHYPEN",
+    audioSrc: "/assets/playlist/soundtrack/polaroid_love.mp3",
+    duration: "3:04",
+    title: "Polaroid Love"
+  },
+  {
+    albumArt: "/assets/playlist/album/qwer_tbh.jpg",
+    artist: "QWER",
+    audioSrc: "/assets/playlist/soundtrack/qwer_tbh.mp3",
+    duration: "2:55",
+    title: "T.B.H"
+  },
+  {
     albumArt: "/assets/playlist/album/unlove_zion_t.jpeg",
     artist: "Zion.T",
     audioSrc: "/assets/playlist/soundtrack/zion_t_unlove.mp3",
@@ -109,11 +109,11 @@ const playlist: PlaylistTrack[] = [
     title: "Unlove (prod. HONNE)"
   },
   {
-    albumArt: "/assets/playlist/album/lngshot_next2u.png",
-    artist: "OHYUL, LOUIS of LNGSHOT",
-    audioSrc: "/assets/playlist/soundtrack/lngshot_next_2_u.mp3",
-    duration: "3:00",
-    title: "Next 2 U"
+    albumArt: "/assets/playlist/album/shaun_way_back_home.jpeg",
+    artist: "SHAUN",
+    audioSrc: "/assets/playlist/soundtrack/shaun_way_back_home.mp3",
+    duration: "3:34",
+    title: "Way Back Home"
   }
 ];
 

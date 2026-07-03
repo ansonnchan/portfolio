@@ -34,7 +34,7 @@ const playlist: PlaylistTrack[] = [
     albumArt: "/assets/playlist/album/gidle_fate.jpg",
     artist: "(G)I-DLE",
     audioSrc: "/assets/playlist/soundtrack/gidle_fate.mp3",
-    duration: "2:42",
+    duration: "2:41",
     title: "Fate (나는아픈건딱질색이니까)"
   },
   {
@@ -62,7 +62,7 @@ const playlist: PlaylistTrack[] = [
     albumArt: "/assets/playlist/album/fifty_fifty_cupid.jpg",
     artist: "FIFTY FIFTY",
     audioSrc: "/assets/playlist/soundtrack/cupid.mp3",
-    duration: "2:50",
+    duration: "2:54",
     title: "Cupid (큐피드) · Twin Ver."
   },
   {
@@ -76,7 +76,7 @@ const playlist: PlaylistTrack[] = [
     albumArt: "/assets/playlist/album/lesserafim_perfect_night.jpg",
     artist: "LE SSERAFIM",
     audioSrc: "/assets/playlist/soundtrack/lesserafim_perfect_night.mp3",
-    duration: "2:39",
+    duration: "2:38",
     title: "Perfect Night"
   },
   {
@@ -92,6 +92,34 @@ const playlist: PlaylistTrack[] = [
     audioSrc: "/assets/playlist/soundtrack/zb1_doctor_doctor.mp3",
     duration: "2:32",
     title: "Doctor! Doctor! (닥터! 닥터!)"
+  },
+  {
+    albumArt: "/assets/playlist/album/shaun_way_back_home.jpeg",
+    artist: "SHAUN",
+    audioSrc: "/assets/playlist/soundtrack/shaun_way_back_home.mp3",
+    duration: "3:34",
+    title: "Way Back Home"
+  },
+  {
+    albumArt: "/assets/playlist/album/illit_not_cute_anymore.webp",
+    artist: "ILLIT",
+    audioSrc: "/assets/playlist/soundtrack/illit_not_cute_anymore.mp3",
+    duration: "2:10",
+    title: "Not Cute Anymore (이제 더 이상 귀엽지 않아)"
+  },
+  {
+    albumArt: "/assets/playlist/album/unlove_zion_t.jpeg",
+    artist: "Zion.T",
+    audioSrc: "/assets/playlist/soundtrack/unlove_zion_t.mp3",
+    duration: "3:00",
+    title: "Unlove (노래방에서)"
+  },
+  {
+    albumArt: "/assets/playlist/album/lngshot_next2u.png",
+    artist: "LNGSHOT",
+    audioSrc: "/assets/playlist/soundtrack/lngshot_next2u.mp3",
+    duration: "3:00",
+    title: "Next 2 U"
   }
 ];
 

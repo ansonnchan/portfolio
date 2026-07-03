@@ -339,7 +339,7 @@ export const sideQuests = {
     {
       src: "/assets/photos/IMG_0668.JPG",
       alt: "Young Anson holding a violin before a performance",
-      caption: "I promise I don't use stripes anymore"
+      caption: "amazing camera quality fr"
     },
   ]
 };

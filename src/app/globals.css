@@ -127,6 +127,29 @@ button {
   animation-fill-mode: both;
 }
 
+.playlist-scrollbar {
+  scrollbar-color: #ded9d1 transparent;
+  scrollbar-width: thin;
+}
+
+.playlist-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.playlist-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.playlist-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid #faf8f4;
+  border-radius: 9999px;
+  background: #ded9d1;
+}
+
+.playlist-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #cec8be;
+}
+
 .music-progress-slider,
 .music-volume-slider {
   height: 0.25rem;

@@ -405,7 +405,7 @@ export default function NowPlayingPlayer() {
               initial={{ opacity: 0, y: 6 }}
               transition={transition}
             >
-              <div className="max-h-[21rem] overflow-y-auto overscroll-contain">
+              <div className="playlist-scrollbar max-h-[21rem] overflow-y-auto overscroll-contain">
                 {playlist.map((playlistTrack, index) => (
                   <button
                     aria-current={index === trackIndex ? "true" : undefined}

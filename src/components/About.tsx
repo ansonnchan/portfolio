@@ -4,14 +4,14 @@ import RichText from "@/components/RichText";
 
 export default function About() {
   return (
-    <section className="scroll-fade scroll-mt-32 px-4 py-20 sm:px-6 lg:px-8" id="about">
+    <section className="responsive-section scroll-fade scroll-mt-32 px-4 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+        <h2 className="responsive-heading mb-9 text-center font-black tracking-normal text-zinc-950 dark:text-white sm:mb-12">
           About Me
         </h2>
 
-        <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
-          <aside className="surface-card h-fit rounded-lg p-4 shadow-soft dark:shadow-soft-dark">
+        <div className="grid gap-8 md:grid-cols-[0.82fr_1.18fr] md:gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:gap-8">
+          <aside className="surface-card mx-auto h-fit w-full max-w-md rounded-lg p-3 shadow-soft dark:shadow-soft-dark sm:p-4 md:max-w-none">
             <div className="relative aspect-square overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
               <img
                 alt="Anson Chan profile"
@@ -21,7 +21,7 @@ export default function About() {
             </div>
           </aside>
 
-          <div className="space-y-5 text-base leading-8 text-zinc-700 dark:text-zinc-300 sm:text-lg">
+          <div className="min-w-0 space-y-5 text-base leading-7 text-zinc-700 dark:text-zinc-300 sm:text-lg sm:leading-8">
             <div className="about-greeting-pop inline-flex">
               <div className="about-greeting-bubble relative inline-flex items-center rounded-lg border border-emerald-500/25 bg-white/90 px-5 py-3 shadow-soft dark:border-emerald-300/20 dark:bg-white/10 dark:shadow-soft-dark">
                 <span className="about-greeting-spark about-greeting-spark-left" aria-hidden="true" />

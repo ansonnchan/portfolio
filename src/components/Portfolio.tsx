@@ -17,10 +17,10 @@ export default function Portfolio() {
       <main>
         <About />
 
-        <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="experience">
+        <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 flex flex-col items-center gap-5 text-center">
-              <h2 className="text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+              <h2 className="responsive-heading font-black tracking-normal text-zinc-950 dark:text-white">
                 Experience
               </h2>
             </div>
@@ -36,9 +36,9 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="projects">
+        <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="projects">
           <div className="mx-auto max-w-7xl">
-            <h2 className="mb-10 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+            <h2 className="responsive-heading mb-9 text-center font-black tracking-normal text-zinc-950 dark:text-white sm:mb-10">
               Projects
             </h2>
 
@@ -50,18 +50,18 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section className="scroll-fade scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id="side-quests">
+        <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-6xl">
-            <h2 className="mb-10 text-center text-4xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-5xl">
+            <h2 className="responsive-heading mb-9 text-center font-black tracking-normal text-zinc-950 dark:text-white sm:mb-10">
               Side Quests
             </h2>
 
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-center">
               <div className="mx-auto max-w-3xl lg:mx-0">
-                <p className="text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+                <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300 sm:text-lg sm:leading-8">
                   {sideQuests.intro}
                 </p>
-                <ul className="mt-6 space-y-4 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+                <ul className="mt-6 space-y-4 text-base leading-7 text-zinc-700 dark:text-zinc-300 sm:leading-8">
                   {sideQuests.bullets.map((bullet) => (
                     <li className="flex gap-3" key={bullet}>
                       <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />

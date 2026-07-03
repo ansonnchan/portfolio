@@ -162,6 +162,12 @@ export default function NowPlayingPlayer() {
   }, []);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 639px)").matches) {
+      setIsExpanded(false);
+    }
+  }, []);
+
+  useEffect(() => {
     const audio = audioRef.current;
 
     if (!audio) {
@@ -337,7 +343,7 @@ export default function NowPlayingPlayer() {
       />
 
       <div
-        className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:bottom-5 sm:left-auto sm:right-5 sm:w-auto"
+        className="now-playing-dock pointer-events-none fixed inset-x-2 z-40 flex justify-end sm:left-auto sm:right-5 sm:w-auto"
         ref={playerContainerRef}
       >
         <AnimatePresence>
@@ -350,7 +356,7 @@ export default function NowPlayingPlayer() {
               initial={{ opacity: 0, y: 6 }}
               transition={transition}
             >
-              <div className="playlist-scrollbar max-h-[21rem] overflow-y-auto overscroll-contain">
+              <div className="playlist-scrollbar max-h-[min(21rem,calc(100dvh-6rem))] overflow-y-auto overscroll-contain">
                 {playlist.map((playlistTrack, index) => (
                   <button
                     aria-current={index === trackIndex ? "true" : undefined}
@@ -400,7 +406,7 @@ export default function NowPlayingPlayer() {
               aria-controls="music-playlist-menu"
               aria-expanded={isPlaylistOpen}
               aria-label="Choose a song"
-              className="absolute top-1.5 right-8 z-20 flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-colors hover:text-zinc-700"
+              className="absolute right-12 top-0 z-20 flex h-11 w-11 items-center justify-center rounded-md text-zinc-400 transition-colors hover:text-zinc-700 sm:right-8 sm:top-1.5 sm:h-6 sm:w-6"
               onClick={() => setIsPlaylistOpen((current) => !current)}
               title="Choose a song"
               type="button"
@@ -410,7 +416,7 @@ export default function NowPlayingPlayer() {
             <motion.button
               {...buttonMotion}
               aria-label="Minimize music player"
-              className="absolute top-1.5 right-1.5 z-20 flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-colors hover:text-zinc-700"
+              className="absolute right-0 top-0 z-20 flex h-11 w-11 items-center justify-center rounded-md text-zinc-400 transition-colors hover:text-zinc-700 sm:right-1.5 sm:top-1.5 sm:h-6 sm:w-6"
               onClick={() => {
                 setIsPlaylistOpen(false);
                 setIsExpanded(false);
@@ -421,8 +427,8 @@ export default function NowPlayingPlayer() {
               <Minimize2 aria-hidden="true" className="h-3.5 w-3.5" />
             </motion.button>
 
-            <div className="grid min-h-[4.5rem] grid-cols-[3.5rem_minmax(0,1fr)_6.5rem] items-center gap-2.5 px-3 pt-2.5">
-              <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm">
+            <div className="grid min-h-[4.5rem] grid-cols-[3rem_minmax(0,1fr)] items-center gap-2 px-2 pt-11 sm:grid-cols-[3.5rem_minmax(0,1fr)_6.5rem] sm:gap-2.5 sm:px-3 sm:pt-2.5">
+              <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden bg-white text-emerald-700 shadow-sm sm:h-14 sm:w-14">
                 <Music2 aria-hidden="true" className="h-6 w-6" strokeWidth={1.8} />
                 <AnimatePresence initial={false} mode="wait">
                   {!albumArtFailed && (
@@ -463,12 +469,12 @@ export default function NowPlayingPlayer() {
                 <p className="mt-1 truncate text-xs text-zinc-500">{track.artist}</p>
               </div>
 
-              <div className="flex flex-col items-end pr-1">
+              <div className="col-span-2 flex items-center justify-between pr-1 sm:col-span-1 sm:flex-col sm:items-end">
                 <div className="flex items-center justify-end gap-1">
                   <motion.button
                     {...buttonMotion}
                     aria-label="Shuffle playlist"
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+                    className="flex h-11 w-11 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700 sm:h-8 sm:w-8"
                     onClick={handleShuffle}
                     title="Shuffle"
                     type="button"
@@ -478,7 +484,7 @@ export default function NowPlayingPlayer() {
                   <motion.button
                     {...buttonMotion}
                     aria-label={isPlaying ? "Pause playlist" : "Play playlist"}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700"
+                    className="flex h-11 w-11 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700 sm:h-8 sm:w-8"
                     onClick={handleTogglePlay}
                     title={isPlaying ? "Pause" : "Play"}
                     type="button"
@@ -501,7 +507,7 @@ export default function NowPlayingPlayer() {
                     {...buttonMotion}
                     aria-label={isMuted ? "Unmute player" : "Mute player"}
                     aria-pressed={isMuted}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+                    className="flex h-11 w-11 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700 sm:h-8 sm:w-8"
                     onClick={() => setIsMuted((current) => !current)}
                     title={isMuted ? "Unmute" : "Mute"}
                     type="button"
@@ -521,7 +527,7 @@ export default function NowPlayingPlayer() {
                 </div>
                 <input
                   aria-label="Player volume"
-                  className="music-volume-slider mt-1.5 w-24"
+                  className="music-volume-slider w-28 sm:mt-1.5 sm:w-24"
                   max="100"
                   min="0"
                   onChange={(event) => handleVolumeChange(Number(event.target.value))}
@@ -585,7 +591,7 @@ export default function NowPlayingPlayer() {
             <motion.button
               {...buttonMotion}
               aria-label="Shuffle playlist"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+              className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700 sm:flex"
               onClick={handleShuffle}
               title="Shuffle"
               type="button"
@@ -595,7 +601,7 @@ export default function NowPlayingPlayer() {
             <motion.button
               {...buttonMotion}
               aria-label={isPlaying ? "Pause playlist" : "Play playlist"}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-zinc-800 transition-colors hover:text-emerald-700 sm:h-8 sm:w-8"
               onClick={handleTogglePlay}
               title={isPlaying ? "Pause" : "Play"}
               type="button"
@@ -614,7 +620,7 @@ export default function NowPlayingPlayer() {
               {...buttonMotion}
               aria-label={isMuted ? "Unmute player" : "Mute player"}
               aria-pressed={isMuted}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700"
+              className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-600 transition-colors hover:text-emerald-700 sm:flex"
               onClick={() => setIsMuted((current) => !current)}
               title={isMuted ? "Unmute" : "Mute"}
               type="button"
@@ -628,7 +634,7 @@ export default function NowPlayingPlayer() {
             <motion.button
               {...buttonMotion}
               aria-label="Maximize music player"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors hover:text-emerald-700"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors hover:text-emerald-700 sm:h-8 sm:w-8"
               onClick={() => setIsExpanded(true)}
               title="Maximize"
               type="button"

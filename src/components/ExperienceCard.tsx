@@ -26,14 +26,14 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 
   return (
     <article
-      className="surface-card cursor-pointer rounded-lg p-5 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark"
+      className="surface-card cursor-pointer rounded-lg p-4 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark sm:p-5"
       onClick={toggleOpen}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
     >
-      <div className="flex gap-4">
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10 dark:bg-white">
+      <div className="flex flex-col gap-4 sm:flex-row">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10 dark:bg-white sm:h-16 sm:w-16">
           <img
             alt={`${experience.organization} logo`}
             className="max-h-full max-w-full object-contain"
@@ -43,13 +43,13 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
-            <div>
+            <div className="min-w-0">
               {experience.eyebrow ? (
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300">
                   {experience.eyebrow}
                 </p>
               ) : null}
-              <h3 className="text-2xl font-black tracking-normal text-zinc-950 dark:text-white">
+              <h3 className="text-xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-2xl">
                 {experience.title}{" "}
                 <span className="text-zinc-500 dark:text-zinc-400">
                   @ {experience.organization}
@@ -59,7 +59,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             <button
               aria-expanded={isOpen}
               aria-label={isOpen ? "Minimize experience" : "Expand experience"}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300 sm:h-10 sm:w-10"
               onClick={(event) => {
                 event.stopPropagation();
                 toggleOpen();

@@ -319,11 +319,12 @@ export default function GitHubContributionGraph() {
     target: HTMLButtonElement
   ) => {
     const bounds = target.getBoundingClientRect();
+    const tooltipHalfWidth = Math.min(140, (window.innerWidth - 16) / 2);
     setActiveDay(day);
     setTooltipPosition({
       left: Math.min(
-        window.innerWidth - 12,
-        Math.max(12, bounds.left + bounds.width / 2)
+        window.innerWidth - tooltipHalfWidth - 8,
+        Math.max(tooltipHalfWidth + 8, bounds.left + bounds.width / 2)
       ),
       top: bounds.top - 8
     });
@@ -337,8 +338,8 @@ export default function GitHubContributionGraph() {
   return (
     <section
       aria-label="GitHub contribution graph"
-      className="!mt-10 rounded-lg border border-zinc-950/10 bg-white/80 p-4 shadow-soft backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:border-white/10 dark:bg-white/10 dark:shadow-soft-dark sm:p-5"
-      style={{ "--github-day-size": "0.62rem" } as CSSProperties}
+      className="!mt-10 max-w-full min-w-0 overflow-hidden rounded-lg border border-zinc-950/10 bg-white/80 p-4 shadow-soft backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:border-white/10 dark:bg-white/10 dark:shadow-soft-dark sm:p-5"
+      style={{ "--github-day-size": "clamp(0.56rem, 1.6vw, 0.62rem)" } as CSSProperties}
     >
       {state.status === "loading" && <SkeletonGraph />}
 
@@ -350,9 +351,9 @@ export default function GitHubContributionGraph() {
 
       {calendar && normalizedCalendar && (
         <>
-          <header className="flex items-baseline justify-between gap-4 font-mono text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-300 sm:text-sm">
+          <header className="flex flex-col gap-1 font-mono text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-300 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:text-sm">
             <h3>GitHub Contributions</h3>
-            <p className="shrink-0 text-right">
+            <p className="shrink-0 sm:text-right">
               {numberFormatter.format(calendar.totalContributions)} commits in {calendar.year}
             </p>
           </header>
@@ -436,7 +437,7 @@ export default function GitHubContributionGraph() {
             </div>
           </div>
 
-          <footer className="mt-4 flex items-start justify-between gap-4 font-mono uppercase text-zinc-600 dark:text-zinc-300">
+          <footer className="mt-4 flex flex-col items-start justify-between gap-3 font-mono uppercase text-zinc-600 dark:text-zinc-300 sm:flex-row sm:gap-4">
             <div className="text-left">
               <p className="text-xs font-semibold sm:text-sm">Last updated</p>
               <time
@@ -449,7 +450,7 @@ export default function GitHubContributionGraph() {
 
             <div
               aria-label="Contribution intensity from less to more"
-              className="flex shrink-0 items-center justify-end gap-1.5 text-xs font-semibold"
+              className="flex shrink-0 items-center gap-1.5 text-xs font-semibold sm:justify-end"
             >
               <span className="mr-0.5">Less</span>
               <span aria-hidden="true" className="flex gap-1">
@@ -470,7 +471,7 @@ export default function GitHubContributionGraph() {
         tooltipPosition &&
         createPortal(
           <div
-            className="pointer-events-none fixed z-[100] -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-lg"
+            className="pointer-events-none fixed z-[100] max-w-[calc(100vw-1rem)] -translate-x-1/2 -translate-y-full whitespace-normal rounded-lg bg-zinc-900 px-4 py-2 text-center text-sm font-semibold text-white shadow-lg"
             role="tooltip"
             style={{
               left: tooltipPosition.left,

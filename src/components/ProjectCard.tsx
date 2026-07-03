@@ -29,14 +29,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <article
-      className="surface-card cursor-pointer rounded-lg p-5 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark"
+      className="surface-card cursor-pointer rounded-lg p-4 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark sm:p-5"
       onClick={toggleOpen}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
     >
-      <div className="flex gap-4">
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10">
+      <div className="flex flex-col gap-4 sm:flex-row">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10 sm:h-16 sm:w-16">
           <img
             alt={`${project.title} icon`}
             className="max-h-full max-w-full object-contain"
@@ -45,9 +45,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h3 className="text-2xl font-black tracking-normal text-zinc-950 dark:text-white">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-2xl">
                 {project.title}
               </h3>
               <p className="mt-2 text-sm leading-7 text-zinc-700 dark:text-zinc-300 sm:text-base">
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <div className="flex shrink-0 items-center gap-2">
               <a
                 aria-label={`${project.title} GitHub repository`}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 sm:h-10 sm:w-10"
                 href={project.github}
                 onClick={stopRowToggle}
                 rel="noreferrer"
@@ -69,7 +69,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.live ? (
                 <a
                   aria-label={`${project.title} live app`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 sm:h-10 sm:w-10"
                   href={project.live}
                   onClick={stopRowToggle}
                   rel="noreferrer"
@@ -81,7 +81,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <button
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Minimize project" : "Expand project"}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300 sm:h-10 sm:w-10"
                 onClick={(event) => {
                   stopRowToggle(event);
                   toggleOpen();

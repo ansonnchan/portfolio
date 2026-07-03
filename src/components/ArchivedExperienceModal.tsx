@@ -43,19 +43,19 @@ export default function ArchivedExperienceModal({
         onClick={onClose}
         type="button"
       />
-      <div className="surface-card relative max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-lg p-5 shadow-soft-dark sm:p-6">
+      <div className="surface-card relative max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl overflow-y-auto rounded-lg p-4 shadow-soft-dark sm:max-h-[88vh] sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
               Bonus lore
             </p>
-            <h3 className="mt-2 text-3xl font-black tracking-normal text-zinc-950 dark:text-white">
+            <h3 className="mt-2 text-2xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-3xl">
               Archived Experiences
             </h3>
           </div>
           <button
             aria-label="Close modal"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-sm font-black text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-sm font-black text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300 sm:h-10 sm:w-10"
             onClick={onClose}
             type="button"
           >

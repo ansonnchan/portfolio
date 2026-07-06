@@ -101,12 +101,18 @@ button {
   bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
+.handwritten-display,
+.hero-greeting,
+.section-heading {
+  font-family: var(--font-hand), "Comic Sans MS", "Bradley Hand", cursive;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
 .hero-greeting {
   position: relative;
   width: fit-content;
   margin-inline: auto;
-  font-family: var(--font-hand), "Comic Sans MS", "Bradley Hand", cursive;
-  font-weight: 400;
   letter-spacing: -0.035em;
   transform: rotate(-1.5deg);
 }

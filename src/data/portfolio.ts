@@ -54,8 +54,7 @@ export const resumePath = "/resume";
 
 export const hero = {
   greeting: "Hello!",
-  title: "Welcome to Anson’s Site",
-  recommendedBy: "my mum",
+  title: "Welcome to Anson’s Portfolio",
   phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
 };
 

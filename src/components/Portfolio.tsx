@@ -20,7 +20,7 @@ export default function Portfolio() {
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 flex flex-col items-center gap-5 text-center">
-              <h2 className="responsive-heading font-black tracking-normal text-zinc-950 dark:text-white">
+              <h2 className="section-heading responsive-heading text-zinc-950 dark:text-white">
                 Experience
               </h2>
             </div>
@@ -38,7 +38,7 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="projects">
           <div className="mx-auto max-w-7xl">
-            <h2 className="responsive-heading mb-9 text-center font-black tracking-normal text-zinc-950 dark:text-white sm:mb-10">
+            <h2 className="section-heading responsive-heading mb-9 text-center text-zinc-950 dark:text-white sm:mb-10">
               Projects
             </h2>
 
@@ -52,7 +52,7 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-6xl">
-            <h2 className="responsive-heading mb-9 text-center font-black tracking-normal text-zinc-950 dark:text-white sm:mb-10">
+            <h2 className="section-heading responsive-heading mb-9 text-center text-zinc-950 dark:text-white sm:mb-10">
               Side Quests
             </h2>
 

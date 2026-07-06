@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section className="responsive-section scroll-fade scroll-mt-32 px-4 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
-        <h2 className="responsive-heading mb-9 text-center font-black tracking-normal text-zinc-950 dark:text-white sm:mb-12">
+        <h2 className="section-heading responsive-heading mb-9 text-center text-zinc-950 dark:text-white sm:mb-12">
           About Me
         </h2>
 
@@ -49,7 +49,7 @@ export default function About() {
                 >
                   👋
                 </span>
-                <span className="text-2xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-3xl">
+                <span className="handwritten-display text-3xl text-zinc-950 dark:text-white sm:text-4xl">
                   {about.greeting}
                 </span>
                 <span className="about-greeting-spark about-greeting-spark-right" aria-hidden="true" />

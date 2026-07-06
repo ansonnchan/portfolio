@@ -11,21 +11,12 @@ export default function Hero() {
             <span className="hero-greeting block text-[clamp(4.5rem,15vw,8.5rem)] leading-[0.82] text-emerald-700 dark:text-emerald-300">
               {hero.greeting}
             </span>
-            <span className="mt-7 block text-[clamp(2.25rem,7vw,4.75rem)] font-black leading-[1.02] tracking-[-0.035em] sm:mt-9">
+            <span className="handwritten-display mt-7 block text-[clamp(2.75rem,9vw,5.75rem)] leading-[0.98] sm:mt-9">
               {hero.title}
             </span>
           </h1>
 
-          <div className="mt-9 text-sm leading-relaxed sm:mt-11 sm:text-base">
-            <p className="font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
-              Recommended by
-            </p>
-            <p className="mt-1.5 font-semibold text-zinc-800 dark:text-zinc-200">
-              {hero.recommendedBy}
-            </p>
-          </div>
-
-          <p className="mt-9 min-h-8 text-[clamp(1.15rem,4vw,1.55rem)] font-semibold leading-8 text-zinc-700 dark:text-zinc-200 sm:mt-11">
+          <p className="handwritten-display mt-8 min-h-10 text-[clamp(1.65rem,5vw,2.25rem)] leading-10 text-zinc-700 dark:text-zinc-200 sm:mt-10">
             <TypewriterText phrases={hero.phrases} />
           </p>
           <HeroJourneyRoute />

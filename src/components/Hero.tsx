@@ -5,21 +5,24 @@ import TypewriterText from "@/components/TypewriterText";
 export default function Hero() {
   return (
     <section className="relative min-h-[100svh] overflow-hidden" id="top">
-      <div className="relative mx-auto flex min-h-[100svh] max-w-5xl items-center justify-center px-5 pb-32 pt-28 sm:px-10 sm:pb-36 sm:pt-32">
-        <div className="animate-reveal-up mx-auto w-full max-w-4xl text-center">
+      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl items-center justify-center px-5 pb-32 pt-28 sm:px-8 sm:pb-36 sm:pt-32">
+        <div className="animate-reveal-up mx-auto w-full max-w-7xl text-center">
           <h1 className="text-zinc-950 dark:text-white">
             <span className="hero-greeting block text-[clamp(4.5rem,15vw,8.5rem)] leading-[0.82] text-emerald-700 dark:text-emerald-300">
               {hero.greeting}
             </span>
-            <span className="handwritten-display mt-7 block text-[clamp(2.75rem,9vw,5.75rem)] leading-[0.98] sm:mt-9">
+            <span className="handwritten-display mt-7 block text-[clamp(2.5rem,5vw,4rem)] leading-[1.02] sm:mt-8 xl:whitespace-nowrap">
               {hero.title}
             </span>
           </h1>
 
-          <p className="handwritten-display mt-8 min-h-10 text-[clamp(1.65rem,5vw,2.25rem)] leading-10 text-zinc-700 dark:text-zinc-200 sm:mt-10">
+          <p className="handwritten-display mt-7 min-h-10 text-[clamp(1.65rem,5vw,2.25rem)] leading-10 text-zinc-700 dark:text-zinc-200 sm:mt-9">
             <TypewriterText phrases={hero.phrases} />
           </p>
           <HeroJourneyRoute />
+          <p className="mt-3 text-xs font-medium tracking-[0.04em] text-zinc-400 dark:text-zinc-500">
+            {hero.easterEgg}
+          </p>
         </div>
       </div>
       <a

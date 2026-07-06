@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { navLinks, resumePath } from "@/data/portfolio";
+import { navLinks } from "@/data/portfolio";
 
 function useVancouverClock() {
   const [clock, setClock] = useState({
@@ -92,22 +92,11 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="pointer-events-auto absolute right-0 top-0 flex shrink-0 flex-col items-end gap-1">
-          <div className="flex items-center rounded-full border border-black/10 bg-white/72 p-1.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72">
-            <a
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-zinc-950 px-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700 dark:bg-white dark:text-[#10140f] dark:hover:bg-emerald-200 lg:h-10"
-              href={resumePath}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <img alt="" className="h-4 w-4 invert dark:invert-0" src="/assets/download.png" />
-              <span className="hidden sm:inline">Resume</span>
-            </a>
-          </div>
-          <div className="hidden rounded-lg border border-black/10 bg-white/72 px-3 py-2 text-right text-xs font-bold leading-4 text-zinc-600 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/72 dark:text-zinc-300 lg:block">
-            <p>{clock.time}</p>
-            <p className="font-semibold text-zinc-500 dark:text-zinc-400">{clock.date}</p>
-          </div>
+        <div className="clock-note handwritten-display pointer-events-auto absolute right-0 top-0 min-w-[7.25rem] px-3 py-2 text-center text-zinc-700 dark:text-zinc-200">
+          <p className="text-base leading-5">{clock.time}</p>
+          <p className="mt-0.5 text-sm leading-4 text-zinc-500 dark:text-zinc-400">
+            {clock.date}
+          </p>
         </div>
       </div>
     </header>

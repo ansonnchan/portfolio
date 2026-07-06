@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <article
-      className="surface-card cursor-pointer rounded-lg p-4 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark sm:p-5"
+      className="comic-card doodle-corner surface-card cursor-pointer p-4 transition hover:-translate-y-1 sm:p-5"
       onClick={toggleOpen}
       onKeyDown={handleKeyDown}
       role="button"
@@ -47,6 +47,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="min-w-0 flex-1">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
             <div className="min-w-0">
+              <p className="mini-label mb-1 text-emerald-700 dark:text-emerald-300">
+                build log
+              </p>
               <h3 className="text-xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-2xl">
                 {project.title}
               </h3>
@@ -96,7 +99,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <div className="mt-4 flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <span
-                className="rounded-full border border-emerald-600/20 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-200"
+                className="sticker-tag px-3 py-1 text-xs font-semibold text-emerald-800 dark:text-emerald-200"
                 key={tech}
               >
                 {tech}

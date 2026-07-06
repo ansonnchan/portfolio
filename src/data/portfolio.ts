@@ -47,14 +47,14 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Resume", href: "#resume" },
   { label: "Side Quests", href: "#side-quests" }
 ];
 
-export const resumePath = "/resume";
-
 export const hero = {
   greeting: "Hello!",
-  title: "Welcome to Anson’s Portfolio",
+  title: "Welcome to Anson’s corner of the internet.",
+  easterEgg: "currently debugging something.",
   phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
 };
 

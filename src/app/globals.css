@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #fffefb;
   --foreground: #171a16;
   --muted: #5c645d;
   --surface: rgba(255, 255, 255, 0.82);
@@ -37,6 +37,13 @@ body {
   letter-spacing: 0;
 }
 
+.portfolio-shell {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(22, 128, 63, 0.035), transparent 24rem),
+    radial-gradient(circle at 88% 64%, rgba(245, 158, 11, 0.025), transparent 22rem),
+    var(--background);
+}
+
 img,
 video {
   display: block;
@@ -63,6 +70,120 @@ button {
   background: var(--surface);
   border: 1px solid var(--border);
   backdrop-filter: blur(18px);
+}
+
+.comic-card {
+  border: 1.5px solid rgba(36, 43, 36, 0.16);
+  border-radius: 0.9rem 0.72rem 1rem 0.8rem;
+  box-shadow:
+    3px 4px 0 rgba(22, 128, 63, 0.07),
+    0 18px 48px rgba(15, 23, 42, 0.06);
+}
+
+.doodle-corner {
+  position: relative;
+}
+
+.doodle-corner::after {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.65rem;
+  color: var(--accent);
+  content: "✦";
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+  font-size: 1rem;
+  opacity: 0.16;
+  pointer-events: none;
+  transform: rotate(10deg);
+}
+
+.mini-label {
+  font-family: var(--font-hand), "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1;
+}
+
+.sticker-tag {
+  border: 1px solid rgba(22, 128, 63, 0.18);
+  border-radius: 0.48rem 0.66rem 0.5rem 0.7rem;
+  background: rgba(236, 253, 245, 0.72);
+  box-shadow: 1px 1.5px 0 rgba(22, 128, 63, 0.08);
+}
+
+.sticker-tag:nth-child(even) {
+  rotate: 0.6deg;
+}
+
+.social-sticker {
+  border: 1px solid rgba(36, 43, 36, 0.15);
+  border-radius: 0.6rem 0.75rem 0.55rem 0.8rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 2px 0 rgba(22, 128, 63, 0.09);
+}
+
+.social-sticker:nth-child(1) {
+  rotate: -1.2deg;
+}
+
+.social-sticker:nth-child(2) {
+  rotate: 0.8deg;
+}
+
+.social-sticker:nth-child(3) {
+  rotate: -0.5deg;
+}
+
+.clock-note {
+  border: 1px solid rgba(120, 102, 37, 0.2);
+  border-radius: 0.28rem 0.4rem 0.35rem 0.3rem;
+  background: rgba(255, 248, 202, 0.94);
+  box-shadow:
+    2px 3px 0 rgba(98, 82, 26, 0.08),
+    0 8px 22px rgba(38, 34, 29, 0.08);
+  rotate: 0.7deg;
+}
+
+.clock-note::before {
+  position: absolute;
+  top: -0.28rem;
+  left: 50%;
+  height: 0.5rem;
+  width: 2.6rem;
+  background: rgba(255, 255, 255, 0.58);
+  content: "";
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.comic-action {
+  justify-content: center;
+  border: 1px solid rgba(36, 43, 36, 0.16);
+  border-radius: 0.58rem 0.72rem 0.55rem 0.68rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: #27272a;
+  box-shadow: 2px 2px 0 rgba(22, 128, 63, 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.comic-action:hover {
+  border-color: rgba(22, 128, 63, 0.42);
+  background: #ecfdf5;
+  transform: translateY(-2px);
+}
+
+.comic-action-primary {
+  border-color: #18181b;
+  background: #18181b;
+  color: white;
+}
+
+.comic-action-primary:hover {
+  border-color: #15803d;
+  background: #15803d;
 }
 
 .soft-grid {
@@ -93,7 +214,7 @@ button {
 }
 
 .responsive-heading {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
   line-height: 1.05;
 }
 
@@ -107,6 +228,23 @@ button {
   font-family: var(--font-hand), "Comic Sans MS", "Bradley Hand", cursive;
   font-weight: 400;
   letter-spacing: -0.025em;
+}
+
+.section-heading {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.section-heading::after {
+  display: block;
+  height: 0.06em;
+  width: 42%;
+  margin: 0.08em auto 0;
+  border-radius: 9999px 45% 9999px 55%;
+  background: var(--accent);
+  content: "";
+  opacity: 0.3;
+  transform: rotate(-1deg);
 }
 
 .hero-greeting {
@@ -281,6 +419,42 @@ button {
     opacity: 1;
     transform: none;
   }
+}
+
+.dark .comic-card {
+  border-color: rgba(255, 255, 255, 0.13);
+  box-shadow:
+    3px 4px 0 rgba(110, 231, 183, 0.06),
+    0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+.dark .sticker-tag {
+  border-color: rgba(110, 231, 183, 0.16);
+  background: rgba(110, 231, 183, 0.08);
+}
+
+.dark .social-sticker,
+.dark .comic-action {
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f4f4f5;
+}
+
+.dark .clock-note {
+  border-color: rgba(251, 191, 36, 0.16);
+  background: rgba(77, 65, 24, 0.92);
+}
+
+.dark .comic-action-primary {
+  border-color: #f4f4f5;
+  background: #f4f4f5;
+  color: #18181b;
+}
+
+.dark .comic-action-primary:hover {
+  border-color: #6ee7b7;
+  background: #6ee7b7;
+  color: #10140f;
 }
 
 @media (min-width: 640px) {

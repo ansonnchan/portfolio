@@ -5,12 +5,13 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import NowPlayingPlayer from "@/components/NowPlayingPlayer";
 import ProjectCard from "@/components/ProjectCard";
+import ResumeSection from "@/components/ResumeSection";
 import SideQuestGallery from "@/components/SideQuestGallery";
 import { experiences, projects, sideQuests } from "@/data/portfolio";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <div className="portfolio-shell min-h-screen text-[var(--foreground)]">
       <Navbar />
       <Hero />
 
@@ -49,6 +50,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <ResumeSection />
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-6xl">

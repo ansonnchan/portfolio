@@ -26,7 +26,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 
   return (
     <article
-      className="surface-card cursor-pointer rounded-lg p-4 shadow-soft transition hover:-translate-y-1 dark:shadow-soft-dark sm:p-5"
+      className="comic-card doodle-corner surface-card cursor-pointer p-4 transition hover:-translate-y-1 sm:p-5"
       onClick={toggleOpen}
       onKeyDown={handleKeyDown}
       role="button"
@@ -44,11 +44,9 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              {experience.eyebrow ? (
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300">
-                  {experience.eyebrow}
-                </p>
-              ) : null}
+              <p className="mini-label mb-1 text-emerald-700 dark:text-emerald-300">
+                {experience.eyebrow ?? "work log"}
+              </p>
               <h3 className="text-xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-2xl">
                 {experience.title}{" "}
                 <span className="text-zinc-500 dark:text-zinc-400">
@@ -71,10 +69,10 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-300">
-            <span className="rounded-full bg-zinc-900/5 px-3 py-1 dark:bg-white/10">
+            <span className="sticker-tag px-3 py-1">
               {experience.dates}
             </span>
-            <span className="rounded-full bg-zinc-900/5 px-3 py-1 dark:bg-white/10">
+            <span className="sticker-tag px-3 py-1">
               {experience.location}
             </span>
           </div>

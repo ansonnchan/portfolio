@@ -47,17 +47,21 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Side Quests", href: "#side-quests" }
+  { label: "Side Quests", href: "#side-quests" },
+  { label: "Resume", href: "#resume" },
+  { label: "Contact", href: "#contact" }
 ];
 
-export const resumePath = "/resume";
-
 export const hero = {
-  greeting: "Hey!",
-  name: "Anson Chan",
-  chineseName: "陳雋希",
-  phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
-  video: "/assets/chibi_dance.mp4"
+  greeting: "Hello!",
+  title: "Welcome to Anson’s corner of the internet.",
+  phrases: [
+    "Software Engineer",
+    "CPEN Student",
+    "Builder",
+    "Professional Boba Enthusiast",
+    "Open-Source Enjoyer"
+  ],
 };
 
 export const socials: SocialLink[] = [

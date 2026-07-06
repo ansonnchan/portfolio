@@ -341,7 +341,7 @@ export const sideQuests = {
   ],
   shows: [
     {
-      src: "/assets/photos/IMG_0668.JPG",
+      src: "/assets/sidequests/anson_violin.JPG",
       alt: "Young Anson holding a violin before a performance",
       caption: "amazing camera quality fr"
     },

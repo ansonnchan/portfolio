@@ -1,5 +1,5 @@
 import { hero } from "@/data/portfolio";
-import HeroJourneyRoute from "@/components/HeroJourneyRoute";
+import Flags from "@/components/Flags";
 import TypewriterText from "@/components/TypewriterText";
 
 export default function Hero() {
@@ -17,12 +17,12 @@ export default function Hero() {
           </h1>
 
           <div className="handwritten-display mt-7 text-zinc-700 dark:text-zinc-200 sm:mt-9">
-            <p className="text-[clamp(1.4rem,4vw,1.8rem)] leading-8">I’m a</p>
+            <p className="text-[clamp(1.4rem,4vw,1.8rem)] leading-8">I’m a ...</p>
             <p className="mt-1 min-h-11 text-[clamp(1.8rem,5vw,2.45rem)] leading-10">
               <TypewriterText phrases={hero.phrases} />
             </p>
           </div>
-          <HeroJourneyRoute />
+          <Flags/> 
         </div>
       </div>
       <a

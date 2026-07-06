@@ -54,13 +54,11 @@ export const navLinks = [
 
 export const hero = {
   greeting: "Hello!",
-  title: "Welcome to Anson’s corner of the internet.",
+  title: "Welcome to Anson’s corner of the internet",
   phrases: [
     "Software Engineer",
-    "CPEN Student",
-    "Builder",
-    "Professional Boba Enthusiast",
-    "Open-Source Enjoyer"
+    "Computer Engineering Student @ UBC",
+    "Boba Addict",
   ],
 };
 
@@ -110,18 +108,16 @@ export const about = {
       { text: " for 15 years. I moved to " },
       { text: "Canada", highlight: true },
       {
-        text: " in late 2021. I play every racket sport, including tennis, badminton, table tennis, and even pickleball."
+        text: " in late 2021. I play every racket sport, including tennis, badminton, and table tennis."
       },
     ],
     [
-      {text: "Like every other SoCal Asian, I also like playing volleyball, drinking boba, and eating Korean BBQ. "},
+      {text: "Like every other SoCal Asian, I like playing volleyball, drinking boba, and eating hotpot. "},
       {
         text: "I've also been binging way too many C-dramas and K-dramas recently. Right now, I'm watching "
       },
-      { text: "Night has Come ", highlight: true },
-      { text: "and " },
       { text: "When I Fly Towards You", highlight: true },
-      {text: "."}
+      {text: ". "}
     ]
   ],
   /** 
@@ -149,7 +145,7 @@ export const experiences: Experience[] = [
     location: "Vancouver, BC",
     image: "/assets/experiences/scalepad_logo_black.png",
     bullets: [
-      [{ text: "On the Lifecycle Manager Team 🌱" }]
+      [{ text: "Currently on the Lifecycle Manager Team 🌱" }]
     ]
   },
   {
@@ -210,6 +206,7 @@ export const experiences: Experience[] = [
   }
 ];
 
+/** 
 export const archivedExperiences: ArchivedExperience[] = [
   {
     title: "GAP",
@@ -240,13 +237,13 @@ export const archivedExperiences: ArchivedExperience[] = [
     ]
   }
 ];
-
+**/
 
 export const projects: Project[] = [
   {
     title: "Personal Portfolio",
     description:
-      "The third rendition of my portfolio",
+      "The third rendition of my portfolio. I've done a lot of revamping since the first version. I hope you enjoy the design and features.",
     image: "/assets/projects/portfolio_pic1.png",
     icon: "/assets/projects/portfolio_icon.png",
     screenshots: [
@@ -257,15 +254,15 @@ export const projects: Project[] = [
     github: "https://github.com/ansonnchan/portfolio",
     live: "https://www.ansonnchan.dev/",
     details: [
-      "Added a server-side API route that calls GitHub’s GraphQL contributionCalendar API (showing you that I know how to code 😭😭).",
-      "Please enjoy :)"
+      "Added a server-side API route that calls GitHub’s GraphQL contributionCalendar API.",
+      //"Please enjoy :)"
       //"Rendered the contribution data as a Jan-Dec activity heatmap with normalized weeks, month labels, hover titles, dark-mode styling, and future days greyed out."
     ]
   },
   {
     title: "Pear Programming",
     description:
-      "A browser-based collaborative coding editor with real-time editing, shared workspaces, and AI-assisted coding features.",
+      "A collaborative coding editor with real-time editing, shared workspaces, and AI-assisted coding features.",
     image: "/assets/projects/pear-program-pic2.png",
     icon: "/assets/projects/pear-programming-favicon.png",
     screenshots: [
@@ -333,11 +330,10 @@ export const sideQuests = {
   intro:
     "Contrary to what people may believe, I do have hobbies and interests, I do talk to other people, and I do touch grass.",
   bullets: [
-    "I’ve played the violin and the trumpet for 12 years and 10 years respectively. Although I haven’t played as much as I used to in high school, I’m hoping to join UBC’s symphony orchestra before I graduate.",
-    "I also play tennis and badminton regularly. One of my favorite flexes is that two of my high school friends in Australia went on to become professional tennis players, and I can say I beat them... before they got really good 😭😭",
-    "I'm an avid lover of thrillers, mysteries, and sci-fi. Specifically the dystopian genre.",
-    "I'm about 270 episodes deep into Detective Conan.",
-    "My favorite anime is Your Lie in April, both from a musician's perspective and an emotional perspective. IT'S SO PEAK BUT SO SAD!!",
+    "I’ve played the violin and the trumpet for 12 years and 10 years respectively. I’m hoping to join UBC’s symphony orchestra before I graduate.",
+    "I like to play tennis and badminton regularly. Fun fact: two of my high school friends in Australia went on to become professional tennis players.",
+    "I'm an avid lover of thrillers, mysteries, and sci-fi. My favorite book series is the \"Three-Body Problem\" trilogy by Liu Cixin, and my favorite movie is \"Interstellar\".",
+    "My favorite anime is Your Lie in April, both from a musician's perspective and an emotional perspective. I def did not cry, I promise.",
   ],
   shows: [
     {

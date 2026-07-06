@@ -1,4 +1,4 @@
-export default function HeroJourneyRoute() {
+export default function Flags() {
   return (
     <p
       aria-label="Hong Kong, Australia, Canada"

@@ -22,7 +22,7 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading subtitle="the work so far" title="Experience" />
+            <SectionHeading subtitle="places I've had the luxury of working at" title="Experience" />
 
             <div className="grid gap-5">
               {experiences.map((experience) => (
@@ -37,7 +37,7 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="projects">
           <div className="mx-auto max-w-7xl">
-            <SectionHeading subtitle="things I’ve built" title="Projects" />
+            <SectionHeading subtitle="things I’ve built in my free time" title="Projects" />
 
             <div className="grid gap-5">
               {projects.map((project) => (
@@ -50,7 +50,7 @@ export default function Portfolio() {
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
-              subtitle="small ideas that escaped my notes app"
+              subtitle="I do touch grass and I do talk to other people, I promise"
               title="Side Quests"
             />
 

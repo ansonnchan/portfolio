@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       tabIndex={0}
     >
       <div className="flex flex-col gap-4 sm:flex-row">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white p-2 dark:border-white/10 sm:h-16 sm:w-16">
+        <div className="card-icon">
           <img
             alt={`${project.title} icon`}
             className="max-h-full max-w-full object-contain"
@@ -47,9 +47,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="min-w-0 flex-1">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
             <div className="min-w-0">
-              <p className="mini-label mb-1 text-emerald-700 dark:text-emerald-300">
-                build log
-              </p>
               <h3 className="text-xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-2xl">
                 {project.title}
               </h3>
@@ -61,7 +58,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <div className="flex shrink-0 items-center gap-2">
               <a
                 aria-label={`${project.title} GitHub repository`}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 sm:h-10 sm:w-10"
+                className="icon-control"
                 href={project.github}
                 onClick={stopRowToggle}
                 rel="noreferrer"
@@ -72,7 +69,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.live ? (
                 <a
                   aria-label={`${project.title} live app`}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 sm:h-10 sm:w-10"
+                  className="icon-control"
                   href={project.live}
                   onClick={stopRowToggle}
                   rel="noreferrer"
@@ -84,7 +81,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <button
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Minimize project" : "Expand project"}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-xl font-semibold text-zinc-800 transition hover:border-emerald-600/30 hover:text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-emerald-300 sm:h-10 sm:w-10"
+                className="icon-control text-xl font-semibold"
                 onClick={(event) => {
                   stopRowToggle(event);
                   toggleOpen();

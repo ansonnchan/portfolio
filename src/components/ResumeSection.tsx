@@ -1,4 +1,6 @@
 import { Download, ExternalLink } from "lucide-react";
+import ResumePreview from "@/components/ResumePreview";
+import SectionHeading from "@/components/SectionHeading";
 
 const resumePath = "/assets/resume.pdf";
 
@@ -9,20 +11,10 @@ export default function ResumeSection() {
       id="resume"
     >
       <div className="mx-auto max-w-6xl">
-        <h2 className="section-heading responsive-heading mb-3 text-center text-zinc-950 dark:text-white">
-          Resume
-        </h2>
-        <p className="mini-label mb-9 text-center text-emerald-700 dark:text-emerald-300 sm:mb-10">
-          the one-page version
-        </p>
+        <SectionHeading subtitle="the one-page version" title="Resume" />
 
         <div className="comic-card surface-card overflow-hidden p-3 sm:p-5">
-          <iframe
-            className="h-[68vh] min-h-[30rem] w-full rounded-lg border border-black/10 bg-white dark:border-white/10 sm:min-h-[38rem] lg:min-h-[46rem]"
-            loading="lazy"
-            src={`${resumePath}#view=FitH`}
-            title="Anson Chan resume PDF preview"
-          />
+          <ResumePreview pdfPath={resumePath} />
 
           <div className="flex flex-col gap-4 px-1 pb-1 pt-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -45,7 +37,7 @@ export default function ResumeSection() {
                 href={resumePath}
               >
                 <Download aria-hidden="true" className="h-4 w-4" />
-                Download
+                Download PDF
               </a>
             </div>
           </div>

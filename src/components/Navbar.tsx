@@ -6,16 +6,15 @@ import { navLinks } from "@/data/portfolio";
 
 function useVancouverClock() {
   const [clock, setClock] = useState({
-    time: "--:--:-- PDT",
+    time: "--:-- PDT",
     date: "Saturday May 16"
   });
 
   useEffect(() => {
-    const timeFormatter = new Intl.DateTimeFormat("en-CA", {
-      hour: "2-digit",
+    const timeFormatter = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
       minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
+      hour12: true,
       timeZone: "America/Vancouver",
       timeZoneName: "short"
     });

@@ -10,6 +10,11 @@
   --surface-strong: #ffffff;
   --border: rgba(36, 43, 36, 0.13);
   --accent: #16803f;
+  --card-radius: 0.9rem 0.72rem 1rem 0.8rem;
+  --control-radius: 0.58rem 0.72rem 0.55rem 0.68rem;
+  --card-shadow:
+    3px 4px 0 rgba(22, 128, 63, 0.07),
+    0 18px 48px rgba(15, 23, 42, 0.06);
 }
 
 * {
@@ -74,10 +79,8 @@ button {
 
 .comic-card {
   border: 1.5px solid rgba(36, 43, 36, 0.16);
-  border-radius: 0.9rem 0.72rem 1rem 0.8rem;
-  box-shadow:
-    3px 4px 0 rgba(22, 128, 63, 0.07),
-    0 18px 48px rgba(15, 23, 42, 0.06);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
 }
 
 .doodle-corner {
@@ -116,25 +119,6 @@ button {
   rotate: 0.6deg;
 }
 
-.social-sticker {
-  border: 1px solid rgba(36, 43, 36, 0.15);
-  border-radius: 0.6rem 0.75rem 0.55rem 0.8rem;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 2px 2px 0 rgba(22, 128, 63, 0.09);
-}
-
-.social-sticker:nth-child(1) {
-  rotate: -1.2deg;
-}
-
-.social-sticker:nth-child(2) {
-  rotate: 0.8deg;
-}
-
-.social-sticker:nth-child(3) {
-  rotate: -0.5deg;
-}
-
 .clock-note {
   border: 1px solid rgba(120, 102, 37, 0.2);
   border-radius: 0.28rem 0.4rem 0.35rem 0.3rem;
@@ -159,7 +143,7 @@ button {
 .comic-action {
   justify-content: center;
   border: 1px solid rgba(36, 43, 36, 0.16);
-  border-radius: 0.58rem 0.72rem 0.55rem 0.68rem;
+  border-radius: var(--control-radius);
   background: rgba(255, 255, 255, 0.92);
   color: #27272a;
   box-shadow: 2px 2px 0 rgba(22, 128, 63, 0.08);
@@ -184,6 +168,42 @@ button {
 .comic-action-primary:hover {
   border-color: #15803d;
   background: #15803d;
+}
+
+.card-icon {
+  display: flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(36, 43, 36, 0.12);
+  border-radius: 0.65rem;
+  background: white;
+  padding: 0.5rem;
+}
+
+.icon-control {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 43, 36, 0.13);
+  border-radius: 9999px;
+  background: white;
+  color: #27272a;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.icon-control:hover {
+  border-color: rgba(22, 128, 63, 0.4);
+  color: #15803d;
+  transform: translateY(-1px);
 }
 
 .soft-grid {
@@ -216,6 +236,17 @@ button {
 .responsive-heading {
   font-size: clamp(2.75rem, 6vw, 4.25rem);
   line-height: 1.05;
+}
+
+.section-intro {
+  margin-bottom: clamp(2.25rem, 4vw, 3rem);
+}
+
+.section-subtitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
 }
 
 .now-playing-dock {
@@ -266,6 +297,18 @@ button {
   content: "";
   opacity: 0.28;
   transform: rotate(-1deg);
+}
+
+.about-note {
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+
+.resume-canvas-shell {
+  border: 1px solid rgba(36, 43, 36, 0.12);
+  border-radius: 0.65rem;
+  background: #f4f4f5;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
 }
 
 .arrow-chevron {
@@ -343,53 +386,6 @@ button {
   box-shadow: 0 1px 4px rgba(22, 128, 63, 0.28);
 }
 
-.about-greeting-pop {
-  animation: about-greeting-pop 0.7s cubic-bezier(0.2, 1.4, 0.34, 1) both;
-}
-
-.about-greeting-bubble {
-  transform-origin: 18% 100%;
-  animation: about-greeting-bob 3.4s ease-in-out 0.8s infinite;
-}
-
-.about-greeting-tail {
-  position: absolute;
-  bottom: -0.48rem;
-  left: 1.4rem;
-  height: 0.9rem;
-  width: 0.9rem;
-  border-bottom: 1px solid rgba(34, 197, 94, 0.25);
-  border-right: 1px solid rgba(34, 197, 94, 0.25);
-  background: inherit;
-  transform: rotate(45deg);
-}
-
-.about-greeting-spark {
-  position: absolute;
-  height: 0.46rem;
-  width: 0.46rem;
-  border: 2px solid var(--accent);
-  border-radius: 2px;
-  opacity: 0.82;
-  transform: rotate(45deg);
-  animation: about-greeting-spark 1.9s ease-in-out infinite;
-}
-
-.about-greeting-spark-left {
-  left: -0.36rem;
-  top: 0.38rem;
-}
-
-.about-greeting-spark-right {
-  right: -0.34rem;
-  top: -0.18rem;
-  animation-delay: 0.28s;
-}
-
-.about-greeting-wave {
-  animation: about-greeting-wave 1.4s ease-in-out infinite;
-}
-
 @supports not (animation-timeline: view()) {
   .scroll-fade {
     opacity: 1;
@@ -405,10 +401,6 @@ button {
 
   .animate-carousel,
   .animate-reveal-up,
-  .about-greeting-bubble,
-  .about-greeting-pop,
-  .about-greeting-spark,
-  .about-greeting-wave,
   .homepage-down-button,
   .scroll-fade,
   .typewriter-caret {
@@ -433,7 +425,6 @@ button {
   background: rgba(110, 231, 183, 0.08);
 }
 
-.dark .social-sticker,
 .dark .comic-action {
   border-color: rgba(255, 255, 255, 0.13);
   background: rgba(255, 255, 255, 0.08);
@@ -443,6 +434,12 @@ button {
 .dark .clock-note {
   border-color: rgba(251, 191, 36, 0.16);
   background: rgba(77, 65, 24, 0.92);
+}
+
+.dark .resume-canvas-shell {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .dark .comic-action-primary {
@@ -457,7 +454,33 @@ button {
   color: #10140f;
 }
 
+.dark .icon-control {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.dark .card-icon {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: white;
+}
+
+.dark .icon-control:hover {
+  border-color: rgba(110, 231, 183, 0.4);
+  color: #6ee7b7;
+}
+
 @media (min-width: 640px) {
+  .card-icon {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .icon-control {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
   .now-playing-dock {
     bottom: max(1.25rem, env(safe-area-inset-bottom));
   }
@@ -482,63 +505,6 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes about-greeting-pop {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.9) rotate(-2deg);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(-2px) scale(1.04) rotate(-1deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1) rotate(-1deg);
-  }
-}
-
-@keyframes about-greeting-bob {
-  0%,
-  100% {
-    transform: rotate(-1deg) translateY(0);
-  }
-  50% {
-    transform: rotate(1deg) translateY(-4px);
-  }
-}
-
-@keyframes about-greeting-spark {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: rotate(45deg) scale(0.78);
-  }
-  45% {
-    opacity: 1;
-    transform: rotate(45deg) scale(1.08);
-  }
-}
-
-@keyframes about-greeting-wave {
-  0%,
-  60%,
-  100% {
-    transform: rotate(0deg);
-  }
-  12% {
-    transform: rotate(12deg);
-  }
-  24% {
-    transform: rotate(-10deg);
-  }
-  36% {
-    transform: rotate(8deg);
-  }
-  48% {
-    transform: rotate(-6deg);
   }
 }
 

@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import ContactSection from "@/components/ContactSection";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -6,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import NowPlayingPlayer from "@/components/NowPlayingPlayer";
 import ProjectCard from "@/components/ProjectCard";
 import ResumeSection from "@/components/ResumeSection";
+import SectionHeading from "@/components/SectionHeading";
 import SideQuestGallery from "@/components/SideQuestGallery";
 import { experiences, projects, sideQuests } from "@/data/portfolio";
 
@@ -20,11 +22,7 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-10 flex flex-col items-center gap-5 text-center">
-              <h2 className="section-heading responsive-heading text-zinc-950 dark:text-white">
-                Experience
-              </h2>
-            </div>
+            <SectionHeading subtitle="the work so far" title="Experience" />
 
             <div className="grid gap-5">
               {experiences.map((experience) => (
@@ -39,9 +37,7 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="projects">
           <div className="mx-auto max-w-7xl">
-            <h2 className="section-heading responsive-heading mb-9 text-center text-zinc-950 dark:text-white sm:mb-10">
-              Projects
-            </h2>
+            <SectionHeading subtitle="things I’ve built" title="Projects" />
 
             <div className="grid gap-5">
               {projects.map((project) => (
@@ -51,13 +47,12 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <ResumeSection />
-
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-6xl">
-            <h2 className="section-heading responsive-heading mb-9 text-center text-zinc-950 dark:text-white sm:mb-10">
-              Side Quests
-            </h2>
+            <SectionHeading
+              subtitle="small ideas that escaped my notes app"
+              title="Side Quests"
+            />
 
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-center">
               <div className="mx-auto max-w-3xl lg:mx-0">
@@ -77,6 +72,9 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <ResumeSection />
+        <ContactSection />
       </main>
 
       <Footer />

@@ -47,15 +47,21 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Side Quests", href: "#side-quests" },
   { label: "Resume", href: "#resume" },
-  { label: "Side Quests", href: "#side-quests" }
+  { label: "Contact", href: "#contact" }
 ];
 
 export const hero = {
   greeting: "Hello!",
   title: "Welcome to Anson’s corner of the internet.",
-  easterEgg: "currently debugging something.",
-  phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
+  phrases: [
+    "Software Engineer",
+    "CPEN Student",
+    "Builder",
+    "Professional Boba Enthusiast",
+    "Open-Source Enjoyer"
+  ],
 };
 
 export const socials: SocialLink[] = [

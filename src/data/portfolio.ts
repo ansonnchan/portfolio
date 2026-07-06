@@ -53,11 +53,10 @@ export const navLinks = [
 export const resumePath = "/resume";
 
 export const hero = {
-  greeting: "Hey!",
-  name: "Anson Chan",
-  chineseName: "陳雋希",
+  greeting: "Hello!",
+  title: "Welcome to Anson’s Site",
+  recommendedBy: "my mum",
   phrases: ["A software engineer", "CPEN student @ UBC", "Boba Tea Addict"],
-  video: "/assets/chibi_dance.mp4"
 };
 
 export const socials: SocialLink[] = [

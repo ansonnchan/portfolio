@@ -72,10 +72,6 @@ button {
   background-size: 34px 34px;
 }
 
-.animate-float-soft {
-  animation: float-soft 6s ease-in-out infinite;
-}
-
 .animate-reveal-up {
   animation: reveal-up 0.7s ease both;
 }
@@ -105,23 +101,27 @@ button {
   bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
-.premium-heading-depth {
-  text-shadow: 0 7px 10px rgba(15, 23, 42, 0.07);
+.hero-greeting {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+  font-family: var(--font-hand), "Comic Sans MS", "Bradley Hand", cursive;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  transform: rotate(-1.5deg);
 }
 
-.hero-character-backdrop {
+.hero-greeting::after {
   position: absolute;
-  left: 50%;
-  top: 44%;
-  z-index: 0;
-  height: min(64vw, 31rem);
-  width: min(68vw, 33rem);
-  pointer-events: none;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(250, 240, 230, 0.3) 0%, rgba(250, 240, 230, 0.12) 42%, transparent 72%);
-  filter: blur(30px);
-  opacity: 0.52;
-  transform: translate(-50%, -50%);
+  right: 5%;
+  bottom: -0.08em;
+  left: 6%;
+  height: 0.08em;
+  border-radius: 9999px 55% 9999px 45%;
+  background: currentColor;
+  content: "";
+  opacity: 0.28;
+  transform: rotate(-1deg);
 }
 
 .arrow-chevron {
@@ -260,7 +260,6 @@ button {
   }
 
   .animate-carousel,
-  .animate-float-soft,
   .animate-reveal-up,
   .about-greeting-bubble,
   .about-greeting-pop,
@@ -292,16 +291,6 @@ button {
   46%,
   100% {
     opacity: 0;
-  }
-}
-
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
   }
 }
 

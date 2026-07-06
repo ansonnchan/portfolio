@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Patrick_Hand } from "next/font/google";
 import "./globals.css";
+
+const patrickHand = Patrick_Hand({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-hand",
+  weight: "400"
+});
 
 export const metadata: Metadata = {
   title: "Anson Chan's Portfolio",
@@ -18,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={patrickHand.variable}>{children}</body>
     </html>
   );
 }

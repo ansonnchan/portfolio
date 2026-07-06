@@ -1,4 +1,4 @@
-import { about } from "@/data/portfolio";
+import { about, socials } from "@/data/portfolio";
 import GitHubContributionGraph from "@/components/GitHubContributionGraph";
 import RichText from "@/components/RichText";
 
@@ -19,6 +19,24 @@ export default function About() {
                 src={about.profileImage}
               />
             </div>
+            <nav
+              aria-label="Anson's social links"
+              className="flex items-center justify-center gap-3 px-2 pb-1 pt-4"
+            >
+              {socials.map((social) => (
+                <a
+                  aria-label={social.label}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-zinc-800 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-600/35 hover:bg-emerald-50 dark:border-white/10 dark:bg-white/8 dark:text-zinc-100 dark:hover:bg-emerald-300/10"
+                  href={social.href}
+                  key={social.label}
+                  rel="noreferrer"
+                  target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                  title={social.label}
+                >
+                  <img alt="" className="h-5 w-5 object-contain" src={social.icon} />
+                </a>
+              ))}
+            </nav>
           </aside>
 
           <div className="min-w-0 space-y-5 text-base leading-7 text-zinc-700 dark:text-zinc-300 sm:text-lg sm:leading-8">

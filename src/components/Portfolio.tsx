@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import NowPlayingPlayer from "@/components/NowPlayingPlayer";
 import ProjectCard from "@/components/ProjectCard";
-import ResumeSection from "@/components/ResumeSection";
 import SectionHeading from "@/components/SectionHeading";
 import SideQuestGallery from "@/components/SideQuestGallery";
 import SideQuestList from "@/components/SideQuestList";
@@ -65,8 +64,6 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-        <ResumeSection />
       </main>
 
       <Footer />

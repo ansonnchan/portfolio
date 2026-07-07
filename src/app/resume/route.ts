@@ -7,7 +7,7 @@ export async function GET() {
 
   return new Response(new Uint8Array(file), {
     headers: {
-      "Content-Disposition": 'inline; filename="Anson_Chan_Resume.pdf"',
+      "Content-Disposition": 'inline; filename="Anson Chan Resume.pdf"',
       "Content-Type": "application/pdf"
     }
   });

@@ -47,8 +47,7 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Side Quests", href: "#side-quests" },
-  { label: "Resume", href: "#resume" }
+  { label: "Side Quests", href: "#side-quests" }
 ];
 
 export const hero = {
@@ -76,6 +75,11 @@ export const socials: SocialLink[] = [
     label: "Email",
     href: "mailto:ananryry180@gmail.com",
     icon: "/assets/about/mail_icon.png"
+  },
+  {
+    label: "Resume",
+    href: "/resume",
+    icon: "/assets/about/document.png"
   }
 ];
 

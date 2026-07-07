@@ -6,17 +6,17 @@ type NextItem = {
 };
 
 const nextItems: NextItem[] = [
-  { text: "Finish my system design roadmap" },
+  { text: "Finish my system design roadmap", status: "in-progress", },
   { text: "Write a blog post", note: "generational crashouts incoming", status: "done" },
   { text: "Finally solve Two Sum", status: "done", note: "this one might be impossible" },
   {
-    text: "Get better at technical interviews",
+    text: "Get better at interviews",
     note: "actually, this one is genuinely impossible"
   },
   { text: "Contribute to an open source project", status: "done" },
   { text: "Graduate from UBC", status: "in-progress" },
   { text: "Become a teaching assistant", note: "MATH 101? I might lead those innocent first-years astray" },
-  { text: "Keep this portfolio alive", marker: "star" }
+  { text: "Having fun", marker: "star", note: "this is the most important one" },
 ];
 
 export default function ClosingSection() {
@@ -44,8 +44,8 @@ export default function ClosingSection() {
   </p>
 
   <p>
-    I hope to always continue learning, building, and most importantly, have fun while doing so.
-     Maybe the next time you're here, a few more boxes below will be checked off. 
+    I hope to keep growing as a software engineer, learning new technologies, building things I'm proud of and most importantly, have fun while doing so.
+    Maybe the next time you're here, a few more boxes below will be checked off. 
   </p>
 
   <p>

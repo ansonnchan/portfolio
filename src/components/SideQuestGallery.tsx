@@ -16,12 +16,6 @@ export default function SideQuestGallery() {
               src={show.src}
             />
 
-            <div aria-hidden="true" className="side-effect side-effect-your-lie">
-              <span className="sakura-petal sakura-petal-one">✿</span>
-              <span className="sakura-petal sakura-petal-two">✿</span>
-              <span className="sakura-petal sakura-petal-three">♪</span>
-            </div>
-
             <div aria-hidden="true" className="side-effect side-effect-interstellar">
               <span className="stellar-orbit" />
               <span className="stellar-star">✦</span>

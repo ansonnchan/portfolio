@@ -353,7 +353,7 @@ button {
   border: 0;
   background: none;
   color: #15803d;
-  cursor: help;
+  cursor: pointer;
   font: inherit;
   font-weight: 800;
   padding: 0;
@@ -417,29 +417,6 @@ button {
   transition: opacity 180ms ease;
 }
 
-.sakura-petal {
-  position: absolute;
-  color: #f9a8d4;
-  font-size: 1.45rem;
-  text-shadow: 0 1px 7px rgba(255, 255, 255, 0.9);
-}
-
-.sakura-petal-one {
-  top: 12%;
-  left: 15%;
-}
-
-.sakura-petal-two {
-  top: 35%;
-  right: 12%;
-}
-
-.sakura-petal-three {
-  bottom: 18%;
-  left: 20%;
-  color: #fce7f3;
-}
-
 .stellar-orbit {
   position: absolute;
   top: 29%;
@@ -484,22 +461,9 @@ button {
   margin: 1.8rem 0 0 2.5rem;
 }
 
-.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .side-effect-your-lie,
 .side-quest-layout:has(.side-interest-interstellar:is(:hover, :focus)) .side-effect-interstellar,
 .side-quest-layout:has(.side-interest-three-body:is(:hover, :focus)) .side-effect-three-body {
   opacity: 1;
-}
-
-.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .sakura-petal {
-  animation: sakura-drift 2s ease-in-out infinite;
-}
-
-.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .sakura-petal-two {
-  animation-delay: 0.35s;
-}
-
-.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .sakura-petal-three {
-  animation-delay: 0.7s;
 }
 
 .side-quest-layout:has(.side-interest-interstellar:is(:hover, :focus)) .stellar-orbit {
@@ -747,21 +711,6 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes sakura-drift {
-  0% {
-    opacity: 0.15;
-    transform: translate3d(0, -8px, 0) rotate(-12deg);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translate3d(12px, 14px, 0) rotate(12deg);
-  }
-  100% {
-    opacity: 0.18;
-    transform: translate3d(-6px, 30px, 0) rotate(28deg);
   }
 }
 

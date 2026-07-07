@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 type SectionHeadingProps = {
-  subtitle?: string;
+  subtitle?: ReactNode;
   title: string;
 };
 

@@ -8,7 +8,6 @@ export default function About() {
     <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="about">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          subtitle="Born in Hong Kong, raised in Australia, now debugging in Canada."
           title="About Me"
         />
 

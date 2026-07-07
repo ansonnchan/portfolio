@@ -285,7 +285,7 @@ button {
 }
 
 .section-lead {
-  max-width: 44rem;
+  max-width: 50rem;
   margin-inline: auto;
   font-size: clamp(0.95rem, 1.8vw, 1.08rem);
   font-weight: 500;

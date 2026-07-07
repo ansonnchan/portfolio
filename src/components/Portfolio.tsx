@@ -22,7 +22,7 @@ export default function Portfolio() {
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="experience">
           <div className="mx-auto max-w-7xl">
             <SectionHeading
-              subtitle="places I've had the luxury of working at"
+              subtitle="I've had the pleasure of working with some amazing teams over the years. Each one has taught me something new and has made me a better engineer. ⭐"
               title="Experience"
             />
 
@@ -40,9 +40,17 @@ export default function Portfolio() {
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="projects">
           <div className="mx-auto max-w-7xl">
             <SectionHeading
-              subtitle="things I’ve built in my free time"
-              title="Projects"
-            />
+  title="Projects"
+  subtitle={
+    <>
+      A few things I've built in my spare time. Many more exciting projects to
+      come in the future{" "}
+      <span className="font-bold text-emerald-700 dark:text-emerald-400">
+  #projectmaxxing #notlarping
+</span>
+    </>
+  }
+/>
 
             <div className="grid gap-5">
               {projects.map((project) => (
@@ -54,7 +62,9 @@ export default function Portfolio() {
 
         <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
           <div className="mx-auto max-w-6xl">
-            <SectionHeading title="Side Quests" />
+            <SectionHeading 
+            subtitle = "I swear I touch grass and talk to people. I definitely don't doomscroll or lurk on r/csMajors. 😭"
+            title="Side Quests" />
 
             <div className="side-quest-layout mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
               <div className="mx-auto max-w-3xl lg:mx-0">

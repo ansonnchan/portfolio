@@ -1,11 +1,21 @@
-const nextItems = [
-  { text: "Ship another side project", note: "soon-ish" },
-  { text: "Build an open-source project people actually use" },
-  { text: "Learn more .NET", note: "tiny steps" },
-  { text: "Build something weird with computer vision", marker: "spark" },
-  { text: "Graduate from UBC" },
-  { text: "Visit Japan during sakura season", note: "one day" },
-  { text: "Add more songs to the playlist" },
+type NextItem = {
+  text: string;
+  note?: string;
+  marker?: "spark" | "star";
+  status?: "done" | "in-progress";
+};
+
+const nextItems: NextItem[] = [
+  { text: "Finish my system design roadmap" },
+  { text: "Write a blog post", note: "generational crashouts incoming", status: "done" },
+  { text: "Finally solve Two Sum", status: "done", note: "this one might be impossible" },
+  {
+    text: "Get better at technical interviews",
+    note: "actually, this one is genuinely impossible"
+  },
+  { text: "Contribute to an open source project", status: "done" },
+  { text: "Graduate from UBC", status: "in-progress" },
+  { text: "Become a teaching assistant", note: "MATH 101? I might lead those innocent first-years astray" },
   { text: "Keep this portfolio alive", marker: "star" }
 ];
 
@@ -59,20 +69,33 @@ export default function ClosingSection() {
 
           <ul className="closing-checklist mt-5 space-y-3 text-zinc-700">
             {nextItems.map((item) => (
-              <li className="closing-checklist-item" key={item.text}>
+              <li
+                className={`closing-checklist-item ${
+                  item.status ? `closing-checklist-item-${item.status}` : ""
+                }`}
+                key={item.text}
+              >
                 <span aria-hidden="true" className="closing-box" />
-                <span className="closing-item-text">{item.text}</span>
+                <span className="closing-item-main">
+                  <span className="closing-item-text">{item.text}</span>
+                  {item.status === "in-progress" ? (
+                    <span className="closing-status-badge">in progress</span>
+                  ) : null}
+                  {item.marker === "spark" ? (
+                    <span aria-hidden="true" className="closing-mini-mark">
+                      ✧
+                    </span>
+                  ) : null}
+                  {item.marker === "star" ? (
+                    <span aria-hidden="true" className="closing-mini-mark">
+                      ★
+                    </span>
+                  ) : null}
+                </span>
                 {item.note ? (
-                  <span className="closing-item-note">{item.note}</span>
-                ) : null}
-                {item.marker === "spark" ? (
-                  <span aria-hidden="true" className="closing-mini-mark">
-                    ✧
-                  </span>
-                ) : null}
-                {item.marker === "star" ? (
-                  <span aria-hidden="true" className="closing-mini-mark">
-                    ★
+                  <span className="closing-item-note">
+                    <span aria-hidden="true" className="closing-note-arrow" />
+                    <span className="closing-item-note-text">{item.note}</span>
                   </span>
                 ) : null}
               </li>

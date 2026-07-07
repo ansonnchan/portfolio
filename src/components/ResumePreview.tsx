@@ -12,9 +12,26 @@ type ResumePreviewProps = {
   pdfPath: string;
 };
 
+type ResumeLink = {
+  height: number;
+  href: string;
+  left: number;
+  top: number;
+  width: number;
+};
+
+type LinkAnnotation = {
+  rect?: number[];
+  subtype?: string;
+  unsafeUrl?: string;
+  url?: string;
+};
+
 export default function ResumePreview({ pdfPath }: ResumePreviewProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [links, setLinks] = useState<ResumeLink[]>([]);
+  const [previewSize, setPreviewSize] = useState({ height: 0, width: 0 });
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
@@ -48,12 +65,13 @@ export default function ResumePreview({ pdfPath }: ResumePreviewProps) {
       const availableWidth = Math.max(container.clientWidth, 280);
       const cssScale = availableWidth / baseViewport.width;
       const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+      const cssViewport = page.getViewport({ scale: cssScale });
       const renderViewport = page.getViewport({ scale: cssScale * outputScale });
 
       canvas.width = Math.floor(renderViewport.width);
       canvas.height = Math.floor(renderViewport.height);
-      canvas.style.width = `${Math.floor(baseViewport.width * cssScale)}px`;
-      canvas.style.height = `${Math.floor(baseViewport.height * cssScale)}px`;
+      canvas.style.width = `${Math.floor(cssViewport.width)}px`;
+      canvas.style.height = `${Math.floor(cssViewport.height)}px`;
 
       const canvasContext = canvas.getContext("2d");
 
@@ -69,6 +87,46 @@ export default function ResumePreview({ pdfPath }: ResumePreviewProps) {
       await renderTask.promise;
 
       if (!isCancelled) {
+        const annotations = (await page.getAnnotations({
+          intent: "display"
+        })) as LinkAnnotation[];
+        const nextLinks = annotations.flatMap((annotation) => {
+          const href = annotation.url ?? annotation.unsafeUrl;
+
+          if (
+            annotation.subtype !== "Link" ||
+            !href ||
+            !annotation.rect ||
+            annotation.rect.length !== 4
+          ) {
+            return [];
+          }
+
+          const [x1, y1] = cssViewport.convertToViewportPoint(
+            annotation.rect[0],
+            annotation.rect[1]
+          );
+          const [x2, y2] = cssViewport.convertToViewportPoint(
+            annotation.rect[2],
+            annotation.rect[3]
+          );
+
+          return [
+            {
+              height: Math.abs(y2 - y1),
+              href,
+              left: Math.min(x1, x2),
+              top: Math.min(y1, y2),
+              width: Math.abs(x2 - x1)
+            }
+          ];
+        });
+
+        setLinks(nextLinks);
+        setPreviewSize({
+          height: Math.floor(cssViewport.height),
+          width: Math.floor(cssViewport.width)
+        });
         setStatus("ready");
       }
     };
@@ -119,7 +177,7 @@ export default function ResumePreview({ pdfPath }: ResumePreviewProps) {
 
   return (
     <div
-      className="resume-canvas-shell relative mx-auto w-full max-w-[62rem] overflow-hidden"
+      className="resume-canvas-shell relative mx-auto max-h-[36rem] w-full max-w-[62rem] overflow-y-auto sm:max-h-[42rem]"
       ref={containerRef}
     >
       {status === "loading" && (
@@ -145,12 +203,39 @@ export default function ResumePreview({ pdfPath }: ResumePreviewProps) {
           </a>
         </div>
       ) : (
-        <canvas
-          aria-label="Preview of Anson Chan's resume"
-          className={`${status === "ready" ? "block" : "hidden"} h-auto max-w-full bg-white`}
-          ref={canvasRef}
-          role="img"
-        />
+        <div
+          className={`${status === "ready" ? "relative mx-auto block" : "hidden"}`}
+          style={previewSize}
+        >
+          <canvas
+            aria-label="Preview of Anson Chan's resume"
+            className="block bg-white"
+            ref={canvasRef}
+            role="img"
+          />
+          <div
+            aria-label="Clickable links in resume"
+            className="pointer-events-none absolute inset-0"
+            role="group"
+          >
+            {links.map((link, index) => (
+              <a
+                aria-label={`Open ${link.href}`}
+                className="resume-annotation-link absolute"
+                href={link.href}
+                key={`${link.href}-${index}`}
+                rel="noreferrer"
+                style={{
+                  height: link.height,
+                  left: link.left,
+                  top: link.top,
+                  width: link.width
+                }}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+              />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

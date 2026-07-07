@@ -100,14 +100,6 @@ button {
   transform: rotate(10deg);
 }
 
-.mini-label {
-  font-family: var(--font-hand), "Comic Sans MS", "Bradley Hand", cursive;
-  font-size: 1.05rem;
-  font-weight: 400;
-  letter-spacing: 0.025em;
-  line-height: 1;
-}
-
 .sticker-tag {
   border: 1px solid rgba(22, 128, 63, 0.18);
   border-radius: 0.48rem 0.66rem 0.5rem 0.7rem;
@@ -117,6 +109,36 @@ button {
 
 .sticker-tag:nth-child(even) {
   rotate: 0.6deg;
+}
+
+.hero-social-sticker {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 43, 36, 0.14);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 1.5px 2px 0 rgba(22, 128, 63, 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.hero-social-sticker:hover,
+.hero-social-sticker:focus-visible {
+  border-color: rgba(22, 128, 63, 0.42);
+  background: #ecfdf5;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.hero-social-sticker:focus-visible {
+  box-shadow:
+    1.5px 2px 0 rgba(22, 128, 63, 0.08),
+    0 0 0 3px rgba(22, 128, 63, 0.16);
 }
 
 .clock-note {
@@ -242,11 +264,12 @@ button {
   margin-bottom: clamp(2.25rem, 4vw, 3rem);
 }
 
-.section-subtitle {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
+.section-lead {
+  max-width: 44rem;
+  margin-inline: auto;
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  font-weight: 500;
+  line-height: 1.65;
 }
 
 .now-playing-dock {
@@ -309,6 +332,275 @@ button {
   border-radius: 0.65rem;
   background: #f4f4f5;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  scrollbar-color: #b9c5bb transparent;
+  scrollbar-width: thin;
+}
+
+.resume-annotation-link {
+  border-radius: 0.16rem;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.resume-annotation-link:hover {
+  background: rgba(22, 128, 63, 0.11);
+  box-shadow: inset 0 0 0 1px rgba(22, 128, 63, 0.26);
+}
+
+.resume-annotation-link:focus-visible {
+  outline: 2px solid #15803d;
+  outline-offset: 1px;
+}
+
+.side-interest {
+  display: inline;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: #15803d;
+  cursor: help;
+  font: inherit;
+  font-weight: 800;
+  padding: 0;
+  text-decoration: none;
+}
+
+.side-interest:hover,
+.side-interest:focus-visible {
+  color: #166534;
+  outline: none;
+}
+
+.side-interest:focus-visible {
+  border-radius: 0.15rem;
+  box-shadow: 0 0 0 3px rgba(22, 128, 63, 0.16);
+}
+
+.side-device {
+  position: relative;
+  width: 100%;
+  margin-top: 4rem;
+  padding: 1.8rem 0.8rem 1.05rem;
+  overflow: visible;
+  border: 6px solid #27272a;
+  border-radius: 2.2rem;
+  background: #f7f4ed;
+  box-shadow:
+    5px 7px 0 rgba(22, 128, 63, 0.08),
+    0 22px 50px rgba(15, 23, 42, 0.12);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.side-device > :not(.side-earphones) {
+  position: relative;
+  z-index: 1;
+}
+
+.side-device:hover {
+  transform: translateY(-3px) rotate(0.3deg);
+  box-shadow:
+    6px 9px 0 rgba(22, 128, 63, 0.08),
+    0 26px 56px rgba(15, 23, 42, 0.14);
+}
+
+.side-earphones {
+  position: absolute;
+  top: -4.4rem;
+  left: 50%;
+  z-index: 0;
+  width: min(15.5rem, 86%);
+  color: #27272a;
+  overflow: visible;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.side-earphone-cable {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.2;
+}
+
+.side-earbud {
+  fill: #f7f4ed;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.side-device-jack {
+  position: absolute;
+  top: -0.38rem;
+  left: 50%;
+  height: 0.34rem;
+  width: 0.8rem;
+  border: 2px solid #27272a;
+  border-bottom: 0;
+  border-radius: 9999px 9999px 0 0;
+  background: #f7f4ed;
+  transform: translateX(-50%);
+}
+
+.side-device-speaker {
+  position: absolute;
+  top: 0.68rem;
+  left: 50%;
+  height: 0.28rem;
+  width: 2.8rem;
+  border-radius: 9999px;
+  background: #71717a;
+  transform: translateX(-50%);
+}
+
+.side-device-screen {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 2px solid #3f3f46;
+  border-radius: 0.75rem;
+  background: #18181b;
+}
+
+.side-device-home {
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  margin: 0.65rem auto 0;
+  border: 1.5px solid #71717a;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.side-device::after {
+  position: absolute;
+  right: 2.2rem;
+  bottom: 0.42rem;
+  height: 0.22rem;
+  width: 0.42rem;
+  border-radius: 9999px;
+  background: #52525b;
+  content: "";
+}
+
+.side-effect {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.sakura-petal {
+  position: absolute;
+  color: #f9a8d4;
+  font-size: 1.45rem;
+  text-shadow: 0 1px 7px rgba(255, 255, 255, 0.9);
+}
+
+.sakura-petal-one {
+  top: 12%;
+  left: 15%;
+}
+
+.sakura-petal-two {
+  top: 35%;
+  right: 12%;
+}
+
+.sakura-petal-three {
+  bottom: 18%;
+  left: 20%;
+  color: #fce7f3;
+}
+
+.stellar-orbit {
+  position: absolute;
+  top: 29%;
+  left: 50%;
+  height: 5rem;
+  width: 10rem;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  transform: translateX(-50%) rotate(-18deg);
+}
+
+.stellar-star {
+  position: absolute;
+  top: 25%;
+  left: calc(50% + 4rem);
+  color: #fef3c7;
+  font-size: 1.35rem;
+  text-shadow: 0 0 10px rgba(254, 243, 199, 0.9);
+}
+
+.three-body-dot {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  height: 0.7rem;
+  width: 0.7rem;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.75);
+}
+
+.three-body-dot-one {
+  margin: -2.8rem 0 0 -0.35rem;
+}
+
+.three-body-dot-two {
+  margin: 1.8rem 0 0 -3.2rem;
+}
+
+.three-body-dot-three {
+  margin: 1.8rem 0 0 2.5rem;
+}
+
+.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .side-effect-your-lie,
+.side-quest-layout:has(.side-interest-interstellar:is(:hover, :focus)) .side-effect-interstellar,
+.side-quest-layout:has(.side-interest-three-body:is(:hover, :focus)) .side-effect-three-body {
+  opacity: 1;
+}
+
+.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .sakura-petal {
+  animation: sakura-drift 2s ease-in-out infinite;
+}
+
+.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .sakura-petal-two {
+  animation-delay: 0.35s;
+}
+
+.side-quest-layout:has(.side-interest-your-lie:is(:hover, :focus)) .sakura-petal-three {
+  animation-delay: 0.7s;
+}
+
+.side-quest-layout:has(.side-interest-interstellar:is(:hover, :focus)) .stellar-orbit {
+  animation: stellar-orbit 4s linear infinite;
+}
+
+.side-quest-layout:has(.side-interest-interstellar:is(:hover, :focus)) .stellar-star {
+  animation: stellar-pulse 1.4s ease-in-out infinite;
+}
+
+.side-quest-layout:has(.side-interest-three-body:is(:hover, :focus)) .three-body-dot-one {
+  animation: three-body-one 2.8s ease-in-out infinite;
+}
+
+.side-quest-layout:has(.side-interest-three-body:is(:hover, :focus)) .three-body-dot-two {
+  animation: three-body-two 3.1s ease-in-out infinite;
+}
+
+.side-quest-layout:has(.side-interest-three-body:is(:hover, :focus)) .three-body-dot-three {
+  animation: three-body-three 2.6s ease-in-out infinite;
 }
 
 .arrow-chevron {
@@ -411,6 +703,17 @@ button {
     opacity: 1;
     transform: none;
   }
+
+  .side-device,
+  .side-effect *,
+  .side-quest-layout:has(.side-interest:is(:hover, :focus)) .side-effect * {
+    animation: none;
+    transition: none;
+  }
+
+  .side-device:hover {
+    transform: none;
+  }
 }
 
 .dark .comic-card {
@@ -425,10 +728,41 @@ button {
   background: rgba(110, 231, 183, 0.08);
 }
 
+.dark .side-interest {
+  color: #6ee7b7;
+}
+
+.dark .side-interest:hover,
+.dark .side-interest:focus-visible {
+  color: #a7f3d0;
+}
+
 .dark .comic-action {
   border-color: rgba(255, 255, 255, 0.13);
   background: rgba(255, 255, 255, 0.08);
   color: #f4f4f5;
+}
+
+.dark .hero-social-sticker {
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dark .hero-social-sticker:hover,
+.dark .hero-social-sticker:focus-visible {
+  border-color: rgba(110, 231, 183, 0.4);
+  background: rgba(110, 231, 183, 0.12);
+}
+
+.dark .side-earphones {
+  color: #e4e4e7;
+}
+
+.dark .side-earbud,
+.dark .side-device-jack {
+  fill: #27272a;
+  background: #27272a;
+  border-color: #e4e4e7;
 }
 
 .dark .clock-note {
@@ -505,6 +839,72 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes sakura-drift {
+  0% {
+    opacity: 0.15;
+    transform: translate3d(0, -8px, 0) rotate(-12deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate3d(12px, 14px, 0) rotate(12deg);
+  }
+  100% {
+    opacity: 0.18;
+    transform: translate3d(-6px, 30px, 0) rotate(28deg);
+  }
+}
+
+@keyframes stellar-orbit {
+  from {
+    transform: translateX(-50%) rotate(-18deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(342deg);
+  }
+}
+
+@keyframes stellar-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes three-body-one {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2rem, 1.2rem);
+  }
+}
+
+@keyframes three-body-two {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(1.3rem, -2rem);
+  }
+}
+
+@keyframes three-body-three {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-2.2rem, -1.1rem);
   }
 }
 

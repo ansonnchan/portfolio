@@ -48,8 +48,7 @@ export const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Side Quests", href: "#side-quests" },
-  { label: "Resume", href: "#resume" },
-  { label: "Contact", href: "#contact" }
+  { label: "Resume", href: "#resume" }
 ];
 
 export const hero = {
@@ -327,19 +326,17 @@ export const projects: Project[] = [
 ];
 
 export const sideQuests = {
-  intro:
-    "Contrary to what people may believe, I do have hobbies and interests, I do talk to other people, and I do touch grass.",
   bullets: [
     "I’ve played the violin and the trumpet for 12 years and 10 years respectively. I’m hoping to join UBC’s symphony orchestra before I graduate.",
     "I like to play tennis and badminton regularly. Fun fact: two of my high school friends in Australia went on to become professional tennis players.",
-    "I'm an avid lover of thrillers, mysteries, and sci-fi. My favorite book series is the \"Three-Body Problem\" trilogy by Liu Cixin, and my favorite movie is \"Interstellar\".",
-    "My favorite anime is Your Lie in April, both from a musician's perspective and an emotional perspective. I def did not cry, I promise.",
+    "I'm an avid lover of thrillers, mysteries, and sci-fi.",
+    "My favorite anime is Your Lie in April, both from an emotional and musical perspective.",
   ],
   shows: [
     {
       src: "/assets/sidequests/anson_violin.JPG",
       alt: "Young Anson holding a violin before a performance",
-      caption: "amazing camera quality fr"
+      caption: "the violin era started early"
     },
   ]
 };

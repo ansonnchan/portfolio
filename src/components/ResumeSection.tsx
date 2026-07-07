@@ -10,8 +10,11 @@ export default function ResumeSection() {
       className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8"
       id="resume"
     >
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading subtitle="the one-page version" title="Resume" />
+      <div className="mx-auto max-w-5xl">
+        <SectionHeading
+          subtitle="The formal version, for when bullet points need to behave."
+          title="Resume"
+        />
 
         <div className="comic-card surface-card overflow-hidden p-3 sm:p-5">
           <ResumePreview pdfPath={resumePath} />

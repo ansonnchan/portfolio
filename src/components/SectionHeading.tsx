@@ -1,5 +1,5 @@
 type SectionHeadingProps = {
-  subtitle: string;
+  subtitle?: string;
   title: string;
 };
 
@@ -12,9 +12,11 @@ export default function SectionHeading({
       <h2 className="section-heading responsive-heading text-zinc-950 dark:text-white">
         {title}
       </h2>
-      <p className="section-subtitle mt-2 text-zinc-400 dark:text-zinc-500">
-        ({subtitle})
-      </p>
+      {subtitle ? (
+        <p className="section-lead mt-3 text-zinc-600 dark:text-zinc-400">
+          {subtitle}
+        </p>
+      ) : null}
     </header>
   );
 }

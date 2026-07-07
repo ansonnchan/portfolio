@@ -338,8 +338,8 @@ export default function GitHubContributionGraph() {
   return (
     <section
       aria-label="GitHub contribution graph"
-      className="comic-card mt-10 max-w-full min-w-0 overflow-hidden bg-white/80 p-4 backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:bg-white/10 sm:mt-12 sm:p-6"
-      style={{ "--github-day-size": "clamp(0.58rem, 1.4vw, 0.8rem)" } as CSSProperties}
+      className="comic-card mt-10 max-w-full min-w-0 overflow-hidden bg-white/80 p-4 backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:bg-white/10 sm:mt-12 sm:p-5"
+      style={{ "--github-day-size": "clamp(0.58rem, 1.4vw, 0.76rem)" } as CSSProperties}
     >
       {state.status === "loading" && <SkeletonGraph />}
 
@@ -351,13 +351,17 @@ export default function GitHubContributionGraph() {
 
       {calendar && normalizedCalendar && (
         <>
-          <header className="text-center text-zinc-600 dark:text-zinc-300">
+          <header className="flex flex-col gap-1 text-zinc-600 dark:text-zinc-300 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
             <h3 className="handwritten-display text-2xl text-zinc-900 dark:text-white sm:text-3xl">
               GitHub Contributions
             </h3>
+            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] sm:text-right sm:text-sm">
+              {numberFormatter.format(calendar.totalContributions)} contributions in{" "}
+              {calendar.year}
+            </p>
           </header>
 
-          <div className="mt-5 overflow-x-auto pb-2">
+          <div className="mt-4 overflow-x-auto pb-1">
             <div className="mx-auto w-max min-w-max pr-10">
               <div
                 className="ml-9 grid gap-[3px]"
@@ -436,16 +440,11 @@ export default function GitHubContributionGraph() {
             </div>
           </div>
 
-          <p className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-300 sm:text-sm">
-            {numberFormatter.format(calendar.totalContributions)} contributions in{" "}
-            {calendar.year}
-          </p>
-
-          <footer className="mt-5 flex flex-col items-center justify-center gap-3 uppercase text-zinc-600 dark:text-zinc-300 sm:flex-row sm:gap-8">
-            <div className="text-center">
+          <footer className="mt-3 flex flex-col items-start justify-between gap-3 uppercase text-zinc-600 dark:text-zinc-300 sm:flex-row sm:items-center sm:gap-6">
+            <div className="flex items-baseline gap-2 text-left">
               <p className="text-xs font-semibold sm:text-sm">Last updated</p>
               <time
-                className="mt-1 block text-center text-sm font-semibold text-zinc-900 dark:text-white"
+                className="text-sm font-semibold text-zinc-900 dark:text-white"
                 dateTime={calendar.fetchedAt}
               >
                 {lastUpdatedFormatter.format(new Date(calendar.fetchedAt))}

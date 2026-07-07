@@ -1,4 +1,4 @@
-import { hero } from "@/data/portfolio";
+import { hero, socials } from "@/data/portfolio";
 import Flags from "@/components/Flags";
 import TypewriterText from "@/components/TypewriterText";
 
@@ -17,12 +17,30 @@ export default function Hero() {
           </h1>
 
           <div className="handwritten-display mt-7 text-zinc-700 dark:text-zinc-200 sm:mt-9">
-            <p className="text-[clamp(1.4rem,4vw,1.8rem)] leading-8">I’m a ...</p>
+            <p className="text-[clamp(1.4rem,4vw,1.8rem)] leading-8">I’m a</p>
             <p className="mt-1 min-h-11 text-[clamp(1.8rem,5vw,2.45rem)] leading-10">
               <TypewriterText phrases={hero.phrases} />
             </p>
           </div>
-          <Flags/> 
+          <Flags />
+          <nav
+            aria-label="Social links"
+            className="mt-4 flex flex-nowrap items-center justify-center gap-3"
+          >
+            {socials.map((social) => (
+              <a
+                aria-label={social.label}
+                className="hero-social-sticker"
+                href={social.href}
+                key={social.label}
+                rel="noreferrer"
+                target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                title={social.label}
+              >
+                <img alt="" className="h-5 w-5 object-contain" src={social.icon} />
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
       <a

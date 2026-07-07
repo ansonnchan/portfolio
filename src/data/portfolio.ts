@@ -341,7 +341,7 @@ export const sideQuests = {
     {
       src: "/assets/sidequests/anson_violin.JPG",
       alt: "Young Anson holding a violin before a performance",
-      caption: "the violin era started early"
+      caption: "peak camera quality"
     },
   ]
 };

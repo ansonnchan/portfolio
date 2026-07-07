@@ -384,24 +384,27 @@ button {
 .side-polaroid {
   position: relative;
   width: 100%;
-  max-width: 18rem;
+  max-width: 18.25rem;
+  margin-top: -0.75rem;
   margin-inline: auto;
-  padding: 0.58rem 0.58rem 0.8rem;
+  padding: 0.68rem 0.68rem 0.92rem;
   overflow: hidden;
   border: 1px solid rgba(36, 43, 36, 0.12);
   border-radius: 0.26rem 0.34rem 0.3rem 0.24rem;
-  background: #fffdf7;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 44%),
+    #fffdf7;
   box-shadow:
     4px 5px 0 rgba(22, 128, 63, 0.07),
     0 18px 42px rgba(15, 23, 42, 0.12);
-  rotate: 0.7deg;
+  rotate: 2.4deg;
   transition:
     transform 220ms ease,
     box-shadow 220ms ease;
 }
 
 .side-polaroid:hover {
-  transform: translateY(-3px) rotate(-0.4deg);
+  transform: translateY(-3px);
   box-shadow:
     5px 7px 0 rgba(22, 128, 63, 0.08),
     0 22px 48px rgba(15, 23, 42, 0.14);
@@ -409,6 +412,7 @@ button {
 
 .side-polaroid-photo {
   position: relative;
+  z-index: 1;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 0.12rem;

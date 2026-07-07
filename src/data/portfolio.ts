@@ -47,7 +47,8 @@ export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Side Quests", href: "#side-quests" }
+  { label: "Side Quests", href: "#side-quests" },
+  { label: "Goodbyes", href: "#goodbyes" }
 ];
 
 export const hero = {

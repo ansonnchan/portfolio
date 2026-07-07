@@ -342,6 +342,216 @@ button {
   transform: rotate(-1deg);
 }
 
+.closing-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 254, 251, 0), rgba(255, 248, 226, 0.38) 34%, rgba(236, 253, 245, 0.28));
+}
+
+.closing-section::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(36, 43, 36, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 43, 36, 0.02) 1px, transparent 1px);
+  background-size: 42px 42px;
+  content: "";
+  mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+  pointer-events: none;
+}
+
+.closing-header {
+  z-index: 1;
+}
+
+.closing-kicker {
+  color: #15803d;
+  font-size: clamp(1.3rem, 3vw, 1.65rem);
+  opacity: 0.78;
+  rotate: -2deg;
+}
+
+.closing-title {
+  margin-top: 0.35rem;
+  font-size: clamp(4.25rem, 12vw, 7.5rem);
+  line-height: 0.86;
+}
+
+.closing-title::after {
+  background: #86efac;
+  opacity: 0.55;
+}
+
+.closing-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.closing-notebook {
+  z-index: 1;
+  border: 1.5px solid rgba(113, 99, 69, 0.16);
+  border-radius: 0.72rem 0.62rem 0.8rem 0.66rem;
+  background:
+    linear-gradient(90deg, transparent 0 3.15rem, rgba(244, 114, 86, 0.2) 3.15rem, rgba(244, 114, 86, 0.2) 3.22rem, transparent 3.22rem),
+    repeating-linear-gradient(180deg, transparent 0 2.12rem, rgba(22, 128, 63, 0.075) 2.12rem, rgba(22, 128, 63, 0.075) 2.18rem, transparent 2.18rem, transparent 2.32rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.64), transparent 48%),
+    #fffdf5;
+  box-shadow:
+    4px 5px 0 rgba(22, 128, 63, 0.07),
+    0 22px 54px rgba(38, 34, 29, 0.12);
+  rotate: -0.4deg;
+}
+
+.closing-notebook::after {
+  position: absolute;
+  right: 1.35rem;
+  bottom: 1.1rem;
+  color: rgba(22, 128, 63, 0.24);
+  content: "keep going";
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+  font-size: 1.05rem;
+  rotate: -7deg;
+}
+
+.closing-tape {
+  position: absolute;
+  top: 0.78rem;
+  height: 1.05rem;
+  width: 4.1rem;
+  border: 1px solid rgba(120, 102, 37, 0.08);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.36), transparent),
+    rgba(255, 241, 168, 0.72);
+  box-shadow: 0 4px 10px rgba(98, 82, 26, 0.08);
+}
+
+.closing-tape-left {
+  left: 1.3rem;
+  rotate: -6deg;
+}
+
+.closing-tape-right {
+  right: 1.45rem;
+  rotate: 7deg;
+}
+
+.closing-scribble {
+  position: absolute;
+  color: rgba(22, 128, 63, 0.34);
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+  pointer-events: none;
+}
+
+.closing-scribble-star {
+  right: 4.8rem;
+  top: 4.8rem;
+  font-size: 1.35rem;
+  rotate: 12deg;
+}
+
+.closing-scribble-arrow {
+  left: 1.65rem;
+  bottom: 3.1rem;
+  font-size: 1.45rem;
+  rotate: -12deg;
+}
+
+.closing-checklist-title {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  border-bottom: 0.08em solid rgba(22, 128, 63, 0.28);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1;
+  rotate: -1.2deg;
+}
+
+.closing-checklist {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1rem, 2vw, 1.14rem);
+  font-weight: 600;
+}
+
+.closing-checklist-item {
+  position: relative;
+  display: flex;
+  min-height: 2rem;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding-left: 0.2rem;
+  line-height: 1.45;
+}
+
+.closing-box {
+  display: inline-block;
+  height: 1.08rem;
+  width: 1.08rem;
+  flex: 0 0 auto;
+  border: 2px solid rgba(36, 43, 36, 0.5);
+  border-radius: 0.18rem 0.22rem 0.16rem 0.2rem;
+  margin-top: 0.16rem;
+  background: rgba(255, 255, 255, 0.34);
+  rotate: -2deg;
+}
+
+.closing-item-text {
+  min-width: 0;
+}
+
+.closing-item-note {
+  display: inline-block;
+  margin-left: 0.35rem;
+  color: #15803d;
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+  font-size: 0.95em;
+  font-weight: 400;
+  rotate: -4deg;
+  white-space: nowrap;
+}
+
+.closing-item-note::before {
+  content: "← ";
+  opacity: 0.6;
+}
+
+.closing-mini-mark {
+  color: #d97706;
+  font-size: 0.95rem;
+  line-height: 1;
+  margin-left: 0.1rem;
+}
+
+.closing-final-note {
+  position: relative;
+  z-index: 1;
+  opacity: 0.86;
+}
+
+@media (max-width: 639px) {
+  .closing-title {
+    font-size: clamp(3.7rem, 18vw, 5rem);
+  }
+
+  .closing-notebook {
+    background:
+      repeating-linear-gradient(180deg, transparent 0 2.12rem, rgba(22, 128, 63, 0.075) 2.12rem, rgba(22, 128, 63, 0.075) 2.18rem, transparent 2.18rem, transparent 2.32rem),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.64), transparent 48%),
+      #fffdf5;
+    rotate: 0deg;
+  }
+
+  .closing-notebook::after,
+  .closing-scribble-arrow {
+    display: none;
+  }
+
+  .closing-checklist-item {
+    gap: 0.55rem;
+  }
+}
+
 .about-note {
   transform: rotate(-2deg);
   transform-origin: left center;
@@ -641,6 +851,17 @@ button {
 .dark .side-polaroid {
   border-color: rgba(255, 255, 255, 0.13);
   background: #f4f0e7;
+}
+
+.dark .closing-section {
+  background:
+    linear-gradient(180deg, rgba(16, 20, 15, 0), rgba(75, 59, 30, 0.24) 34%, rgba(16, 185, 129, 0.08));
+}
+
+.dark .closing-notebook {
+  box-shadow:
+    4px 5px 0 rgba(110, 231, 183, 0.06),
+    0 22px 54px rgba(0, 0, 0, 0.32);
 }
 
 .dark .clock-note {

@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import ClosingSection from "@/components/ClosingSection";
 import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -74,6 +75,8 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <ClosingSection />
       </main>
 
       <Footer />

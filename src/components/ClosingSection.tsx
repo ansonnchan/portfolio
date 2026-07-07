@@ -17,26 +17,31 @@ export default function ClosingSection() {
     >
       <div className="mx-auto max-w-5xl">
         <header className="closing-header relative text-center">
-          <p className="handwritten-display closing-kicker">last page</p>
+          <p className="handwritten-display closing-kicker">last section :(</p>
           <h2 className="closing-title hero-greeting text-emerald-700 dark:text-emerald-300">
-            See You Again <span aria-hidden="true">👋</span>
+            Bye Bye!<span aria-hidden="true"></span>
           </h2>
         </header>
 
         <div className="closing-copy mx-auto mt-8 max-w-3xl space-y-5 text-center text-base leading-7 text-zinc-700 dark:text-zinc-300 sm:text-lg sm:leading-8">
-          <p>Thanks for stopping by my little corner of the internet.</p>
-          <p>
-            I hope you enjoyed exploring it and found something that resonated
-            with you, whether it was a project, one of the tiny interactions
-            scattered throughout the site, some random facts about me, or even a
-            song from the playlist.
-          </p>
-          <p>
-            There’s still so much I want to build and learn. Hopefully, the next
-            time you visit, a few more of the goals below will have little
-            checkmarks beside them.
-          </p>
-        </div>
+  <br></br>
+  <p>Thank you for stopping by my little corner of the internet. 🌸</p>
+
+  <p>
+    Hopefully you found something you enjoyed, whether it was a project, a fun
+    fact, or a song from the playlist (you have excellent taste if you liked the same
+    ones I do).
+  </p>
+
+  <p>
+    I hope to always continue learning, building, and most importantly, have fun while doing so.
+     Maybe the next time you're here, a few more boxes below will be checked off. 
+  </p>
+
+  <p>
+    Until then, take care. 👋
+  </p>
+</div>
 
         <div className="closing-notebook relative mx-auto mt-10 max-w-3xl overflow-hidden px-5 py-7 sm:px-8 sm:py-8">
           <span aria-hidden="true" className="closing-tape closing-tape-left" />
@@ -74,16 +79,11 @@ export default function ClosingSection() {
             ))}
           </ul>
         </div>
-
-        <p className="handwritten-display mt-7 text-center text-3xl text-zinc-800 dark:text-zinc-100">
-          — Anson
+<br></br>
+        <p className="handwritten-display mt-7 text-center text-2xl text-zinc-800 dark:text-zinc-100">
+          "Better to have a short life that is full of what you like doing than a long life spent in a miserable way." - Alan Watts
         </p>
 
-        <p className="closing-final-note mx-auto mt-10 max-w-xs text-center text-sm font-semibold leading-6 text-zinc-500 dark:text-zinc-400">
-          The End.
-          <br />
-          ...or maybe just the beginning.
-        </p>
       </div>
     </section>
   );

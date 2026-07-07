@@ -247,7 +247,7 @@ export const projects: Project[] = [
   {
     title: "Personal Portfolio",
     description:
-      "The third rendition of my portfolio. I've done a lot of revamping since the first version. I hope you enjoy the design and features.",
+      "You're on it now silly 🤦. I've done a lot of revamping since the first version. I hope you enjoy the design and features.",
     image: "/assets/projects/portfolio_pic1.png",
     icon: "/assets/projects/portfolio_icon.png",
     screenshots: [

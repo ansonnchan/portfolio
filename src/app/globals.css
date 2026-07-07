@@ -149,6 +149,18 @@ button {
   margin: 1.2rem auto 0;
 }
 
+.hero-corner-sticker {
+  position: absolute;
+  bottom: clamp(1rem, 3vw, 2rem);
+  left: clamp(0.9rem, 3vw, 2.3rem);
+  width: clamp(5.5rem, 13vw, 10rem);
+  max-height: 40svh;
+  object-fit: contain;
+  pointer-events: none;
+  rotate: -4deg;
+  filter: drop-shadow(0 14px 18px rgba(38, 34, 29, 0.14));
+}
+
 .clock-note {
   border: 1px solid rgba(120, 102, 37, 0.2);
   border-radius: 0.28rem 0.4rem 0.35rem 0.3rem;

@@ -53,6 +53,12 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <img
+        alt=""
+        aria-hidden="true"
+        className="hero-corner-sticker"
+        src="/assets/stickers/kaori-surprised.png"
+      />
       <a
         aria-label="Scroll to About section"
         className="homepage-down-button absolute bottom-8 left-1/2 hidden h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-black/10 bg-white/72 shadow-sm backdrop-blur-xl transition hover:border-emerald-600/30 dark:border-white/10 dark:bg-white/10 sm:flex"

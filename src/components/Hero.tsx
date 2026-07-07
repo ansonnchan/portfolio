@@ -38,6 +38,9 @@ export default function Hero() {
                 title={social.label}
               >
                 <img alt="" className="h-5 w-5 object-contain" src={social.icon} />
+                <span className="handwritten-display text-base leading-none">
+                  {social.label}
+                </span>
               </a>
             ))}
           </nav>

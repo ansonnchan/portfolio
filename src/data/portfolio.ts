@@ -112,16 +112,15 @@ export const about = {
       { text: " for 15 years. I moved to " },
       { text: "Canada", highlight: true },
       {
-        text: " in late 2021. I play every racket sport, including tennis, badminton, and table tennis."
+        text: " in late 2021. I play every racket sport, including tennis, badminton, and table tennis. "
       },
-    ],
-    [
-      {text: "Like every other SoCal Asian, I like playing volleyball, drinking boba, and eating hotpot. "},
+
+      {text: "Like any other SoCal Asian, I also like playing volleyball, drinking boba, and watching C-dramas. "},
       {
-        text: "I've also been binging way too many C-dramas and K-dramas recently. Right now, I'm watching "
+        text: "Right now, I'm watching \"When I Fly Towards You\" and it's really good. ",
       },
-      { text: "When I Fly Towards You", highlight: true },
-      {text: ". "}
+    ],[
+      {text: "In the future, I also want to study abroad. I have a few ideas in mind: Germany, Korea, China, Australia and the UK. If you have any suggestions, please let me know!" },
     ]
   ],
   /** 

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   description:
     "A playful, recruiter-friendly software engineering internship portfolio for Anson Chan.",
   icons: {
-    icon: "/assets/favicon.png",
-    apple: "/assets/favicon.png"
+    icon: "/assets/stickers/kaori-surprised.png",
+    apple: "/assets/stickers/kaori-surprised.png"
   }
 };
 

@@ -85,7 +85,7 @@ export const socials: SocialLink[] = [
 ];
 
 export const about = {
-  profileImage: "/assets/pfp.jpeg",
+  profileImage: "/assets/pfp-square.jpeg",
   greeting: "Hey there!",
   paragraphs: [
     [

@@ -16,7 +16,8 @@ export default function About() {
             <div className="relative aspect-square overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
               <img
                 alt="Anson Chan profile"
-                className="absolute inset-0 h-full w-full rounded-lg object-cover"
+                className="absolute inset-0 h-full w-full select-none rounded-lg object-cover"
+                draggable={false}
                 src={about.profileImage}
               />
             </div>

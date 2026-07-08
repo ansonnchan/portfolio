@@ -336,11 +336,19 @@ export default function GitHubContributionGraph() {
   };
 
   return (
-    <section
-      aria-label="GitHub contribution graph"
-      className="comic-card mx-auto mt-10 w-full max-w-5xl min-w-0 overflow-hidden bg-white/80 p-4 backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:bg-white/10 sm:mt-12 sm:p-5"
-      style={{ "--github-day-size": "clamp(0.52rem, 1.05vw, 0.68rem)" } as CSSProperties}
-    >
+    <div className="relative mx-auto mt-10 w-full max-w-5xl pb-24 pt-10 sm:mt-12 sm:pb-28 sm:pt-12 lg:mt-14 lg:pb-32">
+      <img
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 -top-28 z-0 w-48 select-none opacity-90 sm:-right-32 sm:-top-36 sm:w-60 md:-right-44 md:-top-48 md:w-72 lg:-right-52 lg:-top-52 lg:w-[19rem]"
+        draggable={false}
+        src="/assets/about/git-revert-transparent.png"
+      />
+      <section
+        aria-label="GitHub contribution graph"
+        className="comic-card relative z-10 mx-auto w-full min-w-0 overflow-hidden bg-white/80 p-4 backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:bg-white/10 sm:p-5"
+        style={{ "--github-day-size": "clamp(0.52rem, 1.05vw, 0.68rem)" } as CSSProperties}
+      >
       {state.status === "loading" && <SkeletonGraph />}
 
       {state.status === "error" && (
@@ -486,6 +494,14 @@ export default function GitHubContributionGraph() {
           </div>,
           document.body
         )}
-    </section>
+      </section>
+      <img
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-16 left-1/2 z-0 w-64 -translate-x-1/2 select-none opacity-90 sm:-bottom-20 sm:w-80 md:-bottom-24 md:w-[22rem] lg:-bottom-28 lg:w-[24rem]"
+        draggable={false}
+        src="/assets/about/git-force-transparent.png"
+      />
+    </div>
   );
 }

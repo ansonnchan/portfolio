@@ -250,7 +250,7 @@ export const projects: Project[] = [
     description:
       "You're on it now silly 🤦. I've done a lot of revamping since the first version. I hope you enjoy the design and features.",
     image: "/assets/projects/portfolio_pic1.png",
-    icon: "/assets/projects/portfolio_icon.png",
+    icon: "/assets/stickers/kaori-surprised.png",
     screenshots: [
       "/assets/projects/portfolio_pic1.png",
       "/assets/projects/portfolio_pic2.png"

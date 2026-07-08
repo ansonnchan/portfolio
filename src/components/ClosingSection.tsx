@@ -34,24 +34,26 @@ export default function ClosingSection() {
         </header>
 
         <div className="closing-copy mx-auto mt-8 max-w-3xl space-y-5 text-center text-base leading-7 text-zinc-700 dark:text-zinc-300 sm:text-lg sm:leading-8">
-  <br></br>
-  <p>Thank you for stopping by my little corner of the internet. 🌸</p>
+          <p>Thank you for stopping by my little corner of the internet. 🌸</p>
 
-  <p>
-    Hopefully you found something you enjoyed, whether it was a project, a fun
-    fact, or a song from the playlist (you have excellent taste if you liked the same
-    ones I do).
-  </p>
+          <p>
+            Hopefully you found something interesting, whether it was a project, a fun
+            fact, or a song from the playlist (you have excellent taste if you liked the
+            same ones I do).
+          </p>
 
-  <p>
-    I hope to keep growing as a software engineer, learning new technologies, building things I'm proud of and most importantly, have fun while doing so.
-    Maybe the next time you're here, a few more boxes below will be checked off. 
-  </p>
+          <p>In interviews, I get asked this question a lot:</p>
 
-  <p>
-    Until then, take care. 👋
-  </p>
-</div>
+          <blockquote className="closing-question-quote">
+            “Where do you see yourself in 5 years?”
+          </blockquote>
+
+          <p>
+           I don't really measure success by a job title or a company name. Whether it's 5, 10, or 15 years from now, I just hope I'm still learning, still building projects that excite me, becoming a better engineer, and still having fun writing code. If you come back in a few years, hopefully a few more boxes below will have been checked off.
+          </p>
+
+          <p>Until then, take care. 👋</p>
+        </div>
 
         <div className="closing-notebook relative mx-auto mt-10 max-w-3xl overflow-hidden px-5 py-7 sm:px-8 sm:py-8">
           <span aria-hidden="true" className="closing-tape closing-tape-left" />

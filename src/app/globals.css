@@ -388,6 +388,19 @@ button {
   z-index: 1;
 }
 
+.closing-question-quote {
+  position: relative;
+  margin: 0.2rem auto;
+  max-width: 34rem;
+  border-left: 0.24rem solid rgba(21, 128, 61, 0.55);
+  color: #166534;
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+  font-size: clamp(1.55rem, 4vw, 2.2rem);
+  line-height: 1.05;
+  padding: 0.25rem 0 0.35rem 1rem;
+  text-align: left;
+}
+
 .closing-notebook {
   z-index: 1;
   border: 1.5px solid rgba(113, 99, 69, 0.16);
@@ -633,6 +646,11 @@ button {
 @media (max-width: 639px) {
   .closing-title {
     font-size: clamp(3.7rem, 18vw, 5rem);
+  }
+
+  .closing-question-quote {
+    max-width: 100%;
+    padding-left: 0.82rem;
   }
 
   .closing-notebook {
@@ -976,6 +994,11 @@ button {
   box-shadow:
     4px 5px 0 rgba(110, 231, 183, 0.06),
     0 22px 54px rgba(0, 0, 0, 0.32);
+}
+
+.dark .closing-question-quote {
+  border-left-color: rgba(134, 239, 172, 0.58);
+  color: #86efac;
 }
 
 .dark .clock-note {

@@ -138,7 +138,8 @@ export const about = {
 
 export const githubActivity = {
   username: "ansonnchan",
-  profileUrl: "https://github.com/ansonnchan"
+  profileUrl: "https://github.com/ansonnchan",
+  year: 2026
 };
 
 export const experiences: Experience[] = [

@@ -338,8 +338,8 @@ export default function GitHubContributionGraph() {
   return (
     <section
       aria-label="GitHub contribution graph"
-      className="comic-card mt-10 max-w-full min-w-0 overflow-hidden bg-white/80 p-4 backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:bg-white/10 sm:mt-12 sm:p-5"
-      style={{ "--github-day-size": "clamp(0.58rem, 1.4vw, 0.76rem)" } as CSSProperties}
+      className="comic-card mx-auto mt-10 w-full max-w-5xl min-w-0 overflow-hidden bg-white/80 p-4 backdrop-blur transition-colors duration-300 hover:border-emerald-500/35 dark:bg-white/10 sm:mt-12 sm:p-5"
+      style={{ "--github-day-size": "clamp(0.52rem, 1.05vw, 0.68rem)" } as CSSProperties}
     >
       {state.status === "loading" && <SkeletonGraph />}
 
@@ -351,18 +351,18 @@ export default function GitHubContributionGraph() {
 
       {calendar && normalizedCalendar && (
         <>
-          <header className="flex flex-col gap-1 text-zinc-600 dark:text-zinc-300 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+          <header className="relative grid gap-1 text-center text-zinc-600 dark:text-zinc-300 md:min-h-9 md:items-start">
             <h3 className="handwritten-display text-2xl text-zinc-900 dark:text-white sm:text-3xl">
               GitHub Contributions
             </h3>
-            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] sm:text-right sm:text-sm">
+            <p className="whitespace-nowrap text-xs font-semibold uppercase tracking-[0.12em] md:absolute md:right-0 md:top-1 md:text-right sm:text-sm">
               {numberFormatter.format(calendar.totalContributions)} contributions in{" "}
               {calendar.year}
             </p>
           </header>
 
           <div className="mt-4 overflow-x-auto pb-1">
-            <div className="mx-auto w-max min-w-max pr-10">
+            <div className="mx-auto w-max min-w-max px-2">
               <div
                 className="ml-9 grid gap-[3px]"
                 style={{

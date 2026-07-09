@@ -111,44 +111,6 @@ button {
   rotate: 0.6deg;
 }
 
-.hero-social-sticker {
-  display: flex;
-  height: 2.75rem;
-  width: clamp(5.15rem, 20vw, 6.7rem);
-  align-items: center;
-  justify-content: center;
-  gap: 0.32rem;
-  border: 1px solid rgba(36, 43, 36, 0.14);
-  border-radius: 0.58rem 0.72rem 0.55rem 0.68rem;
-  background: rgba(255, 255, 255, 0.84);
-  box-shadow: 1.5px 2px 0 rgba(22, 128, 63, 0.08);
-  color: #27272a;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease;
-}
-
-.hero-social-sticker:hover,
-.hero-social-sticker:focus-visible {
-  border-color: rgba(22, 128, 63, 0.42);
-  background: #ecfdf5;
-  outline: none;
-  transform: translateY(-2px);
-}
-
-.hero-social-sticker:focus-visible {
-  box-shadow:
-    1.5px 2px 0 rgba(22, 128, 63, 0.08),
-    0 0 0 3px rgba(22, 128, 63, 0.16);
-}
-
-.hero-social-cluster {
-  position: relative;
-  width: fit-content;
-  margin: 1.2rem auto 0;
-}
-
 .hero-corner-sticker {
   position: absolute;
   bottom: clamp(1rem, 3vw, 2rem);
@@ -159,27 +121,6 @@ button {
   pointer-events: none;
   rotate: -4deg;
   filter: drop-shadow(0 14px 18px rgba(38, 34, 29, 0.14));
-}
-
-.clock-note {
-  border: 1px solid rgba(120, 102, 37, 0.2);
-  border-radius: 0.28rem 0.4rem 0.35rem 0.3rem;
-  background: rgba(255, 248, 202, 0.94);
-  box-shadow:
-    2px 3px 0 rgba(98, 82, 26, 0.08),
-    0 8px 22px rgba(38, 34, 29, 0.08);
-  rotate: 0.7deg;
-}
-
-.clock-note::before {
-  position: absolute;
-  top: -0.28rem;
-  left: 50%;
-  height: 0.5rem;
-  width: 2.6rem;
-  background: rgba(255, 255, 255, 0.58);
-  content: "";
-  transform: translateX(-50%) rotate(-1deg);
 }
 
 .comic-action {
@@ -966,18 +907,6 @@ button {
   border-color: rgba(255, 255, 255, 0.13);
   background: rgba(255, 255, 255, 0.08);
   color: #f4f4f5;
-}
-
-.dark .hero-social-sticker {
-  border-color: rgba(255, 255, 255, 0.13);
-  background: rgba(255, 255, 255, 0.08);
-  color: #f4f4f5;
-}
-
-.dark .hero-social-sticker:hover,
-.dark .hero-social-sticker:focus-visible {
-  border-color: rgba(110, 231, 183, 0.4);
-  background: rgba(110, 231, 183, 0.12);
 }
 
 .dark .side-polaroid {

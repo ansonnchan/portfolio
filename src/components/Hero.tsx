@@ -1,11 +1,8 @@
-import { hero, socials } from "@/data/portfolio";
+import { hero } from "@/data/portfolio";
 import Flags from "@/components/Flags";
 import TypewriterText from "@/components/TypewriterText";
 
 export default function Hero() {
-  const getLinkTarget = (href: string) =>
-    href.startsWith("http") || href === "/resume" ? "_blank" : undefined;
-
   return (
     <section className="relative min-h-[100svh] overflow-hidden" id="top">
       <div className="relative mx-auto flex min-h-[100svh] max-w-7xl items-center justify-center px-5 pb-32 pt-28 sm:px-8 sm:pb-36 sm:pt-32">
@@ -26,31 +23,6 @@ export default function Hero() {
             </p>
           </div>
           <Flags />
-          <div className="hero-social-cluster">
-            <nav
-              aria-label="Social links"
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
-            >
-              {socials.map((social) => (
-                <a
-                  aria-label={social.label}
-                  className={`hero-social-sticker ${
-                    social.label === "Resume" ? "hero-social-sticker-resume" : ""
-                  }`}
-                  href={social.href}
-                  key={social.label}
-                  rel="noreferrer"
-                  target={getLinkTarget(social.href)}
-                  title={social.label}
-                >
-                  <img alt="" className="h-5 w-5 object-contain" src={social.icon} />
-                  <span className="handwritten-display text-base leading-none">
-                    {social.label}
-                  </span>
-                </a>
-              ))}
-            </nav>
-          </div>
         </div>
       </div>
       <img

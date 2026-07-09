@@ -47,13 +47,13 @@ function getLinkTarget(href: string) {
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-950/10 bg-[#fffefb]/88 backdrop-blur-xl dark:border-white/10 dark:bg-[#10140f]/88">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-[4.5rem] sm:px-6 lg:px-8">
-        <nav aria-label="Contact links" className="flex min-w-0 items-center gap-2">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-950/10 bg-[#fffefb] dark:border-white/10 dark:bg-[#10140f]">
+      <div className="flex h-[4.5rem] w-full items-center justify-between gap-3 px-6s  sm:h-[4.75rem] sm:px-11">
+        <nav aria-label="Contact links" className="flex min-w-0 items-center gap-0">
           {contactLinks.map((link) => (
             <a
               aria-label={link.label}
-              className="group inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-zinc-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-zinc-200 dark:hover:bg-emerald-300/10 dark:hover:text-emerald-300"
+              className="group inline-flex h-12 w-10 shrink-0 items-center justify-center rounded-md text-zinc-700 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-zinc-200 sm:h-[3.25rem] sm:w-11"
               href={link.href}
               key={link.label}
               rel={link.href.startsWith("http") ? "noreferrer" : undefined}
@@ -63,14 +63,14 @@ export default function Navbar() {
               {link.icon ? (
                 <link.icon
                   aria-hidden="true"
-                  className="h-[1.4rem] w-[1.4rem]"
+                  className="h-[1.8rem] w-[1.8rem]"
                   strokeWidth={1.8}
                 />
               ) : (
                 <img
                   alt=""
                   aria-hidden="true"
-                  className={`h-[1.35rem] w-[1.35rem] object-contain transition group-hover:opacity-100 ${
+                  className={`h-[1.75rem] w-[1.75rem] object-contain transition group-hover:opacity-100 ${
                     link.label === "GitHub" ? "opacity-80 dark:invert" : "opacity-100"
                   }`}
                   src={link.iconSrc}
@@ -82,7 +82,7 @@ export default function Navbar() {
 
         <nav
           aria-label="Main navigation"
-          className="handwritten-display flex shrink-0 items-center gap-5 text-[1.3rem] leading-none text-zinc-700 sm:gap-7 sm:text-[1.45rem] dark:text-zinc-200"
+          className="handwritten-display flex shrink-0 items-center gap-6 text-[1.45rem] leading-none text-zinc-700 sm:gap-8 sm:text-[1.6rem] dark:text-zinc-200"
         >
           {mainLinks.map((link) => (
             <a

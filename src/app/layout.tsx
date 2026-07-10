@@ -26,6 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          as="video"
+          href="/assets/closing/kiki.mp4"
+          rel="preload"
+          type="video/mp4"
+        />
+      </head>
       <body className={patrickHand.variable}>{children}</body>
     </html>
   );

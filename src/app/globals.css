@@ -123,6 +123,24 @@ button {
   filter: drop-shadow(0 14px 18px rgba(38, 34, 29, 0.14));
 }
 
+.side-quests-section {
+  position: relative;
+}
+
+.side-quest-trauma-sticker {
+  position: absolute;
+  top: clamp(-3.2rem, -2.8vw, -1.35rem);
+  left: clamp(1.25rem, 8vw, 8rem);
+  z-index: 1;
+  display: none;
+  width: clamp(7.2rem, 14.4vw, 14.4rem);
+  max-height: 16rem;
+  object-fit: contain;
+  pointer-events: none;
+  rotate: -7deg;
+  filter: drop-shadow(0 18px 20px rgba(38, 34, 29, 0.12));
+}
+
 .comic-action {
   justify-content: center;
   border: 1px solid rgba(36, 43, 36, 0.16);
@@ -342,240 +360,45 @@ button {
   text-align: left;
 }
 
-.closing-notebook {
+.closing-video-frame {
+  isolation: isolate;
   z-index: 1;
-  border: 1.5px solid rgba(113, 99, 69, 0.16);
-  border-radius: 0.72rem 0.62rem 0.8rem 0.66rem;
+  width: min(100%, 360px);
+  border: 1.5px solid rgba(22, 128, 63, 0.12);
+  border-radius: 1rem 0.86rem 1.08rem 0.94rem;
   background:
-    linear-gradient(90deg, transparent 0 3.15rem, rgba(244, 114, 86, 0.2) 3.15rem, rgba(244, 114, 86, 0.2) 3.22rem, transparent 3.22rem),
-    repeating-linear-gradient(180deg, transparent 0 2.12rem, rgba(22, 128, 63, 0.075) 2.12rem, rgba(22, 128, 63, 0.075) 2.18rem, transparent 2.18rem, transparent 2.32rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.64), transparent 48%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(236, 253, 245, 0.58)),
     #fffdf5;
   box-shadow:
-    4px 5px 0 rgba(22, 128, 63, 0.07),
-    0 22px 54px rgba(38, 34, 29, 0.12);
+    4px 5px 0 rgba(22, 128, 63, 0.045),
+    0 24px 60px rgba(22, 128, 63, 0.09),
+    0 16px 46px rgba(38, 34, 29, 0.08);
+  overflow: hidden;
+  padding: 0.6rem;
   rotate: -0.4deg;
 }
 
-.closing-notebook::after {
+.closing-video-frame::before {
   position: absolute;
-  right: 1.35rem;
-  bottom: 1.1rem;
-  color: rgba(22, 128, 63, 0.24);
-  content: "keep going";
-  font-family: var(--font-hand), "Comic Sans MS", cursive;
-  font-size: 1.05rem;
-  rotate: -7deg;
-}
-
-.closing-tape {
-  position: absolute;
-  top: 0.78rem;
-  height: 1.05rem;
-  width: 4.1rem;
-  border: 1px solid rgba(120, 102, 37, 0.08);
+  inset: -2.2rem;
+  z-index: -1;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.36), transparent),
-    rgba(255, 241, 168, 0.72);
-  box-shadow: 0 4px 10px rgba(98, 82, 26, 0.08);
+    radial-gradient(circle, rgba(34, 197, 94, 0.14), transparent 62%),
+    radial-gradient(circle, rgba(14, 116, 144, 0.08), transparent 68%);
+  content: "";
+  filter: blur(12px);
+  opacity: 0.8;
 }
 
-.closing-tape-left {
-  left: 1.3rem;
-  rotate: -6deg;
-}
-
-.closing-tape-right {
-  right: 1.45rem;
-  rotate: 7deg;
-}
-
-.closing-scribble {
-  position: absolute;
-  color: rgba(22, 128, 63, 0.34);
-  font-family: var(--font-hand), "Comic Sans MS", cursive;
+.closing-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 0.72rem 0.58rem 0.78rem 0.64rem;
+  filter: sepia(0.12) saturate(0.78) brightness(1.08) contrast(0.94);
+  object-fit: cover;
   pointer-events: none;
-}
-
-.closing-scribble-star {
-  right: 4.8rem;
-  top: 4.8rem;
-  font-size: 1.35rem;
-  rotate: 12deg;
-}
-
-.closing-scribble-arrow {
-  left: 1.65rem;
-  bottom: 3.1rem;
-  font-size: 1.45rem;
-  rotate: -12deg;
-}
-
-.closing-checklist-title {
-  position: relative;
-  z-index: 1;
-  width: fit-content;
-  border-bottom: 0.08em solid rgba(22, 128, 63, 0.28);
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  line-height: 1;
-  rotate: -1.2deg;
-}
-
-.closing-checklist {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(1rem, 2vw, 1.14rem);
-  font-weight: 600;
-}
-
-.closing-checklist-item {
-  position: relative;
-  display: grid;
-  min-height: 2.75rem;
-  align-items: center;
-  column-gap: 0.62rem;
-  grid-template-columns: 1.35rem max-content minmax(0, 1fr);
-  padding-left: 0.2rem;
-  line-height: 1.45;
-}
-
-.closing-box {
-  position: relative;
-  display: inline-block;
-  height: 1.08rem;
-  width: 1.08rem;
-  flex: 0 0 auto;
-  border: 2px solid rgba(36, 43, 36, 0.5);
-  border-radius: 0.18rem 0.22rem 0.16rem 0.2rem;
-  margin-top: 0.16rem;
-  background: rgba(255, 255, 255, 0.34);
-  rotate: -2deg;
-}
-
-.closing-item-main {
-  display: inline-flex;
-  min-width: 0;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.42rem;
-}
-
-.closing-item-text {
-  position: relative;
-  min-width: 0;
-}
-
-.closing-item-note {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.24rem;
-  grid-column: 3;
-  color: #15803d;
-  font-family: var(--font-hand), "Comic Sans MS", cursive;
-  font-size: 0.95em;
-  font-weight: 400;
-  justify-self: start;
-  max-width: min(100%, 34rem);
-  white-space: normal;
-}
-
-.closing-note-arrow {
-  position: relative;
-  display: inline-block;
-  width: 1.22rem;
-  height: 0.08rem;
-  flex: 0 0 auto;
-  background: rgba(21, 128, 61, 0.58);
-  border-radius: 9999px;
-}
-
-.closing-note-arrow::before,
-.closing-note-arrow::after {
-  position: absolute;
-  left: -0.05rem;
-  width: 0.42rem;
-  height: 0.08rem;
-  border-radius: 9999px;
-  background: inherit;
-  content: "";
-  transform-origin: left center;
-}
-
-.closing-note-arrow::before {
-  transform: rotate(35deg);
-}
-
-.closing-note-arrow::after {
-  transform: rotate(-35deg);
-}
-
-.closing-item-note-text {
-  display: inline-block;
-  line-height: 1.1;
-  rotate: -3deg;
-}
-
-.closing-checklist-item-done .closing-box {
-  border-color: #15803d;
-  background: rgba(187, 247, 208, 0.38);
-}
-
-.closing-checklist-item-done .closing-box::after {
-  position: absolute;
-  inset: 0;
-  color: #15803d;
-  content: "✓";
-  display: grid;
-  font-family: "Comic Sans MS", var(--font-hand), cursive;
-  font-size: 1rem;
-  line-height: 1;
-  place-items: center;
-  rotate: -4deg;
-}
-
-.closing-checklist-item-done .closing-item-text {
-  color: rgba(63, 63, 70, 0.62);
-}
-
-.closing-checklist-item-done .closing-item-text::after {
-  position: absolute;
-  right: -0.12rem;
-  top: 54%;
-  left: -0.08rem;
-  height: 0.09rem;
-  border-radius: 9999px;
-  background: rgba(21, 128, 61, 0.42);
-  content: "";
-  transform: rotate(-1deg);
-}
-
-.closing-checklist-item-in-progress .closing-box {
-  border-color: rgba(217, 119, 6, 0.72);
-  background:
-    linear-gradient(90deg, rgba(253, 186, 116, 0.48) 0 55%, transparent 55%),
-    rgba(255, 255, 255, 0.34);
-}
-
-.closing-status-badge {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid rgba(217, 119, 6, 0.18);
-  border-radius: 0.35rem 0.45rem 0.32rem 0.42rem;
-  background: rgba(255, 237, 213, 0.72);
-  color: #b45309;
-  font-family: var(--font-hand), "Comic Sans MS", cursive;
-  font-size: 0.78rem;
-  font-weight: 400;
-  line-height: 1;
-  padding: 0.12rem 0.32rem 0.16rem;
-  rotate: -2deg;
-  white-space: nowrap;
-}
-
-.closing-mini-mark {
-  color: #d97706;
-  font-size: 1.08rem;
-  line-height: 1;
 }
 
 .closing-final-note {
@@ -594,34 +417,8 @@ button {
     padding-left: 0.82rem;
   }
 
-  .closing-notebook {
-    background:
-      repeating-linear-gradient(180deg, transparent 0 2.12rem, rgba(22, 128, 63, 0.075) 2.12rem, rgba(22, 128, 63, 0.075) 2.18rem, transparent 2.18rem, transparent 2.32rem),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.64), transparent 48%),
-      #fffdf5;
+  .closing-video-frame {
     rotate: 0deg;
-  }
-
-  .closing-notebook::after,
-  .closing-scribble-arrow {
-    display: none;
-  }
-
-  .closing-checklist-item {
-    align-items: flex-start;
-    column-gap: 0.65rem;
-    grid-template-columns: 1.35rem minmax(0, 1fr);
-    min-height: 0;
-    row-gap: 0.18rem;
-  }
-
-  .closing-item-note {
-    grid-column: 2;
-    max-width: 100%;
-  }
-
-  .closing-note-arrow {
-    width: 1.1rem;
   }
 }
 
@@ -852,6 +649,12 @@ button {
   }
 }
 
+@media (min-width: 1024px) {
+  .side-quest-trauma-sticker {
+    display: block;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -919,7 +722,9 @@ button {
     linear-gradient(180deg, rgba(16, 20, 15, 0), rgba(75, 59, 30, 0.24) 34%, rgba(16, 185, 129, 0.08));
 }
 
-.dark .closing-notebook {
+.dark .closing-video-frame {
+  border-color: rgba(255, 255, 255, 0.13);
+  background: #fffdf5;
   box-shadow:
     4px 5px 0 rgba(110, 231, 183, 0.06),
     0 22px 54px rgba(0, 0, 0, 0.32);

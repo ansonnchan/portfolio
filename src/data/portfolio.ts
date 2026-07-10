@@ -52,7 +52,7 @@ export const navLinks = [
 ];
 
 export const hero = {
-  greeting: "Hello!",
+  greeting: "Hello, World!",
   title: "Welcome to Anson’s corner of the internet",
   phrases: [
     "Software Engineer",

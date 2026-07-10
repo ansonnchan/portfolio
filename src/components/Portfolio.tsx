@@ -61,7 +61,13 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section className="responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
+        <section className="side-quests-section responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8" id="side-quests">
+          <img
+            alt=""
+            aria-hidden="true"
+            className="side-quest-trauma-sticker"
+            src="/assets/stickers/trauma.png"
+          />
           <div className="mx-auto max-w-6xl">
             <SectionHeading 
             subtitle = "I swear I touch grass and talk to people. I definitely don't doomscroll or lurk on r/csMajors. 😭"

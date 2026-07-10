@@ -1,25 +1,62 @@
-type NextItem = {
-  text: string;
-  note?: string;
-  marker?: "spark" | "star";
-  status?: "done" | "in-progress";
-};
+"use client";
 
-const nextItems: NextItem[] = [
-  { text: "Finish my system design roadmap", status: "in-progress", },
-  { text: "Write a blog post", note: "generational crashouts incoming", status: "done" },
-  { text: "Finally solve Two Sum", status: "done", note: "this one might be impossible" },
-  {
-    text: "Get better at interviews",
-    note: "actually, this one is genuinely impossible"
-  },
-  { text: "Contribute to an open source project", status: "done" },
-  { text: "Graduate from UBC", status: "in-progress" },
-  { text: "Become a teaching assistant", note: "MATH 101? I might lead those innocent first-years astray" },
-  { text: "Having fun", marker: "star", note: "this is the most important one" },
-];
+import { useCallback, useEffect, useRef } from "react";
 
 export default function ClosingSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const syncVideoToLoop = useCallback(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playbackRate = 1;
+
+    if (Number.isFinite(video.duration) && video.duration > 0) {
+      const loopTime = (Date.now() / 1000) % video.duration;
+
+      if (Math.abs(video.currentTime - loopTime) > 0.6) {
+        video.currentTime = loopTime;
+      }
+    }
+
+    video.play().catch(() => {
+      // Some browsers defer autoplay until the tab is visible or interacted with.
+    });
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    const syncWhenVisible = () => {
+      if (!document.hidden) {
+        syncVideoToLoop();
+      }
+    };
+
+    video.defaultMuted = true;
+    video.muted = true;
+    video.addEventListener("loadedmetadata", syncVideoToLoop);
+    document.addEventListener("visibilitychange", syncWhenVisible);
+    const syncInterval = window.setInterval(syncVideoToLoop, 8000);
+
+    syncVideoToLoop();
+
+    return () => {
+      video.removeEventListener("loadedmetadata", syncVideoToLoop);
+      document.removeEventListener("visibilitychange", syncWhenVisible);
+      window.clearInterval(syncInterval);
+    };
+  }, [syncVideoToLoop]);
+
   return (
     <section
       className="closing-section responsive-section scroll-fade scroll-mt-24 px-4 sm:px-6 lg:px-8"
@@ -49,60 +86,27 @@ export default function ClosingSection() {
           </blockquote>
 
           <p>
-           I don't really measure success by a job title or a company name. Whether it's 5, 10, or 15 years from now, I just hope I'm still learning, still building projects that excite me, becoming a better engineer, and still having fun writing code. If you come back in a few years, hopefully a few more boxes below will have been checked off.
+           I don't really measure success by a job title or a company name. Whether it's 5, 10, or 15 years from now, I just hope I'm still learning, still building projects that excite me, becoming a better engineer, and still having fun writing code. If you come back in a few years, hopefully this little board will feel even more like a scrapbook of the things I'm chasing.
           </p>
 
           <p>Until then, take care. 👋</p>
         </div>
 
-        <div className="closing-notebook relative mx-auto mt-10 max-w-3xl overflow-hidden px-5 py-7 sm:px-8 sm:py-8">
-          <span aria-hidden="true" className="closing-tape closing-tape-left" />
-          <span aria-hidden="true" className="closing-tape closing-tape-right" />
-          <span aria-hidden="true" className="closing-scribble closing-scribble-star">
-            ✦
-          </span>
-          <span aria-hidden="true" className="closing-scribble closing-scribble-arrow">
-            →
-          </span>
-
-          <h3 className="handwritten-display closing-checklist-title text-zinc-950">
-            What’s Next?
-          </h3>
-
-          <ul className="closing-checklist mt-5 space-y-3 text-zinc-700">
-            {nextItems.map((item) => (
-              <li
-                className={`closing-checklist-item ${
-                  item.status ? `closing-checklist-item-${item.status}` : ""
-                }`}
-                key={item.text}
-              >
-                <span aria-hidden="true" className="closing-box" />
-                <span className="closing-item-main">
-                  <span className="closing-item-text">{item.text}</span>
-                  {item.status === "in-progress" ? (
-                    <span className="closing-status-badge">in progress</span>
-                  ) : null}
-                  {item.marker === "spark" ? (
-                    <span aria-hidden="true" className="closing-mini-mark">
-                      ✧
-                    </span>
-                  ) : null}
-                  {item.marker === "star" ? (
-                    <span aria-hidden="true" className="closing-mini-mark">
-                      ★
-                    </span>
-                  ) : null}
-                </span>
-                {item.note ? (
-                  <span className="closing-item-note">
-                    <span aria-hidden="true" className="closing-note-arrow" />
-                    <span className="closing-item-note-text">{item.note}</span>
-                  </span>
-                ) : null}
-              </li>
-            ))}
-          </ul>
+        <div className="closing-video-frame relative mx-auto mt-10">
+          <video
+            autoPlay
+            className="closing-video"
+            loop
+            muted
+            onCanPlay={syncVideoToLoop}
+            onPause={syncVideoToLoop}
+            playsInline
+            preload="auto"
+            ref={videoRef}
+            src="/assets/closing/kiki.mp4"
+          >
+            Your browser does not support the video tag.
+          </video>
         </div>
 <br></br>
         <p className="handwritten-display mt-7 text-center text-2xl text-zinc-800 dark:text-zinc-100">

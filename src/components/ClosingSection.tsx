@@ -79,17 +79,17 @@ export default function ClosingSection() {
             same ones I do).
           </p>
 
-          <p>In interviews, I get asked this question a lot:</p>
+          <p>Before you take off, here's a question I get asked quite a bit:</p>
 
           <blockquote className="closing-question-quote">
             “Where do you see yourself in 5 years?”
           </blockquote>
 
           <p>
-           I don't really measure success by a job title or a company name. Whether it's 5, 10, or 15 years from now, I just hope I'm still learning, still building projects that excite me, becoming a better engineer, and still having fun writing code. If you come back in a few years, hopefully this little board will feel even more like a scrapbook of the things I'm chasing.
-          </p>
+           I'm honestly not sure. I don't have a specific picture of where I'll be in five years, and I think that's okay. Whether it's 5, 10, or 15 years from now, I just hope I'm still curious, building things that excite me, becoming a better engineer, and still enjoying coding.
+           </p>
 
-          <p>Until then, take care. 👋</p>
+          <p>Until then, take care and keep flying 🐈‍⬛ </p>
         </div>
 
         <div className="closing-video-frame relative mx-auto mt-10">

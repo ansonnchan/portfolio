@@ -187,9 +187,9 @@ export const experiences: Experience[] = [
     bullets: [
       [
         { text: "Worked on " },
-        { text: "RAG", highlight: true },
-        { text: " pipeline optimization for document retrieval under " },
-        { text: "Dr. Terence Chan", highlight: true },
+        { text: "computational modeling", highlight: true },
+        { text: " under the guidance of" },
+        { text: " Dr. Terence Chan", highlight: true },
         { text: "." }
       ],
       /**[
@@ -200,11 +200,15 @@ export const experiences: Experience[] = [
         }
       ],**/
       [
-        { text: "Built " },
+        { text: "Did some " },
         { text: "Python", highlight: true },
+        { text: " and " },
+        { text: "MATLAB", highlight: true },
         {
-          text: " benchmarking scripts to measure retrieval accuracy and pipeline performance across configurations."
-        }
+          text: " work, including an implementation of"},
+          {text: " Conway's Game of Life", highlight: true},
+          {text: "."}
+        
       ]
     ]
   }
@@ -280,7 +284,8 @@ export const projects: Project[] = [
       "Redis",
       "Yjs",
       "Monaco Editor",
-      "Groq"
+      "Groq",
+      "Judge0"
     ],
     github: "https://github.com/ansonnchan/PearProgramming",
     live: "https://pear-programming.vercel.app/",
@@ -290,7 +295,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    title: "vent.ai",
+    title: "hear me out",
     description:
       "An AI-powered venting app where users can talk to five different AI personalities and crash out to their heart’s content.",
     image: "/assets/projects/vent.ai_pic1.png",
@@ -299,9 +304,9 @@ export const projects: Project[] = [
       "/assets/projects/vent.ai_pic1.png",
       "/assets/projects/vent.ai_pic2.png"
     ],
-    techStack: ["TypeScript", "React", "Next.js", "Groq", "Upstash Redis"],
-    github: "https://github.com/ansonnchan/vent.ai",
-    live: "https://ventai-web.vercel.app/",
+    techStack: ["TypeScript", "React", "Next.js", "Groq", "Redis"],
+    github: "https://github.com/ansonnchan/hear-me-out",
+    live: "https://hear-me-out-web.vercel.app/",
     details: [
       "Supports five AI personalities powered by Groq, ranging from ancient wisdom to straight-up tiger mom energy.",
       "Uses Upstash Redis rate limiting and progressive context compression to control usage while keeping conversations responsive."
@@ -333,7 +338,7 @@ export const projects: Project[] = [
 export const sideQuests = {
   bullets: [
     "I’ve played the violin and the trumpet for 12 years and 10 years respectively. I’m hoping to join UBC’s symphony orchestra before I graduate.",
-    "I like to play tennis and badminton regularly. Fun fact: two of my high school friends in Australia went on to become professional tennis players.",
+    "I like to play tennis and badminton regularly. Fun fact: two of my high school friends in Australia have played in professional events.",
     "I'm an avid lover of thrillers, mysteries, and sci-fi.",
     "My favorite anime is Your Lie in April, both from an emotional and musical perspective.",
   ],

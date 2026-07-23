@@ -161,14 +161,16 @@ export const experiences: Experience[] = [
     location: "Vancouver, BC",
     image: "/assets/experiences/scalepad_logo_black.png",
     bullets: [
-      [{ text: "Currently on the Lifecycle Manager Team 🌱" }]
+      [{ text: "Currently on the Lifecycle Manager Team 🌱" },
+      ],
+      [  {text: "Haven't broken production yet!"}]
     ],
     gallery: {
       images: [
         {
           src: "/assets/experiences/scalepad_volunteer.jpg",
           alt: "The ScalePad team together during a company Serve Day",
-          caption: "ScalePad Serve Day with the team."
+          caption: "ScalePad Volunteering @ David Lam Park, Vancouver, BC"
         }
       ]
     }

@@ -34,7 +34,7 @@ export default function CardGallery({ gallery }: CardGalleryProps) {
               src={image.src}
             />
             {image.caption ? (
-              <figcaption className="px-3 py-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
+              <figcaption className="px-3 py-2 text-center text-sm leading-6 text-zinc-600 dark:text-zinc-300">
                 {image.caption}
               </figcaption>
             ) : null}

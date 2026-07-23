@@ -161,7 +161,7 @@ export const experiences: Experience[] = [
     bullets: [
       [
         {
-          text: "Delivered product features and performance improvements, improving internal tooling and resolving user-facing issues."
+          text: "Delivered product features and performance improvements, improving internal tooling and resolving user-facing issues for beta release."
         }
       ],
       [

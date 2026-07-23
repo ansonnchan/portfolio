@@ -274,8 +274,8 @@ export const projects: Project[] = [
     image: "/assets/projects/pear-program-pic2.png",
     icon: "/assets/projects/pear-programming-favicon.png",
     screenshots: [
-      "/assets/projects/pear-program-pic2.png",
-      "/assets/projects/pear-program-pic3.png"
+      "/assets/projects/pear-program-pic3.png",
+      "/assets/projects/pear-program-pic2.png"
     ],
     techStack: [
       "Java",

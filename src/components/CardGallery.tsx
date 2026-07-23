@@ -21,11 +21,7 @@ export default function CardGallery({ gallery }: CardGalleryProps) {
         </h4>
       ) : null}
 
-      <div
-        className={`grid gap-3 ${
-          gallery.images.length > 1 ? "sm:grid-cols-2" : "max-w-3xl"
-        }`}
-      >
+      <div className="grid gap-3 sm:grid-cols-2">
         {gallery.images.map((image) => (
           <figure
             className="overflow-hidden rounded-lg border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900"
@@ -33,7 +29,7 @@ export default function CardGallery({ gallery }: CardGalleryProps) {
           >
             <img
               alt={image.alt}
-              className="h-auto w-full object-cover"
+              className="aspect-video w-full object-cover"
               loading="lazy"
               src={image.src}
             />

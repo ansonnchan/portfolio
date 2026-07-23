@@ -164,7 +164,6 @@ export const experiences: Experience[] = [
       [{ text: "Currently on the Lifecycle Manager Team 🌱" }]
     ],
     gallery: {
-      title: "Life at ScalePad",
       images: [
         {
           src: "/assets/experiences/scalepad_volunteer.jpg",

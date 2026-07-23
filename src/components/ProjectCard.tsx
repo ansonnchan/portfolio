@@ -3,6 +3,7 @@
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useState } from "react";
 import type { Project } from "@/data/portfolio";
+import CardGallery from "@/components/CardGallery";
 
 type ProjectCardProps = {
   project: Project;
@@ -117,17 +118,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </ul>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {project.screenshots.map((screenshot) => (
-              <img
-                alt={`${project.title} screenshot`}
-                className="aspect-video w-full rounded-lg border border-black/10 object-cover shadow-sm dark:border-white/10"
-                key={screenshot}
-                loading="lazy"
-                src={screenshot}
-              />
-            ))}
-          </div>
+          <CardGallery gallery={project.gallery} />
         </div>
       )}
     </article>

@@ -3,6 +3,7 @@
 import type { KeyboardEvent } from "react";
 import { useState } from "react";
 import type { Experience } from "@/data/portfolio";
+import CardGallery from "@/components/CardGallery";
 import RichText from "@/components/RichText";
 
 type ExperienceCardProps = {
@@ -82,16 +83,20 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
       </div>
 
       {isOpen && (
-        <ul className="mt-5 space-y-3 border-t border-black/10 pt-5 text-sm leading-7 text-zinc-700 dark:border-white/10 dark:text-zinc-300 sm:text-base">
-          {experience.bullets.map((bullet, index) => (
-            <li className="flex gap-3" key={index}>
-              <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-              <span>
-                <RichText segments={bullet} />
-              </span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-5 border-t border-black/10 pt-5 dark:border-white/10">
+          <ul className="space-y-3 text-sm leading-7 text-zinc-700 dark:text-zinc-300 sm:text-base">
+            {experience.bullets.map((bullet, index) => (
+              <li className="flex gap-3" key={index}>
+                <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                <span>
+                  <RichText segments={bullet} />
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          {experience.gallery ? <CardGallery gallery={experience.gallery} /> : null}
+        </div>
       )}
     </article>
   );

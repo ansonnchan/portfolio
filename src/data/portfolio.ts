@@ -9,6 +9,17 @@ export type SocialLink = {
   icon: string;
 };
 
+export type GalleryImage = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export type ImageGallery = {
+  title?: string;
+  images: GalleryImage[];
+};
+
 export type Experience = {
   title: string;
   organization: string;
@@ -17,6 +28,7 @@ export type Experience = {
   image: string;
   eyebrow?: string;
   bullets: RichSegment[][];
+  gallery?: ImageGallery;
   defaultOpen?: boolean;
 };
 
@@ -34,7 +46,7 @@ export type Project = {
   description: string;
   image: string;
   icon: string;
-  screenshots: string[];
+  gallery: ImageGallery;
   techStack: string[];
   github: string;
   live?: string;
@@ -150,7 +162,17 @@ export const experiences: Experience[] = [
     image: "/assets/experiences/scalepad_logo_black.png",
     bullets: [
       [{ text: "Currently on the Lifecycle Manager Team 🌱" }]
-    ]
+    ],
+    gallery: {
+      title: "Life at ScalePad",
+      images: [
+        {
+          src: "/assets/experiences/scalepad_volunteer.jpg",
+          alt: "The ScalePad team together during a company Serve Day",
+          caption: "ScalePad Serve Day with the team."
+        }
+      ]
+    }
   },
   {
     title: "Software Engineer Intern",
@@ -254,10 +276,18 @@ export const projects: Project[] = [
       "You're on it now silly 🤦. I've done a lot of revamping since the first version. I hope you enjoy the design and features.",
     image: "/assets/projects/portfolio_pic1.png",
     icon: "/assets/stickers/kaori-surprised.png",
-    screenshots: [
-      "/assets/projects/portfolio_pic1.png",
-      "/assets/projects/portfolio_pic2.png"
-    ],
+    gallery: {
+      images: [
+        {
+          src: "/assets/projects/portfolio_pic1.png",
+          alt: "Personal portfolio home page"
+        },
+        {
+          src: "/assets/projects/portfolio_pic2.png",
+          alt: "Personal portfolio projects section"
+        }
+      ]
+    },
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API"],
     github: "https://github.com/ansonnchan/portfolio",
     live: "https://www.ansonnchan.dev/",
@@ -273,10 +303,18 @@ export const projects: Project[] = [
       "A collaborative coding editor with real-time editing, shared workspaces, and AI-assisted coding features.",
     image: "/assets/projects/pear-program-pic2.png",
     icon: "/assets/projects/pear-programming-favicon.png",
-    screenshots: [
-      "/assets/projects/pear-program-pic3.png",
-      "/assets/projects/pear-program-pic2.png"
-    ],
+    gallery: {
+      images: [
+        {
+          src: "/assets/projects/pear-program-pic3.png",
+          alt: "Pear Programming collaborative code editor"
+        },
+        {
+          src: "/assets/projects/pear-program-pic2.png",
+          alt: "Pear Programming shared workspace"
+        }
+      ]
+    },
     techStack: [
       "Java",
       "TypeScript",
@@ -300,10 +338,18 @@ export const projects: Project[] = [
       "An AI-powered venting app where users can talk to five different AI personalities and crash out to their heart’s content.",
     image: "/assets/projects/vent.ai_pic1.png",
     icon: "/assets/projects/vent.ai_icon.png",
-    screenshots: [
-      "/assets/projects/vent.ai_pic1.png",
-      "/assets/projects/vent.ai_pic2.png"
-    ],
+    gallery: {
+      images: [
+        {
+          src: "/assets/projects/vent.ai_pic1.png",
+          alt: "Hear Me Out AI personality selection screen"
+        },
+        {
+          src: "/assets/projects/vent.ai_pic2.png",
+          alt: "Hear Me Out AI conversation screen"
+        }
+      ]
+    },
     techStack: ["TypeScript", "React", "Next.js", "Groq", "Redis"],
     github: "https://github.com/ansonnchan/hear-me-out",
     live: "https://hear-me-out-web.vercel.app/",
@@ -320,10 +366,18 @@ export const projects: Project[] = [
       "An AI-assisted hidden-state social deduction game inspired by Liu Cixin’s The Three-Body Problem. The player must figure out which alien civilizations are hostile by reading clues, transmissions, contradictions, and asking strategic questions.",
     image: "/assets/projects/wallfacer_pic1.png",
     icon: "/assets/projects/wallfacer_icon.png",
-    screenshots: [
-      "/assets/projects/wallfacer_pic1.png",
-      "/assets/projects/wallfacer_pic2.png"
-    ],
+    gallery: {
+      images: [
+        {
+          src: "/assets/projects/wallfacer_pic1.png",
+          alt: "The Wallfacer Project game screen"
+        },
+        {
+          src: "/assets/projects/wallfacer_pic2.png",
+          alt: "The Wallfacer Project review screen"
+        }
+      ]
+    },
     techStack: ["Python", "React", "TypeScript", "PostgreSQL", "FastAPI", "Groq"],
     github: "https://github.com/ansonnchan/dark-forest",
     live: "https://wallfacer-project.vercel.app/",

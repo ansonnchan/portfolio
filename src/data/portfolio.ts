@@ -309,6 +309,7 @@ export const projects: Project[] = [
     live: "https://hear-me-out-web.vercel.app/",
     details: [
       "Supports five AI personalities powered by Groq, ranging from ancient wisdom to straight-up tiger mom energy.",
+      "Zero persistent storage of user data, with all conversations stored in memory and cleared after the session ends.",
       "Uses Upstash Redis rate limiting and progressive context compression to control usage while keeping conversations responsive."
     ]
   },
